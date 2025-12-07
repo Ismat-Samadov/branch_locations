@@ -79,38 +79,119 @@ print(f"  Bank of Baku: {bob_count} branches, Rank #{bob_rank}, Market share: {b
 print()
 
 # ============================================================================
-# Chart 2: Market share pie chart
+# Chart 2: Market share analysis - Clear bar chart visualization
 # ============================================================================
 print("Generating Chart 2: Market Share Analysis...")
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 7))
+fig = plt.figure(figsize=(18, 10))
+gs = fig.add_gridspec(2, 2, hspace=0.35, wspace=0.3)
 
-# Overall market share
 market_share = df['bank_name'].value_counts()
-colors_pie = ['#e74c3c' if bank == 'Bank of Baku' else '#ecf0f1' for bank in market_share.index]
-explode = [0.1 if bank == 'Bank of Baku' else 0 for bank in market_share.index]
 
-ax1.pie(market_share.values, labels=market_share.index, autopct='%1.1f%%',
-        colors=colors_pie, explode=explode, startangle=90)
-ax1.set_title('Overall Market Share by Branch Count', fontsize=14, fontweight='bold')
+# 1. Complete market ranking - horizontal bar chart (top left, spans 2 rows)
+ax1 = plt.subplot(gs[:, 0])
+colors_rank = ['#e74c3c' if bank == 'Bank of Baku' else '#3498db' for bank in market_share.index]
+y_pos = range(len(market_share))
 
-# Top 5 vs Bank of Baku
-top_5 = market_share.head(5)
-if 'Bank of Baku' not in top_5.index:
-    top_5_list = list(top_5.index[:4]) + ['Bank of Baku']
-    top_5 = market_share[top_5_list]
+bars = ax1.barh(y_pos, market_share.values, color=colors_rank, edgecolor='black', linewidth=1.2, alpha=0.85)
+ax1.set_yticks(y_pos)
+ax1.set_yticklabels(market_share.index, fontsize=11, fontweight='bold')
+ax1.set_xlabel('Number of Branches', fontsize=12, fontweight='bold')
+ax1.set_title('Complete Market Rankings - All Banks', fontsize=14, fontweight='bold', pad=15)
+ax1.invert_yaxis()
 
-colors_bar = ['#e74c3c' if bank == 'Bank of Baku' else '#3498db' for bank in top_5.index]
-top_5.plot(kind='bar', ax=ax2, color=colors_bar)
-ax2.set_title('Top Banks by Branch Count', fontsize=14, fontweight='bold')
-ax2.set_xlabel('Bank', fontsize=11)
-ax2.set_ylabel('Number of Branches', fontsize=11)
-ax2.tick_params(axis='x', rotation=45)
+# Add value and percentage labels
+for i, (bar, bank) in enumerate(zip(bars, market_share.index)):
+    width = bar.get_width()
+    pct = width / total_count * 100
+    label = f'{int(width)} ({pct:.1f}%)'
+    ax1.text(width + 3, bar.get_y() + bar.get_height()/2, label,
+            ha='left', va='center', fontweight='bold', fontsize=10,
+            color='#e74c3c' if bank == 'Bank of Baku' else '#2c3e50')
+
+ax1.grid(True, alpha=0.3, axis='x')
+ax1.set_xlim(0, market_share.max() * 1.15)
+
+# 2. Market share percentage - horizontal stacked bar (top right)
+ax2 = plt.subplot(gs[0, 1])
+market_pct = (market_share / total_count * 100).sort_values(ascending=False)
+
+# Create stacked bar
+left = 0
+colors_stack = []
+labels_stack = []
+for bank in market_pct.index:
+    if bank == 'Bank of Baku':
+        color = '#e74c3c'
+    elif market_pct[bank] >= 5:
+        color = '#3498db'
+    else:
+        color = '#95a5a6'
+
+    colors_stack.append(color)
+
+    width = market_pct[bank]
+    ax2.barh(0, width, left=left, color=color, edgecolor='white', linewidth=2, height=0.6)
+
+    # Add label if segment is large enough
+    if width >= 3:
+        ax2.text(left + width/2, 0, f'{bank}\n{width:.1f}%',
+                ha='center', va='center', fontsize=9, fontweight='bold', color='white')
+
+    left += width
+
+ax2.set_xlim(0, 100)
+ax2.set_ylim(-0.5, 0.5)
+ax2.set_xlabel('Market Share (%)', fontsize=12, fontweight='bold')
+ax2.set_title('Market Share Distribution', fontsize=14, fontweight='bold', pad=15)
+ax2.set_yticks([])
+ax2.grid(True, alpha=0.3, axis='x')
+
+# 3. Bank of Baku vs Top 5 Competitors (bottom right)
+ax3 = plt.subplot(gs[1, 1])
+
+# Get top 5 competitors (excluding Bank of Baku if it's in top 5, then add it)
+top_competitors = market_share[market_share.index != 'Bank of Baku'].head(5)
+bob_value = market_share['Bank of Baku']
+
+# Create comparison data
+comparison_banks = ['Bank of Baku'] + list(top_competitors.index[:5])
+comparison_values = [bob_value] + list(top_competitors.values[:5])
+comparison_pct = [v/total_count*100 for v in comparison_values]
+
+colors_comp = ['#e74c3c'] + ['#95a5a6'] * 5
+y_pos_comp = range(len(comparison_banks))
+
+bars = ax3.barh(y_pos_comp, comparison_values, color=colors_comp,
+                edgecolor='black', linewidth=1.5, alpha=0.85)
+ax3.set_yticks(y_pos_comp)
+ax3.set_yticklabels(comparison_banks, fontsize=11, fontweight='bold')
+ax3.set_xlabel('Number of Branches', fontsize=12, fontweight='bold')
+ax3.set_title('Bank of Baku vs Top 5 Competitors', fontsize=14, fontweight='bold', pad=15)
+ax3.invert_yaxis()
 
 # Add value labels
-for i, v in enumerate(top_5.values):
-    ax2.text(i, v + 2, str(v), ha='center', fontweight='bold')
+for i, (bar, pct) in enumerate(zip(bars, comparison_pct)):
+    width = bar.get_width()
+    ax3.text(width + 2, bar.get_y() + bar.get_height()/2,
+            f'{int(width)} ({pct:.1f}%)',
+            ha='left', va='center', fontweight='bold', fontsize=10,
+            color='#e74c3c' if i == 0 else '#2c3e50')
 
-plt.tight_layout()
+ax3.grid(True, alpha=0.3, axis='x')
+ax3.set_xlim(0, max(comparison_values) * 1.15)
+
+# Add gap annotation
+if len(comparison_values) > 1:
+    gap = comparison_values[1] - comparison_values[0]
+    ax3.annotate(f'Gap: {gap} branches',
+                xy=(comparison_values[0], 0.5), xytext=(comparison_values[0] + gap/2, 1.5),
+                fontsize=10, fontweight='bold', color='#e74c3c',
+                ha='center',
+                arrowprops=dict(arrowstyle='->', color='#e74c3c', lw=2))
+
+plt.suptitle('Market Share Analysis - Bank of Baku Position',
+             fontsize=16, fontweight='bold', y=0.98)
+
 plt.savefig('charts/02_market_share_analysis.png', dpi=300, bbox_inches='tight')
 plt.close()
 
@@ -790,40 +871,31 @@ print(f"✓ Chart 14 saved")
 print()
 
 # ============================================================================
-# Chart 15: Strategic Recommendations Summary
+# Chart 15: Executive Summary Dashboard (Visual Only)
 # ============================================================================
-print("Generating Chart 15: Strategic Recommendations Summary...")
+print("Generating Chart 15: Executive Summary Dashboard...")
 
-fig = plt.figure(figsize=(16, 10))
-gs = fig.add_gridspec(3, 3, hspace=0.4, wspace=0.3)
+fig = plt.figure(figsize=(18, 10))
+gs = fig.add_gridspec(2, 3, hspace=0.35, wspace=0.35)
 
-# 1. Current Position
-ax1 = fig.add_subplot(gs[0, :])
-ax1.axis('off')
-ax1.text(0.5, 0.8, 'BANK OF BAKU - STRATEGIC POSITION SUMMARY',
-         ha='center', fontsize=18, fontweight='bold', transform=ax1.transAxes)
-
-summary_text = f"""
-CURRENT MARKET POSITION:
-• Market Rank: #{bob_rank} out of {df['bank_name'].nunique()} banks
-• Total Branches: {bob_count}
-• Market Share: {bob_count/total_count*100:.1f}%
-• Gap to Leader: {branch_counts.max() - bob_count} branches behind Kapital Bank
-
-GEOGRAPHIC FOOTPRINT:
-• Baku Concentration: {bob_region['Baku']}/{bob_count} branches ({bob_region['Baku']/bob_count*100:.1f}%)
-• Regional Presence: {bob_region['Regions']}/{bob_count} branches ({bob_region['Regions']/bob_count*100:.1f}%)
-• Average Competitive Intensity: {bob_avg_intensity:.1f} competitors within 10km
-"""
-
-ax1.text(0.05, 0.4, summary_text, ha='left', va='top', fontsize=11,
-         transform=ax1.transAxes, family='monospace',
-         bbox=dict(boxstyle='round', facecolor='#ecf0f1', alpha=0.8))
+# 1. Market Position Ranking
+ax1 = fig.add_subplot(gs[0, 0])
+top_banks = df['bank_name'].value_counts().head(8)
+colors_rank = ['#e74c3c' if bank == 'Bank of Baku' else '#95a5a6' for bank in top_banks.index]
+bars = ax1.barh(range(len(top_banks)), top_banks.values, color=colors_rank, edgecolor='black', linewidth=1.2)
+ax1.set_yticks(range(len(top_banks)))
+ax1.set_yticklabels([f'#{i+1}. {bank}' for i, bank in enumerate(top_banks.index)], fontsize=10)
+ax1.set_xlabel('Number of Branches', fontsize=11, fontweight='bold')
+ax1.set_title('Market Position: Branch Count Rankings', fontsize=12, fontweight='bold')
+ax1.invert_yaxis()
+for i, v in enumerate(top_banks.values):
+    ax1.text(v + 2, i, str(v), va='center', fontweight='bold', fontsize=10)
+ax1.grid(True, alpha=0.3, axis='x')
 
 # 2. Key Metrics Comparison
-ax2 = fig.add_subplot(gs[1, 0])
+ax2 = fig.add_subplot(gs[0, 1])
 metric_comparison = pd.DataFrame({
-    'Metric': ['Branches', 'Market\\nShare %', 'Regional\\nCoverage %'],
+    'Metric': ['Branches', 'Market\nShare %', 'Regional\nCoverage %'],
     'Bank of Baku': [bob_count, bob_count/total_count*100, bob_region['Regions']/bob_count*100],
     'Industry Avg': [
         df.groupby('bank_name').size().mean(),
@@ -834,81 +906,310 @@ metric_comparison = pd.DataFrame({
 
 x = np.arange(len(metric_comparison))
 width = 0.35
-ax2.bar(x - width/2, metric_comparison['Bank of Baku'], width, label='Bank of Baku', color='#e74c3c')
-ax2.bar(x + width/2, metric_comparison['Industry Avg'], width, label='Industry Avg', color='#3498db')
-ax2.set_ylabel('Value', fontsize=10)
-ax2.set_title('Key Metrics vs Industry Average', fontsize=11, fontweight='bold')
+bars1 = ax2.bar(x - width/2, metric_comparison['Bank of Baku'], width, label='Bank of Baku',
+                color='#e74c3c', edgecolor='black', linewidth=1.2)
+bars2 = ax2.bar(x + width/2, metric_comparison['Industry Avg'], width, label='Industry Avg',
+                color='#3498db', edgecolor='black', linewidth=1.2)
+ax2.set_ylabel('Value', fontsize=11, fontweight='bold')
+ax2.set_title('Bank of Baku vs Industry Average', fontsize=12, fontweight='bold')
 ax2.set_xticks(x)
-ax2.set_xticklabels(metric_comparison['Metric'], fontsize=9)
-ax2.legend(fontsize=9)
+ax2.set_xticklabels(metric_comparison['Metric'], fontsize=10)
+ax2.legend(fontsize=10, loc='upper right')
 ax2.grid(True, alpha=0.3, axis='y')
 
+# Add value labels on bars
+for bars in [bars1, bars2]:
+    for bar in bars:
+        height = bar.get_height()
+        ax2.text(bar.get_x() + bar.get_width()/2., height,
+                f'{height:.1f}', ha='center', va='bottom', fontsize=8, fontweight='bold')
+
 # 3. Expansion Opportunities
-ax3 = fig.add_subplot(gs[1, 1])
+ax3 = fig.add_subplot(gs[0, 2])
+cluster_df['BoB_Share'] = (cluster_df['Bank of Baku'] / cluster_df['Total Branches'] * 100).fillna(0)
 opportunity_summary = pd.DataFrame({
-    'Type': ['High Gap\\nAreas', 'Underserved\\nClusters', 'Regional\\nExpansion'],
-    'Count': [len(gaps), (cluster_df['BoB_Share'] < 5).sum() if 'BoB_Share' in cluster_df.columns else 0,
-             df.groupby('bank_name')['region'].apply(lambda x: (x=='Regions').sum()).max() - bob_region['Regions']]
+    'Category': ['High Gap\nAreas', 'Underserved\nClusters', 'Regional\nGap'],
+    'Count': [
+        len(gaps),
+        (cluster_df['BoB_Share'] < 5).sum(),
+        df.groupby('bank_name')['region'].apply(lambda x: (x=='Regions').sum()).max() - bob_region['Regions']
+    ]
 })
 
-ax3.bar(opportunity_summary['Type'], opportunity_summary['Count'], color='#f39c12', edgecolor='black', linewidth=1.5)
-ax3.set_ylabel('Number of Opportunities', fontsize=10)
-ax3.set_title('Expansion Opportunity Areas', fontsize=11, fontweight='bold')
-ax3.tick_params(axis='x', labelsize=9)
+bars = ax3.bar(opportunity_summary['Category'], opportunity_summary['Count'],
+               color='#f39c12', edgecolor='black', linewidth=1.5, alpha=0.8)
+ax3.set_ylabel('Number of Opportunities', fontsize=11, fontweight='bold')
+ax3.set_title('Expansion Opportunities', fontsize=12, fontweight='bold')
+ax3.tick_params(axis='x', labelsize=10)
 
-for i, v in enumerate(opportunity_summary['Count']):
-    ax3.text(i, v + 1, str(int(v)), ha='center', fontweight='bold')
+for i, (bar, v) in enumerate(zip(bars, opportunity_summary['Count'])):
+    height = bar.get_height()
+    ax3.text(bar.get_x() + bar.get_width()/2., height,
+            str(int(v)), ha='center', va='bottom', fontweight='bold', fontsize=11)
 ax3.grid(True, alpha=0.3, axis='y')
 
-# 4. Competitive Positioning
-ax4 = fig.add_subplot(gs[1, 2])
+# 4. Baku vs Regional Distribution
+ax4 = fig.add_subplot(gs[1, 0])
+bob_region_pct = bob_region / bob_count * 100
+colors_region = ['#3498db', '#e74c3c']
+explode_region = [0.05, 0.05]
+wedges, texts, autotexts = ax4.pie(bob_region_pct.values,
+                                     labels=bob_region_pct.index,
+                                     autopct=lambda pct: f'{pct:.1f}%\n({int(pct/100*bob_count)} br.)',
+                                     colors=colors_region,
+                                     explode=explode_region,
+                                     startangle=90,
+                                     textprops={'fontsize': 11, 'fontweight': 'bold'})
+ax4.set_title('Bank of Baku: Geographic Distribution', fontsize=12, fontweight='bold')
+
+# 5. Direct Competitors
+ax5 = fig.add_subplot(gs[1, 1])
 nearest_top5 = nearest_comp_counts.head(5)
-ax4.pie(nearest_top5.values, labels=nearest_top5.index, autopct='%1.0f%%',
-        startangle=90, textprops={'fontsize': 8})
-ax4.set_title('Most Frequent Direct\\nCompetitors', fontsize=11, fontweight='bold')
+colors_comp = plt.cm.Set3(range(len(nearest_top5)))
+wedges, texts, autotexts = ax5.pie(nearest_top5.values,
+                                     labels=nearest_top5.index,
+                                     autopct='%1.0f%%',
+                                     colors=colors_comp,
+                                     startangle=90,
+                                     textprops={'fontsize': 9})
+ax5.set_title('Most Frequent Direct Competitors', fontsize=12, fontweight='bold')
 
-# 5. Recommendations
-ax5 = fig.add_subplot(gs[2, :])
-ax5.axis('off')
+# 6. Competitive Intensity Distribution
+ax6 = fig.add_subplot(gs[1, 2])
+bob_intensities = intensity_data['Bank of Baku']
+ax6.hist(bob_intensities, bins=12, color='#e74c3c', alpha=0.7,
+        edgecolor='black', linewidth=1.5)
+ax6.axvline(np.mean(bob_intensities), color='black', linestyle='--',
+           linewidth=2.5, label=f'Mean: {np.mean(bob_intensities):.1f}', zorder=5)
+ax6.set_xlabel('Competitors Within 10km Radius', fontsize=11, fontweight='bold')
+ax6.set_ylabel('Number of BoB Branches', fontsize=11, fontweight='bold')
+ax6.set_title('Competitive Intensity Distribution', fontsize=12, fontweight='bold')
+ax6.legend(fontsize=10, loc='upper right')
+ax6.grid(True, alpha=0.3, axis='y')
 
-recommendations = f"""
-🎯 STRATEGIC RECOMMENDATIONS FOR BANK OF BAKU:
-
-1. REGIONAL EXPANSION (Priority: HIGH)
-   • Current regional coverage ({bob_region['Regions']/bob_count*100:.1f}%) is below industry average
-   • Identified {len(gaps)} high-potential locations where competitors operate but Bank of Baku is absent
-   • Focus on underserved regional areas to increase market coverage
-
-2. STRATEGIC LOCATION SELECTION (Priority: HIGH)
-   • Target the top 20 recommended expansion coordinates identified in Growth Opportunity Analysis
-   • These locations balance: (a) distance from existing BoB branches, (b) proximity to competitor activity
-   • Prioritize areas with significant distance from nearest Bank of Baku branch
-
-3. COMPETITIVE POSITIONING (Priority: MEDIUM)
-   • Main competitors in proximity: {', '.join(nearest_top5.index[:3].tolist())}
-   • Average competitive intensity: {bob_avg_intensity:.1f} competitors within 10km
-   • Consider differentiation strategy to stand out in competitive markets
-
-4. MARKET SHARE GROWTH PATH (Priority: MEDIUM)
-   • To reach 10% market share: Need {int(total_count * 0.10) - bob_count} additional branches
-   • Recommended balanced approach: 60% in regional areas, 40% in Baku suburbs
-
-5. OPTIMIZATION OPPORTUNITIES (Priority: LOW)
-   • Evaluate performance of existing branches in highly competitive areas
-   • Consider relocating underperforming branches to gap areas
-   • Leverage digital channels to extend reach without physical expansion
-"""
-
-ax5.text(0.05, 0.95, recommendations, ha='left', va='top', fontsize=9.5,
-         transform=ax5.transAxes, family='monospace',
-         bbox=dict(boxstyle='round', facecolor='#e8f5e9', alpha=0.9))
-
-plt.suptitle('Bank of Baku - Strategic Analysis & Actionable Recommendations',
+plt.suptitle('Bank of Baku - Executive Summary Dashboard',
              fontsize=16, fontweight='bold', y=0.98)
-plt.savefig('charts/15_strategic_recommendations.png', dpi=300, bbox_inches='tight')
+plt.savefig('charts/15_executive_summary_dashboard.png', dpi=300, bbox_inches='tight')
 plt.close()
 
 print(f"✓ Chart 15 saved")
+print()
+
+# ============================================================================
+# Generate Strategic Insights Report (Text File)
+# ============================================================================
+print("Generating Strategic Insights Report...")
+
+insights_report = f"""
+================================================================================
+BANK OF BAKU - STRATEGIC ANALYSIS & ACTIONABLE INSIGHTS
+================================================================================
+Generated: {pd.Timestamp.now().strftime('%Y-%m-%d %H:%M:%S')}
+
+EXECUTIVE SUMMARY
+================================================================================
+
+CURRENT MARKET POSITION:
+• Market Rank: #{bob_rank} out of {df['bank_name'].nunique()} banks
+• Total Branches: {bob_count}
+• Market Share: {bob_count/total_count*100:.1f}%
+• Gap to Market Leader (Kapital Bank): {branch_counts.max() - bob_count} branches
+
+GEOGRAPHIC FOOTPRINT:
+• Baku Concentration: {bob_region['Baku']}/{bob_count} branches ({bob_region['Baku']/bob_count*100:.1f}%)
+• Regional Presence: {bob_region['Regions']}/{bob_count} branches ({bob_region['Regions']/bob_count*100:.1f}%)
+• Average Competitive Intensity: {bob_avg_intensity:.1f} competitors within 10km radius
+
+COMPETITIVE LANDSCAPE:
+• Most Frequent Direct Competitors: {', '.join(nearest_comp_counts.head(3).index.tolist())}
+• Average Distance to Nearest Competitor: {bob_analysis['dist_to_competitor'].mean():.4f}° (~{bob_analysis['dist_to_competitor'].mean()*111:.1f}km)
+• Total Market Competitors Identified: {len(gaps)} competitor locations >30km from nearest BoB branch
+
+================================================================================
+STRATEGIC RECOMMENDATIONS
+================================================================================
+
+1. REGIONAL EXPANSION (PRIORITY: HIGH)
+
+   Current Situation:
+   • Bank of Baku's regional coverage ({bob_region['Regions']/bob_count*100:.1f}%) is significantly below
+     the industry average ({df.groupby('bank_name')['region'].apply(lambda x: (x=='Regions').sum()/len(x)*100).mean():.1f}%)
+   • Heavy concentration in Baku ({bob_region['Baku']/bob_count*100:.1f}%) limits growth potential
+   • {len(gaps)} high-potential locations identified where competitors operate without BoB presence
+
+   Recommended Actions:
+   • Prioritize expansion into regional cities with existing competitor presence
+   • Focus on underserved clusters where BoB market share is below 5%
+   • Target cities like: Ganja, Sumqayit, Lankaran, Mingachevir, Shirvan
+   • Allocate 60% of new branch budget to regional expansion
+
+   Expected Impact:
+   • Increase market coverage by accessing untapped customer segments
+   • Reduce dependency on Baku market
+   • Improve competitive positioning in regional markets
+
+2. STRATEGIC LOCATION SELECTION (PRIORITY: HIGH)
+
+   Current Situation:
+   • Gap Analysis identified {len(gaps)} competitor locations far from BoB branches
+   • Growth Opportunity Score analysis pinpointed top 20 optimal expansion coordinates
+   • Current branches face high competitive intensity ({bob_avg_intensity:.1f} competitors within 10km)
+
+   Recommended Actions:
+   • Use the Growth Opportunity Heatmap (Chart 13) to identify specific coordinates
+   • Balance two factors: (a) distance from existing BoB branches, (b) proximity to competitor activity
+   • Prioritize locations with distance >0.3° from nearest BoB branch
+   • Focus on areas with moderate competitor presence (indicates demand but not oversaturation)
+
+   Top Expansion Locations:
+   (Refer to Chart 13 for precise coordinates of top 20 opportunities)
+   • Locations are ranked by combined score of market gap and competitor density
+   • Each location represents validated market demand (competitor presence) without BoB coverage
+
+   Expected Impact:
+   • Capture market share in underserved areas before competitors expand
+   • Reduce customer travel distance to nearest BoB branch
+   • Optimal resource allocation with data-driven site selection
+
+3. COMPETITIVE POSITIONING (PRIORITY: MEDIUM)
+
+   Current Situation:
+   • Main competitors in proximity: {', '.join(nearest_top5.index[:3].tolist())}
+   • Average {bob_avg_intensity:.1f} competitors within 10km of each BoB branch
+   • High competitive intensity in Baku market
+
+   Recommended Actions:
+   • Develop differentiation strategy beyond location convenience
+   • Focus on service excellence, digital banking, and customer experience
+   • Consider specialized branches (e.g., SME-focused, wealth management)
+   • In highly competitive areas, emphasize brand differentiation over proximity
+
+   Expected Impact:
+   • Stronger brand positioning despite fewer branches than leaders
+   • Customer loyalty based on service quality, not just convenience
+   • Better performance metrics per branch
+
+4. MARKET SHARE GROWTH PATH (PRIORITY: MEDIUM)
+
+   Current Situation:
+   • Current market share: {bob_count/total_count*100:.1f}%
+   • To reach 10% market share: Need {int(total_count * 0.10) - bob_count} additional branches
+   • To match #5 position: Need {sorted(branch_counts.values, reverse=True)[4] - bob_count} additional branches
+
+   Recommended Growth Strategy:
+
+   Phase 1 (Year 1): Add {int((int(total_count * 0.10) - bob_count) * 0.4)} branches
+   • 60% in regional areas (identified gap locations)
+   • 40% in Baku suburbs (underserved neighborhoods)
+   • Focus on quick wins with existing infrastructure support
+
+   Phase 2 (Year 2): Add {int((int(total_count * 0.10) - bob_count) * 0.35)} branches
+   • Continue regional expansion
+   • Enter new regional clusters identified in cluster analysis
+   • Evaluate Phase 1 performance and adjust strategy
+
+   Phase 3 (Year 3): Add {int((int(total_count * 0.10) - bob_count) * 0.25)} branches
+   • Fill remaining gaps in network coverage
+   • Optimize branch network based on performance data
+   • Consider branch format innovation (micro-branches, mobile branches)
+
+   Expected Impact:
+   • Achieve 10% market share within 3 years
+   • Balanced growth across Baku and regional markets
+   • Improved competitive position from #8 to top 5
+
+5. NETWORK OPTIMIZATION (PRIORITY: LOW)
+
+   Current Situation:
+   • Some branches located in extremely high-competition areas
+   • Potential for underperformance in oversaturated markets
+   • Digital channels can extend reach without physical expansion
+
+   Recommended Actions:
+   • Conduct performance audit of existing {bob_count} branches
+   • Identify underperforming branches (bottom quartile by revenue/customers)
+   • Consider relocating 2-3 underperforming branches to gap areas
+   • Invest in digital banking to serve customers in areas without branches
+   • Implement ATM network expansion as lower-cost alternative in some locations
+
+   Expected Impact:
+   • Improved ROI per branch
+   • Better resource allocation
+   • Extended service coverage with lower capital investment
+
+================================================================================
+KEY PERFORMANCE INDICATORS TO TRACK
+================================================================================
+
+1. Market Share Metrics:
+   • Total branch count vs competitors
+   • Market share percentage (target: 10% within 3 years)
+   • Rank position (target: Top 5 within 3 years)
+
+2. Geographic Coverage:
+   • Regional branch percentage (target: >40% within 2 years)
+   • Number of cities with BoB presence
+   • Average customer distance to nearest branch
+
+3. Competitive Metrics:
+   • Average competitive intensity per branch
+   • Market gaps closed (target: 50% of identified {len(gaps)} gaps within 3 years)
+   • New branch success rate in gap areas
+
+4. Financial Performance:
+   • Revenue per branch
+   • Customer acquisition cost
+   • Branch ROI by location type (Baku vs Regional)
+
+================================================================================
+CONCLUSION
+================================================================================
+
+Bank of Baku currently holds a modest position in the Azerbaijan banking market
+with {bob_count} branches ({bob_count/total_count*100:.1f}% market share, ranked #{bob_rank}). However, significant
+growth opportunities exist:
+
+STRENGTHS:
+✓ Strong presence in Baku ({bob_region['Baku']} branches)
+✓ Established brand and infrastructure
+✓ Opportunities for strategic expansion with minimal direct competition
+
+OPPORTUNITIES:
+✓ {len(gaps)} identified gap locations with competitor presence but no BoB branch
+✓ Regional markets significantly underserved (only {bob_region['Regions']/bob_count*100:.1f}% of branches)
+✓ Clear path to 10% market share with {int(total_count * 0.10) - bob_count} strategic branch additions
+
+CHALLENGES:
+⚠ High competitive intensity in Baku ({bob_avg_intensity:.1f} competitors per branch within 10km)
+⚠ Below-average regional coverage compared to competitors
+⚠ Significant gap to market leaders (Kapital Bank: {branch_counts.max()} branches)
+
+RECOMMENDATION PRIORITY:
+1. Focus on Regional Expansion (immediate action)
+2. Use data-driven location selection (Chart 13 Growth Opportunity Map)
+3. Balanced growth: 60% regional, 40% Baku suburbs
+4. Target: 10% market share, Top 5 position within 3 years
+
+================================================================================
+END OF REPORT
+================================================================================
+
+For detailed visualizations, refer to charts:
+• Chart 1-4: Market position and competitive landscape
+• Chart 5-8: Geographic and density analysis
+• Chart 9: Gap analysis with specific opportunities
+• Chart 10-12: Competitive dynamics
+• Chart 13: Growth opportunity heatmap with recommended locations
+• Chart 14-15: Multi-metric comparison and executive summary
+
+All charts saved in: charts/ directory
+Generated by: Bank Branch Network Analysis System
+"""
+
+with open('charts/STRATEGIC_INSIGHTS.txt', 'w', encoding='utf-8') as f:
+    f.write(insights_report)
+
+print(f"✓ Strategic Insights Report saved to charts/STRATEGIC_INSIGHTS.txt")
 print()
 
 # ============================================================================
