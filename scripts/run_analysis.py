@@ -202,25 +202,72 @@ print()
 # Chart 3: Geographic scatter plot
 # ============================================================================
 print("Generating Chart 3: Geographic Distribution...")
-fig, ax = plt.subplots(figsize=(14, 10))
+fig, ax = plt.subplots(figsize=(18, 12))
 
-# Plot all banks
-for bank in df['bank_name'].unique():
+# Define distinct color palette for better visibility (20 distinct colors)
+distinct_colors = [
+    '#e74c3c',  # Red - Bank of Baku
+    '#3498db',  # Blue
+    '#2ecc71',  # Green
+    '#f39c12',  # Orange
+    '#9b59b6',  # Purple
+    '#1abc9c',  # Turquoise
+    '#e67e22',  # Carrot
+    '#34495e',  # Dark gray
+    '#16a085',  # Green sea
+    '#c0392b',  # Dark red
+    '#8e44ad',  # Wisteria
+    '#27ae60',  # Nephritis
+    '#d35400',  # Pumpkin
+    '#2c3e50',  # Midnight blue
+    '#f1c40f',  # Sunflower
+    '#95a5a6',  # Concrete
+    '#7f8c8d',  # Asbestos
+    '#c39bd3',  # Light purple
+    '#76d7c4',  # Light turquoise
+    '#f8c471',  # Light orange
+]
+
+# Different marker styles for additional distinction
+marker_styles = ['o', 'o', 'o', 'o', 'o', 'v', 'v', 'v', 'v', 'v',
+                 '^', '^', '^', '^', '^', 'D', 'D', 'D', 'D', 'D']
+
+# Sort banks by count (largest first) for better layering
+bank_counts_sorted = df['bank_name'].value_counts()
+
+# Plot all banks with distinct colors and markers
+for idx, bank in enumerate(bank_counts_sorted.index):
     bank_data = df[df['bank_name'] == bank]
+
     if bank == 'Bank of Baku':
+        # Bank of Baku - highlighted prominently
         ax.scatter(bank_data['long'], bank_data['lat'],
-                  s=150, alpha=0.8, label=bank,
-                  edgecolors='black', linewidth=2, marker='s', zorder=5)
+                  s=200, alpha=0.95, label=bank,
+                  color=distinct_colors[0],
+                  edgecolors='black', linewidth=2.5, marker='s', zorder=100)
     else:
+        # Other banks - use distinct colors and varying markers
+        color_idx = idx % len(distinct_colors)
+        marker_idx = idx % len(marker_styles)
+
         ax.scatter(bank_data['long'], bank_data['lat'],
-                  s=50, alpha=0.5, label=bank)
+                  s=70, alpha=0.75, label=f'{bank} ({len(bank_data)})',
+                  color=distinct_colors[color_idx],
+                  marker=marker_styles[marker_idx],
+                  edgecolors='white', linewidth=0.5, zorder=idx)
 
 ax.set_xlabel('Longitude', fontsize=12, fontweight='bold')
 ax.set_ylabel('Latitude', fontsize=12, fontweight='bold')
-ax.set_title('Geographic Distribution of Bank Branches in Azerbaijan\\n(Bank of Baku highlighted in squares)',
+ax.set_title('Geographic Distribution of Bank Branches in Azerbaijan\\n(Bank of Baku highlighted as red squares)',
              fontsize=14, fontweight='bold', pad=20)
-ax.legend(bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=9)
-ax.grid(True, alpha=0.3)
+
+# Improved legend with branch counts
+ax.legend(bbox_to_anchor=(1.02, 1), loc='upper left', fontsize=8,
+          ncol=1, frameon=True, fancybox=True, shadow=True)
+ax.grid(True, alpha=0.3, linestyle='--', linewidth=0.5)
+
+# Set background color for better contrast
+ax.set_facecolor('#f8f9fa')
 
 plt.tight_layout()
 plt.savefig('charts/03_geographic_distribution_all.png', dpi=300, bbox_inches='tight')
@@ -239,25 +286,30 @@ comparison_banks = ['Bank of Baku'] + [b for b in top_3_competitors if b != 'Ban
 fig, axes = plt.subplots(2, 2, figsize=(16, 14))
 axes = axes.flatten()
 
+competitor_colors = ['#e74c3c', '#3498db', '#2ecc71', '#f39c12']
+
 for idx, bank in enumerate(comparison_banks):
     ax = axes[idx]
 
-    # Plot all branches in gray
-    ax.scatter(df['long'], df['lat'], s=20, alpha=0.2, color='gray', label='Other banks')
+    # Plot all branches with light background
+    ax.scatter(df['long'], df['lat'], s=15, alpha=0.15, color='#95a5a6', label='Other banks')
 
     # Highlight this bank
     bank_data = df[df['bank_name'] == bank]
-    color = '#e74c3c' if bank == 'Bank of Baku' else '#3498db'
+    color = competitor_colors[idx]
+    marker = 's' if bank == 'Bank of Baku' else 'o'
+
     ax.scatter(bank_data['long'], bank_data['lat'],
-              s=100, alpha=0.8, color=color, label=bank,
-              edgecolors='black', linewidth=1, zorder=5)
+              s=120, alpha=0.9, color=color, label=bank,
+              marker=marker, edgecolors='black', linewidth=1.5, zorder=5)
 
     ax.set_title(f'{bank} - {len(bank_data)} branches',
                 fontsize=12, fontweight='bold')
     ax.set_xlabel('Longitude', fontsize=10)
     ax.set_ylabel('Latitude', fontsize=10)
-    ax.legend(fontsize=9)
-    ax.grid(True, alpha=0.3)
+    ax.legend(fontsize=9, frameon=True, fancybox=True)
+    ax.grid(True, alpha=0.3, linestyle='--')
+    ax.set_facecolor('#f8f9fa')
 
 plt.suptitle('Geographic Coverage Comparison: Bank of Baku vs Top Competitors',
              fontsize=16, fontweight='bold', y=1.00)
@@ -278,14 +330,38 @@ df['cluster'] = clustering.labels_
 
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(18, 7))
 
-# All banks clusters
-scatter1 = ax1.scatter(df['long'], df['lat'], c=df['cluster'],
-                       cmap='tab20', s=50, alpha=0.6)
+# Define distinct colors for clusters
+cluster_colors = ['#95a5a6',  # Gray for outliers (cluster -1)
+                 '#e74c3c', '#3498db', '#2ecc71', '#f39c12', '#9b59b6',
+                 '#1abc9c', '#e67e22', '#34495e', '#16a085', '#c0392b',
+                 '#8e44ad', '#27ae60', '#d35400', '#2c3e50', '#f1c40f',
+                 '#c39bd3', '#76d7c4', '#f8c471', '#ec7063']
+
+# Plot clusters with distinct colors
+unique_clusters = sorted(df['cluster'].unique())
+for cluster_id in unique_clusters:
+    cluster_data = df[df['cluster'] == cluster_id]
+    color_idx = (cluster_id + 1) % len(cluster_colors)
+
+    if cluster_id == -1:
+        # Outliers - smaller and lighter
+        ax1.scatter(cluster_data['long'], cluster_data['lat'],
+                   s=40, alpha=0.4, color=cluster_colors[0],
+                   label=f'Outliers ({len(cluster_data)})',
+                   edgecolors='white', linewidth=0.3, zorder=1)
+    else:
+        # Clustered branches - larger and more visible
+        ax1.scatter(cluster_data['long'], cluster_data['lat'],
+                   s=80, alpha=0.85, color=cluster_colors[color_idx],
+                   label=f'Cluster {cluster_id} ({len(cluster_data)})',
+                   edgecolors='white', linewidth=0.8, zorder=2)
+
 ax1.set_title('Regional Clusters - All Banks', fontsize=14, fontweight='bold')
 ax1.set_xlabel('Longitude', fontsize=11)
 ax1.set_ylabel('Latitude', fontsize=11)
-ax1.grid(True, alpha=0.3)
-plt.colorbar(scatter1, ax=ax1, label='Cluster ID')
+ax1.grid(True, alpha=0.3, linestyle='--')
+ax1.legend(bbox_to_anchor=(1.02, 1), loc='upper left', fontsize=8, ncol=1, frameon=True, fancybox=True)
+ax1.set_facecolor('#f8f9fa')
 
 # Bank of Baku presence in clusters
 bob_clusters = df[df['bank_name'] == 'Bank of Baku']['cluster'].value_counts().sort_index()
@@ -320,22 +396,48 @@ baku_df = df[(df['lat'] >= 40.3) & (df['lat'] <= 40.5) &
 
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(18, 7))
 
+# Use same distinct colors as Chart 3
+baku_distinct_colors = [
+    '#e74c3c', '#3498db', '#2ecc71', '#f39c12', '#9b59b6',
+    '#1abc9c', '#e67e22', '#34495e', '#16a085', '#c0392b',
+    '#8e44ad', '#27ae60', '#d35400', '#2c3e50', '#f1c40f',
+    '#95a5a6', '#7f8c8d', '#c39bd3', '#76d7c4', '#f8c471'
+]
+
+# Different marker styles for distinction
+baku_marker_styles = ['o', 'o', 'o', 'o', 'v', 'v', 'v', 'v',
+                      '^', '^', '^', '^', 'D', 'D', 'D', 'D',
+                      's', 's', 's', 's']
+
+# Sort banks by count in Baku for better layering
+baku_bank_counts = baku_df['bank_name'].value_counts()
+
 # Baku branch distribution
-for bank in baku_df['bank_name'].unique():
+for idx, bank in enumerate(baku_bank_counts.index):
     bank_data = baku_df[baku_df['bank_name'] == bank]
+    color_idx = idx % len(baku_distinct_colors)
+    marker_idx = idx % len(baku_marker_styles)
+
     if bank == 'Bank of Baku':
         ax1.scatter(bank_data['long'], bank_data['lat'],
-                   s=150, alpha=0.8, label=bank,
-                   edgecolors='black', linewidth=2, marker='s', zorder=5)
+                   s=180, alpha=0.95, label=f'{bank} ({len(bank_data)})',
+                   color=baku_distinct_colors[0],
+                   edgecolors='black', linewidth=2.5, marker='s', zorder=100)
     else:
         ax1.scatter(bank_data['long'], bank_data['lat'],
-                   s=50, alpha=0.5, label=bank)
+                   s=80, alpha=0.8, label=f'{bank} ({len(bank_data)})',
+                   color=baku_distinct_colors[color_idx],
+                   marker=baku_marker_styles[marker_idx],
+                   edgecolors='white', linewidth=0.8, zorder=idx)
 
 ax1.set_xlabel('Longitude', fontsize=11)
 ax1.set_ylabel('Latitude', fontsize=11)
-ax1.set_title('Baku City - Branch Distribution', fontsize=14, fontweight='bold')
-ax1.legend(bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=8)
-ax1.grid(True, alpha=0.3)
+ax1.set_title('Baku City - Branch Distribution\n(Bank of Baku highlighted as red squares)',
+             fontsize=14, fontweight='bold')
+ax1.legend(bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=8,
+          frameon=True, fancybox=True, shadow=True)
+ax1.grid(True, alpha=0.3, linestyle='--')
+ax1.set_facecolor('#f8f9fa')
 
 # Baku market share
 baku_counts = baku_df['bank_name'].value_counts()
@@ -409,12 +511,13 @@ fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(18, 7))
 # Density for all banks
 xy_all = np.vstack([df['long'], df['lat']])
 z_all = gaussian_kde(xy_all)(xy_all)
-scatter1 = ax1.scatter(df['long'], df['lat'], c=z_all, s=50, cmap='YlOrRd', alpha=0.6)
+scatter1 = ax1.scatter(df['long'], df['lat'], c=z_all, s=65, cmap='YlOrRd', alpha=0.7, edgecolors='white', linewidth=0.5)
 ax1.set_title('Branch Density Heatmap - All Banks', fontsize=14, fontweight='bold')
 ax1.set_xlabel('Longitude', fontsize=11)
 ax1.set_ylabel('Latitude', fontsize=11)
 plt.colorbar(scatter1, ax=ax1, label='Density')
-ax1.grid(True, alpha=0.3)
+ax1.grid(True, alpha=0.3, linestyle='--')
+ax1.set_facecolor('#f8f9fa')
 
 # Bank of Baku branches overlaid on competition density
 competitors_df = df[df['bank_name'] != 'Bank of Baku']
@@ -422,19 +525,20 @@ xy_comp = np.vstack([competitors_df['long'], competitors_df['lat']])
 z_comp = gaussian_kde(xy_comp)(xy_comp)
 
 scatter2 = ax2.scatter(competitors_df['long'], competitors_df['lat'],
-                       c=z_comp, s=30, cmap='Blues', alpha=0.4)
+                       c=z_comp, s=40, cmap='Blues', alpha=0.5, edgecolors='white', linewidth=0.3)
 bob_df = df[df['bank_name'] == 'Bank of Baku']
 ax2.scatter(bob_df['long'], bob_df['lat'],
-           s=200, alpha=0.9, color='#e74c3c',
-           edgecolors='black', linewidth=2, marker='*',
-           label='Bank of Baku', zorder=5)
+           s=280, alpha=0.95, color='#e74c3c',
+           edgecolors='black', linewidth=2.5, marker='*',
+           label='Bank of Baku', zorder=10)
 
 ax2.set_title('Bank of Baku Locations vs Competitor Density', fontsize=14, fontweight='bold')
 ax2.set_xlabel('Longitude', fontsize=11)
 ax2.set_ylabel('Latitude', fontsize=11)
 plt.colorbar(scatter2, ax=ax2, label='Competitor Density')
-ax2.legend(fontsize=11)
-ax2.grid(True, alpha=0.3)
+ax2.legend(fontsize=11, frameon=True, fancybox=True, shadow=True)
+ax2.grid(True, alpha=0.3, linestyle='--')
+ax2.set_facecolor('#f8f9fa')
 
 plt.tight_layout()
 plt.savefig('charts/08_competitive_density.png', dpi=300, bbox_inches='tight')
@@ -708,16 +812,18 @@ opportunity_scores = opportunity_scores.reshape(grid_resolution, grid_resolution
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(18, 7))
 
 # Heatmap of opportunity scores
-im = ax1.contourf(long_grid, lat_grid, opportunity_scores, levels=20, cmap='YlOrRd', alpha=0.7)
-ax1.scatter(bob_coords[:, 1], bob_coords[:, 0], s=100, color='blue',
-           marker='s', edgecolors='black', linewidth=2, label='Bank of Baku', zorder=5)
-ax1.scatter(comp_coords[:, 1], comp_coords[:, 0], s=10, color='gray',
-           alpha=0.3, label='Competitors')
+im = ax1.contourf(long_grid, lat_grid, opportunity_scores, levels=20, cmap='YlOrRd', alpha=0.8)
+ax1.scatter(bob_coords[:, 1], bob_coords[:, 0], s=140, color='#e74c3c',
+           marker='s', edgecolors='black', linewidth=2.5, label='Bank of Baku', zorder=5)
+ax1.scatter(comp_coords[:, 1], comp_coords[:, 0], s=15, color='gray',
+           alpha=0.4, label='Competitors', edgecolors='white', linewidth=0.2)
 ax1.set_xlabel('Longitude', fontsize=11)
 ax1.set_ylabel('Latitude', fontsize=11)
-ax1.set_title('Expansion Opportunity Heatmap for Bank of Baku\\n(Warmer colors = higher opportunity)',
+ax1.set_title('Expansion Opportunity Heatmap for Bank of Baku\n(Warmer colors = higher opportunity)',
              fontsize=13, fontweight='bold')
-ax1.legend(fontsize=10)
+ax1.legend(fontsize=10, frameon=True, fancybox=True)
+ax1.grid(True, alpha=0.3, linestyle='--')
+ax1.set_facecolor('#f8f9fa')
 plt.colorbar(im, ax=ax1, label='Opportunity Score')
 
 # Top opportunity locations
@@ -726,23 +832,25 @@ flat_indices = opportunity_scores.flatten().argsort()[-top_n:][::-1]
 top_opportunities = grid_points[flat_indices]
 
 # Plot top opportunities
-ax2.scatter(df['long'], df['lat'], s=20, alpha=0.2, color='gray', label='Existing branches')
-ax2.scatter(bob_coords[:, 1], bob_coords[:, 0], s=100, color='#e74c3c',
-           marker='s', edgecolors='black', linewidth=2, label='Bank of Baku', zorder=5)
+ax2.scatter(df['long'], df['lat'], s=18, alpha=0.2, color='#95a5a6', label='Existing branches')
+ax2.scatter(bob_coords[:, 1], bob_coords[:, 0], s=140, color='#e74c3c',
+           marker='s', edgecolors='black', linewidth=2.5, label='Bank of Baku', zorder=5)
 ax2.scatter(top_opportunities[:, 1], top_opportunities[:, 0],
-           s=200, color='#f39c12', marker='*',
-           edgecolors='black', linewidth=1.5, label='Top expansion opportunities', zorder=6)
+           s=320, color='#f39c12', marker='*',
+           edgecolors='black', linewidth=2, label='Top expansion opportunities', zorder=10, alpha=0.95)
 
 # Number the top 5
 for i in range(min(5, len(top_opportunities))):
     ax2.annotate(str(i+1), (top_opportunities[i, 1], top_opportunities[i, 0]),
-                fontsize=10, fontweight='bold', ha='center', va='center')
+                fontsize=11, fontweight='bold', ha='center', va='center', color='white',
+                bbox=dict(boxstyle='circle', facecolor='#2c3e50', edgecolor='white', linewidth=2))
 
 ax2.set_xlabel('Longitude', fontsize=11)
 ax2.set_ylabel('Latitude', fontsize=11)
 ax2.set_title(f'Top {top_n} Recommended Expansion Locations', fontsize=13, fontweight='bold')
-ax2.legend(fontsize=10)
-ax2.grid(True, alpha=0.3)
+ax2.legend(fontsize=10, frameon=True, fancybox=True, shadow=True)
+ax2.grid(True, alpha=0.3, linestyle='--')
+ax2.set_facecolor('#f8f9fa')
 
 plt.tight_layout()
 plt.savefig('charts/13_growth_opportunity_score.png', dpi=300, bbox_inches='tight')
