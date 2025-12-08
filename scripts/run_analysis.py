@@ -623,19 +623,40 @@ bob_analysis['nearest_competitor'] = [comp_banks[i] for i in idx_comp.flatten()]
 
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(18, 7))
 
-# Distribution of distances
-ax1.hist(bob_analysis['dist_to_competitor'], bins=20, color='#3498db',
-        alpha=0.7, edgecolor='black', linewidth=1.2)
-ax1.axvline(bob_analysis['dist_to_competitor'].mean(), color='#e74c3c',
-           linestyle='--', linewidth=2, label=f'Mean: {bob_analysis["dist_to_competitor"].mean():.3f}°')
-ax1.axvline(bob_analysis['dist_to_competitor'].median(), color='#2ecc71',
-           linestyle='--', linewidth=2, label=f'Median: {bob_analysis["dist_to_competitor"].median():.3f}°')
-ax1.set_xlabel('Distance to Nearest Competitor (degrees)', fontsize=11)
-ax1.set_ylabel('Number of Bank of Baku Branches', fontsize=11)
-ax1.set_title('Bank of Baku: Distance to Nearest Competitor Distribution',
+# Distribution of distances - Enhanced histogram
+n, bins, patches = ax1.hist(bob_analysis['dist_to_competitor'], bins=15,
+                             edgecolor='black', linewidth=1.5, alpha=0.85)
+
+# Color bars with gradient based on distance (closer = red, farther = green)
+colors = ['#e74c3c', '#e67e22', '#f39c12', '#f1c40f', '#2ecc71',
+          '#27ae60', '#16a085', '#1abc9c', '#3498db', '#2980b9',
+          '#8e44ad', '#9b59b6', '#34495e', '#7f8c8d', '#95a5a6']
+for i, patch in enumerate(patches):
+    patch.set_facecolor(colors[i % len(colors)])
+
+# Add prominent mean and median lines
+mean_val = bob_analysis['dist_to_competitor'].mean()
+median_val = bob_analysis['dist_to_competitor'].median()
+
+ax1.axvline(mean_val, color='#e74c3c', linestyle='--', linewidth=3.5,
+           label=f'Mean: {mean_val:.4f}° (~{mean_val*111:.1f}km)', zorder=10, alpha=0.9)
+ax1.axvline(median_val, color='#2ecc71', linestyle='--', linewidth=3.5,
+           label=f'Median: {median_val:.4f}° (~{median_val*111:.1f}km)', zorder=10, alpha=0.9)
+
+# Add value labels on top of bars
+for i, (count, bin_edge) in enumerate(zip(n, bins[:-1])):
+    if count > 0:
+        ax1.text(bin_edge + (bins[1]-bins[0])/2, count + max(n)*0.02,
+                int(count), ha='center', va='bottom', fontweight='bold', fontsize=9)
+
+ax1.set_xlabel('Distance to Nearest Competitor (degrees)\n[1° ≈ 111 km]',
+              fontsize=11, fontweight='bold')
+ax1.set_ylabel('Number of Bank of Baku Branches', fontsize=11, fontweight='bold')
+ax1.set_title('Bank of Baku: Distance to Nearest Competitor Distribution\n(Redder bars = closer, Greener bars = farther)',
              fontsize=13, fontweight='bold')
-ax1.legend(fontsize=10)
-ax1.grid(True, alpha=0.3, axis='y')
+ax1.legend(fontsize=10, frameon=True, fancybox=True, shadow=True, loc='upper right')
+ax1.grid(True, alpha=0.3, axis='y', linestyle='--')
+ax1.set_facecolor('#f8f9fa')
 
 # Nearest competitor frequency
 nearest_comp_counts = bob_analysis['nearest_competitor'].value_counts()
@@ -704,18 +725,39 @@ ax1.set_title('Average Competitive Intensity by Bank', fontsize=13, fontweight='
 for i, v in enumerate(intensity_comparison['Avg_Competitors_Nearby'].values):
     ax1.text(v + 0.5, i, f'{v:.1f}', va='center', fontweight='bold')
 
-# Bank of Baku intensity distribution
+# Bank of Baku intensity distribution - Enhanced histogram
 bob_intensities = intensity_data['Bank of Baku']
-ax2.hist(bob_intensities, bins=15, color='#e74c3c', alpha=0.7,
-        edgecolor='black', linewidth=1.2)
-ax2.axvline(np.mean(bob_intensities), color='black', linestyle='--',
-           linewidth=2, label=f'Mean: {np.mean(bob_intensities):.1f}')
-ax2.set_xlabel('Number of Competitors Within 10km', fontsize=11)
-ax2.set_ylabel('Number of Bank of Baku Branches', fontsize=11)
-ax2.set_title('Bank of Baku: Competitive Intensity Distribution',
+n, bins, patches = ax2.hist(bob_intensities, bins=15, edgecolor='black', linewidth=1.5, alpha=0.85)
+
+# Color bars with gradient: fewer competitors = green (good), more = red (high pressure)
+colors_intensity = ['#2ecc71', '#27ae60', '#16a085', '#1abc9c', '#3498db',
+                   '#2980b9', '#8e44ad', '#9b59b6', '#e67e22', '#f39c12',
+                   '#f1c40f', '#e74c3c', '#c0392b', '#d35400', '#c0392b']
+for i, patch in enumerate(patches):
+    patch.set_facecolor(colors_intensity[i % len(colors_intensity)])
+
+# Add prominent mean and median lines
+mean_intensity = np.mean(bob_intensities)
+median_intensity = np.median(bob_intensities)
+
+ax2.axvline(mean_intensity, color='#e74c3c', linestyle='--', linewidth=3.5,
+           label=f'Mean: {mean_intensity:.1f} competitors', zorder=10, alpha=0.9)
+ax2.axvline(median_intensity, color='#2ecc71', linestyle='--', linewidth=3.5,
+           label=f'Median: {median_intensity:.1f} competitors', zorder=10, alpha=0.9)
+
+# Add value labels on top of bars
+for i, (count, bin_edge) in enumerate(zip(n, bins[:-1])):
+    if count > 0:
+        ax2.text(bin_edge + (bins[1]-bins[0])/2, count + max(n)*0.02,
+                int(count), ha='center', va='bottom', fontweight='bold', fontsize=9)
+
+ax2.set_xlabel('Number of Competitors Within 10km', fontsize=11, fontweight='bold')
+ax2.set_ylabel('Number of Bank of Baku Branches', fontsize=11, fontweight='bold')
+ax2.set_title('Bank of Baku: Competitive Intensity Distribution\n(Greener bars = lower competition, Redder bars = higher competition)',
              fontsize=13, fontweight='bold')
-ax2.legend(fontsize=10)
-ax2.grid(True, alpha=0.3, axis='y')
+ax2.legend(fontsize=10, frameon=True, fancybox=True, shadow=True, loc='upper right')
+ax2.grid(True, alpha=0.3, axis='y', linestyle='--')
+ax2.set_facecolor('#f8f9fa')
 
 plt.tight_layout()
 plt.savefig('charts/11_competitive_intensity.png', dpi=300, bbox_inches='tight')
