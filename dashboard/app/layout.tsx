@@ -29,6 +29,9 @@ export const viewport: Viewport = {
   themeColor: "#667eea",
 };
 
+import Navigation from '@/components/Navigation';
+import InstallPWA from '@/components/InstallPWA';
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -44,7 +47,9 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="Bank Network AZ" />
       </head>
       <body className="antialiased">
+        <Navigation />
         {children}
+        <InstallPWA />
       </body>
     </html>
   );
