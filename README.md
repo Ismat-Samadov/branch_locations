@@ -82,7 +82,8 @@ branch_locations/
 ├── notebooks/
 │   └── analyse.ipynb              # Jupyter notebook analysis
 ├── charts/
-│   ├── 01-15_*.png                # 15 analytical charts
+│   └── 01-15_*.png                # 15 analytical charts
+├── docs/
 │   ├── CALCULATIONS.md            # Methodology documentation
 │   └── STRATEGIC_INSIGHTS.txt     # Detailed recommendations
 └── README.md                      # This file
@@ -754,10 +755,11 @@ Track these metrics quarterly to measure progress:
 ## 🛠️ Technical Documentation
 
 ### Data Collection
-- **Sources:** 11 bank websites (web scraping)
-- **Total Records:** 456 branches
-- **Data Quality:** 100% with valid coordinates
+- **Sources:** 20 bank websites (web scraping + geocoding)
+- **Total Records:** 585 branches
+- **Data Quality:** 100% with valid coordinates (583/585 = 99.7%)
 - **Update Frequency:** Quarterly recommended
+- **Methods:** JavaScript extraction, HTML parsing, Nominatim API geocoding
 
 ### Analysis Methods
 - **Clustering:** DBSCAN (eps=0.5°, min_samples=5)
@@ -773,12 +775,13 @@ Track these metrics quarterly to measure progress:
 - **Statistical:** scipy
 
 ### Files & Scripts
-- **Data Collection:** `scrapers/*.py` (11 scrapers)
+- **Data Collection:** `scrapers/*.py` (20 scrapers)
 - **Data Combination:** `scripts/combine.py`
 - **Analysis:** `scripts/run_analysis.py`
 - **Notebook:** `notebooks/analyse.ipynb`
+- **Documentation:** `docs/CALCULATIONS.md`, `docs/STRATEGIC_INSIGHTS.txt`
 
-For detailed methodology, see [CALCULATIONS.md](charts/CALCULATIONS.md)
+For detailed methodology, see [CALCULATIONS.md](docs/CALCULATIONS.md)
 
 ---
 
@@ -792,9 +795,9 @@ For detailed methodology, see [CALCULATIONS.md](charts/CALCULATIONS.md)
 
 ### For Strategy Team
 1. Study all 15 charts in detail
-2. Review [STRATEGIC_INSIGHTS.txt](charts/STRATEGIC_INSIGHTS.txt)
+2. Review [STRATEGIC_INSIGHTS.txt](docs/STRATEGIC_INSIGHTS.txt)
 3. Use [Chart 13](#chart-13-growth-opportunity-score) for site selection
-4. Refer to [CALCULATIONS.md](charts/CALCULATIONS.md) for methodology
+4. Refer to [CALCULATIONS.md](docs/CALCULATIONS.md) for methodology
 
 ### For Branch Network Team
 1. Focus on [Chart 9](#chart-9-gap-analysis---underserved-areas) for expansion locations
@@ -840,23 +843,23 @@ Recommended frequency: **Quarterly** or when major competitor expansion detected
 ### Scenario 1: Conservative Growth (Likely)
 - Add 15 branches over 3 years (5 per year)
 - Focus on highest-priority gap locations
-- Achieve 7.5% market share, #7 position
+- Achieve 6.2% market share, #7-8 position
 - Regional coverage: 40%
 - **Investment:** ~$3-4.5M
 
 ### Scenario 2: Balanced Growth (Recommended)
-- Add 24 branches over 3 years (10+8+6 phased)
+- Add 26 branches over 3 years (10+8+8 phased)
 - Mix of gap locations and strategic competitive sites
-- Achieve 10% market share, #5 position
+- Achieve 8.0% market share, #5-6 position
 - Regional coverage: 50%
-- **Investment:** ~$5-7.2M
+- **Investment:** ~$5.2-7.8M
 
 ### Scenario 3: Aggressive Growth (High Risk/Reward)
-- Add 35+ branches over 3 years (15+12+8)
+- Add 40+ branches over 3 years (15+15+10)
 - Rapid expansion into all gap locations
-- Achieve 12-13% market share, #4 position
+- Achieve 10.4% market share, #4-5 position
 - Regional coverage: 55%+
-- **Investment:** ~$7-10M
+- **Investment:** ~$8-12M
 - **Risk:** Overextension, quality dilution
 
 **Recommendation:** Scenario 2 (Balanced Growth) offers best risk-reward ratio
@@ -866,11 +869,11 @@ Recommended frequency: **Quarterly** or when major competitor expansion detected
 ## ⚠️ Risks & Mitigation
 
 ### Risk 1: Market Saturation
-- **Risk:** Overall market already has 456 branches
+- **Risk:** Overall market already has 585 branches across 20 banks
 - **Mitigation:** Focus on underserved regions, not Baku
 
 ### Risk 2: Competitor Response
-- **Risk:** Competitors may expand into gap areas first
+- **Risk:** Competitors may expand into gap areas first (198 identified gaps)
 - **Mitigation:** Move quickly on top 20 priorities
 
 ### Risk 3: Execution Capacity
@@ -892,20 +895,20 @@ Recommended frequency: **Quarterly** or when major competitor expansion detected
 Bank of Baku faces both **challenges and opportunities**:
 
 **Challenges:**
-- Small network size (#8 position, 4.6% share)
+- Small network size (#9 position, 3.6% share among 20 banks)
 - Over-concentration in Baku (66.7%)
-- High competitive intensity (77 competitors/10km)
+- High competitive intensity (108 competitors/10km)
 - Large gap to market leaders (156 branches to #1)
 
 **Opportunities:**
-- 172 identified gap locations (validated by competitor presence)
+- 198 identified gap locations (validated by competitor presence)
 - Data-driven expansion roadmap (Chart 13 heatmap)
-- Underserved regional markets
+- Underserved regional markets (below 48.3% industry average)
 - Potential for differentiation (service, digital, specialization)
-- Clear path to 10% market share (#5 position)
+- Clear path to 8-10% market share (top 5-6 position)
 
 **Bottom Line:**
-With strategic, data-driven expansion focused on regional gap locations, Bank of Baku can realistically **double its network to 45 branches**, achieve **10% market share**, and secure a **top 5 position** within 3 years for an investment of approximately **$5-7M**.
+With strategic, data-driven expansion focused on regional gap locations, Bank of Baku can realistically **double its network to 47+ branches**, achieve **8-10% market share**, and secure a **top 5-6 position** within 3 years for an investment of approximately **$5-8M**.
 
 The analysis provides a clear, actionable roadmap. Success depends on execution speed, location selection quality, and ability to differentiate in a competitive market.
 
@@ -937,8 +940,8 @@ The analysis provides a clear, actionable roadmap. Success depends on execution 
 
 ## 📚 Additional Resources
 
-- **Detailed Insights:** [charts/STRATEGIC_INSIGHTS.txt](charts/STRATEGIC_INSIGHTS.txt)
-- **Methodology:** [charts/CALCULATIONS.md](charts/CALCULATIONS.md)
+- **Detailed Insights:** [docs/STRATEGIC_INSIGHTS.txt](docs/STRATEGIC_INSIGHTS.txt)
+- **Methodology:** [docs/CALCULATIONS.md](docs/CALCULATIONS.md)
 - **Interactive Analysis:** [notebooks/analyse.ipynb](notebooks/analyse.ipynb)
 - **Data Files:** `data/*.csv`
 

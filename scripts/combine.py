@@ -17,7 +17,6 @@ class BranchCombiner:
 
     # Mapping of CSV files to bank names
     BANK_FILES = {
-        # Original banks
         'ab_branches.csv': 'AccessBank',
         'abb_branches.csv': 'ABB Bank',
         'asb_branches.csv': 'ASB Bank',
@@ -29,7 +28,6 @@ class BranchCombiner:
         'vtb_branches.csv': 'VTB Bank',
         'xalq_branches.csv': 'Xalq Bank',
         'yelo_branches.csv': 'Yelo Bank',
-        # New banks added
         'ub_branches.csv': 'Unibank',
         'atb_branches.csv': 'AzerTurk Bank',
         'afb_branches.csv': 'AFB',
