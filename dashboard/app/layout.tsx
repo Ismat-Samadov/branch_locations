@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import 'leaflet/dist/leaflet.css';
 
@@ -6,16 +6,10 @@ export const metadata: Metadata = {
   title: "Bank Branch Network Dashboard - Azerbaijan",
   description: "Interactive map and analytics for 585 bank branches across 20 banks in Azerbaijan. View Bank of Baku and competitor locations.",
   manifest: "/manifest.json",
-  themeColor: "#667eea",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
     title: "Bank Network AZ",
-  },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
   },
   icons: {
     icon: [
@@ -26,6 +20,13 @@ export const metadata: Metadata = {
       { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
     ],
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#667eea",
 };
 
 export default function RootLayout({
