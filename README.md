@@ -597,18 +597,6 @@ Six-panel visual dashboard summarizing key strategic metrics for executive prese
 - End Year 2: 39 branches (~6.7% share), #6 position
 - End Year 3: 47 branches (~8.0% share), #5-6 position solidified
 
-**Investment Required:**
-- Per branch: ~₼340-510K (setup, 12-month operations)
-- Year 1: ₼3.4-5.1M (10 branches)
-- Year 2: ₼2.7-4.1M (8 branches)
-- Year 3: ₼2.0-3.1M (6 branches)
-- Total 3-year: ₼8.5-12.2M
-
-**Expected ROI:**
-- Break-even per branch: 18-24 months
-- Regional branches: Higher customer growth, lower competition
-- Market share value: Improved valuation, competitive positioning
-
 **Success Metrics:**
 - Market share growth: +1.8% per year
 - New branch profitability: 80% profitable by month 24
@@ -692,12 +680,6 @@ Track these metrics quarterly to measure progress:
 - New branch success rate (target: 80% profitable by month 24)
 - NPS score vs competitors (target: +10 points vs average)
 
-### Financial Metrics
-- Revenue per branch (target: top quartile)
-- Customer acquisition cost (target: 20% below industry average)
-- Branch ROI by location type (Baku vs Regional)
-- Digital banking adoption rate (target: 60%)
-
 ### Customer Metrics
 - Total customers (target: +50K by Year 3)
 - New customer acquisition rate
@@ -741,21 +723,18 @@ Track these metrics quarterly to measure progress:
 - Focus on highest-priority gap locations
 - Achieve 6.2% market share, #7-8 position
 - Regional coverage: 40%
-- **Investment:** ~₼5.1-7.7M
 
 ### Scenario 2: Balanced Growth (Recommended)
 - Add 26 branches over 3 years (10+8+8 phased)
 - Mix of gap locations and strategic competitive sites
 - Achieve 8.0% market share, #5-6 position
 - Regional coverage: 50%
-- **Investment:** ~₼8.8-13.3M
 
 ### Scenario 3: Aggressive Growth (High Risk/Reward)
 - Add 40+ branches over 3 years (15+15+10)
 - Rapid expansion into all gap locations
 - Achieve 10.4% market share, #4-5 position
 - Regional coverage: 55%+
-- **Investment:** ~₼13.6-20.4M
 - **Risk:** Overextension, quality dilution
 
 **Recommendation:** Scenario 2 (Balanced Growth) offers best risk-reward ratio
@@ -804,7 +783,7 @@ Bank of Baku faces both **challenges and opportunities**:
 - Clear path to 8-10% market share (top 5-6 position)
 
 **Bottom Line:**
-With strategic, data-driven expansion focused on regional gap locations, Bank of Baku can realistically **double its network to 47+ branches**, achieve **8-10% market share**, and secure a **top 5-6 position** within 3 years for an investment of approximately **₼8.5-13.6M**.
+With strategic, data-driven expansion focused on regional gap locations, Bank of Baku can realistically **double its network to 47+ branches**, achieve **8-10% market share**, and secure a **top 5-6 position** within 3 years.
 
 The analysis provides a clear, actionable roadmap. Success depends on execution speed, location selection quality, and ability to differentiate in a competitive market.
 
