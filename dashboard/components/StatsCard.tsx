@@ -1,4 +1,5 @@
 import { LucideIcon } from 'lucide-react';
+import Tooltip from './Tooltip';
 
 interface StatsCardProps {
   title: string;
@@ -6,9 +7,10 @@ interface StatsCardProps {
   subtitle?: string;
   icon: LucideIcon;
   color?: string;
+  tooltip?: string;
 }
 
-export default function StatsCard({ title, value, subtitle, icon: Icon, color = 'blue' }: StatsCardProps) {
+export default function StatsCard({ title, value, subtitle, icon: Icon, color = 'blue', tooltip }: StatsCardProps) {
   const colorClasses = {
     blue: {
       gradient: 'from-blue-500 to-cyan-500',
@@ -53,7 +55,10 @@ export default function StatsCard({ title, value, subtitle, icon: Icon, color = 
       <div className="relative bg-white rounded-2xl shadow-xl hover-lift p-6 border border-gray-100">
         <div className="flex items-center justify-between">
           <div className="flex-1">
-            <p className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-2">{title}</p>
+            <div className="flex items-center space-x-2 mb-2">
+              <p className="text-sm font-semibold text-gray-500 uppercase tracking-wide">{title}</p>
+              {tooltip && <Tooltip content={tooltip} />}
+            </div>
             <p className={`text-4xl font-extrabold bg-gradient-to-r ${theme.textGradient} bg-clip-text text-transparent mb-1`}>
               {value}
             </p>

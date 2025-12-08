@@ -4,6 +4,9 @@ import dynamic from 'next/dynamic';
 import { useState, useEffect } from 'react';
 import StatsCard from '@/components/StatsCard';
 import BankSelector from '@/components/BankSelector';
+import InstallPWA from '@/components/InstallPWA';
+import FunFacts from '@/components/FunFacts';
+import Tooltip from '@/components/Tooltip';
 import { Building2, MapPin, TrendingUp, Users, Target, Layers } from 'lucide-react';
 
 // Dynamically import the map to avoid SSR issues with Leaflet
@@ -128,6 +131,7 @@ export default function Home() {
             subtitle={`Across ${totalBanks} banks`}
             icon={MapPin}
             color="blue"
+            tooltip="Total number of bank branches across all banks operating in Azerbaijan"
           />
           <StatsCard
             title="Bank of Baku Branches"
@@ -135,6 +139,7 @@ export default function Home() {
             subtitle={`Rank #${bobRank} in market`}
             icon={Building2}
             color="red"
+            tooltip="Bank of Baku has 21 branches and is ranked #9 among 20 banks"
           />
           <StatsCard
             title="Market Share"
@@ -142,6 +147,7 @@ export default function Home() {
             subtitle="Bank of Baku coverage"
             icon={TrendingUp}
             color="green"
+            tooltip={`Bank of Baku controls ${marketShare}% of all bank branches in Azerbaijan`}
           />
           <StatsCard
             title="Coverage"
@@ -149,6 +155,7 @@ export default function Home() {
             subtitle="Banks operating in Azerbaijan"
             icon={Layers}
             color="purple"
+            tooltip="Number of different banking institutions with physical branch presence in Azerbaijan"
           />
         </div>
 
@@ -352,6 +359,20 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* PWA Install Prompt */}
+      <InstallPWA />
+
+      {/* Fun Facts */}
+      {!loading && totalBranches > 0 && (
+        <FunFacts
+          totalBranches={totalBranches}
+          totalBanks={totalBanks}
+          bobBranches={bobBranches}
+          bobRank={bobRank}
+          marketShare={marketShare}
+        />
+      )}
     </div>
   );
 }

@@ -1,0 +1,48 @@
+{
+  "name": "Azerbaijan Bank Branch Network Dashboard",
+  "short_name": "Bank Network AZ",
+  "description": "Interactive map and analytics dashboard for bank branches across Azerbaijan",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#667eea",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["finance", "business", "productivity"],
+  "screenshots": [
+    {
+      "src": "/screenshot.png",
+      "sizes": "1280x720",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "View All Banks",
+      "short_name": "All Banks",
+      "description": "View all bank branches on the map",
+      "url": "/?filter=all",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Bank of Baku",
+      "short_name": "BoB",
+      "description": "View Bank of Baku branches",
+      "url": "/?filter=bob",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}
