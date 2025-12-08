@@ -95,40 +95,17 @@ export default function BranchMap({ selectedBank }: BranchMapProps) {
 
         {displayedBranches.map((branch, idx) => {
           const color = bankColors[branch.bank_name] || '#95a5a6';
-          const isHighlighted = branch.bank_name === 'Bank of Baku';
+          const isBankOfBaku = branch.bank_name === 'Bank of Baku';
+          const isSelected = selectedBank === branch.bank_name;
 
-          if (isHighlighted || selectedBank === branch.bank_name) {
-            // Use custom marker for Bank of Baku and selected banks
-            return (
-              <Marker
-                key={idx}
-                position={[branch.lat, branch.long]}
-                icon={createIcon(color, true)}
-              >
-                <Popup>
-                  <div className="font-semibold text-sm">
-                    {branch.bank_name}
-                  </div>
-                  <div className="text-xs text-gray-600">
-                    {branch.lat.toFixed(4)}, {branch.long.toFixed(4)}
-                  </div>
-                </Popup>
-              </Marker>
-            );
-          }
+          // Make Bank of Baku and selected banks larger
+          const isHighlighted = isBankOfBaku || isSelected;
 
-          // Use circle markers for other banks
           return (
-            <CircleMarker
+            <Marker
               key={idx}
-              center={[branch.lat, branch.long]}
-              radius={4}
-              pathOptions={{
-                color: 'white',
-                weight: 1,
-                fillColor: color,
-                fillOpacity: 0.7,
-              }}
+              position={[branch.lat, branch.long]}
+              icon={createIcon(color, isHighlighted)}
             >
               <Popup>
                 <div className="font-semibold text-sm">
@@ -138,7 +115,7 @@ export default function BranchMap({ selectedBank }: BranchMapProps) {
                   {branch.lat.toFixed(4)}, {branch.long.toFixed(4)}
                 </div>
               </Popup>
-            </CircleMarker>
+            </Marker>
           );
         })}
       </MapContainer>
