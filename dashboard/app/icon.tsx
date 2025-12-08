@@ -7,7 +7,6 @@ export const size = {
 };
 
 export const contentType = 'image/png';
-export const dynamic = 'force-static';
 
 // Icon component
 export default function Icon() {
