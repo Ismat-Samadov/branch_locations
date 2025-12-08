@@ -770,53 +770,152 @@ print(f"  Bank of Baku avg competitive intensity: {bob_avg_intensity:.1f} compet
 print()
 
 # ============================================================================
-# Chart 12: Market Share by Geographic Quadrants
+# Chart 12: Regional Market Dominance Analysis
 # ============================================================================
-print("Generating Chart 12: Quadrant Analysis...")
-lat_median = df['lat'].median()
-long_median = df['long'].median()
+print("Generating Chart 12: Regional Market Dominance...")
 
-def assign_quadrant(row):
-    if row['lat'] >= lat_median and row['long'] >= long_median:
-        return 'Northeast'
-    elif row['lat'] >= lat_median and row['long'] < long_median:
+# Define meaningful geographic zones based on Azerbaijan's regions
+def assign_zone(row):
+    lat, long = row['lat'], row['long']
+
+    # Baku City (central capital)
+    if 40.3 <= lat <= 40.5 and 49.7 <= long <= 50.0:
+        return 'Baku City'
+    # Absheron Peninsula (around Baku)
+    elif 40.2 <= lat <= 40.6 and 49.5 <= long <= 50.3:
+        return 'Absheron'
+    # North Zone (Guba, Gusar, Khachmaz)
+    elif lat > 41.0:
+        return 'North'
+    # Northwest Zone (Ganja, Shaki, Zagatala)
+    elif lat > 40.5 and long < 48.5:
         return 'Northwest'
-    elif row['lat'] < lat_median and row['long'] >= long_median:
-        return 'Southeast'
+    # Central Zone (Mingachevir, Yevlakh, Agdash)
+    elif 40.0 <= lat <= 40.8 and 47.0 <= long < 49.5:
+        return 'Central'
+    # South Zone (Lankaran, Astara, Lerik)
+    elif lat < 39.0:
+        return 'South'
+    # West Zone (Gazakh, Tovuz)
+    elif long < 46.0:
+        return 'West'
     else:
-        return 'Southwest'
+        return 'Other'
 
-df['quadrant'] = df.apply(assign_quadrant, axis=1)
+df['zone'] = df.apply(assign_zone, axis=1)
 
-fig, axes = plt.subplots(2, 2, figsize=(16, 14))
-axes = axes.flatten()
+# Analyze market dominance by zone
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(18, 8))
 
-quadrants = ['Northeast', 'Northwest', 'Southeast', 'Southwest']
+# Left panel: Geographic map with zones colored by dominant bank
+zone_colors = {
+    'Baku City': '#e74c3c', 'Absheron': '#3498db', 'North': '#2ecc71',
+    'Northwest': '#f39c12', 'Central': '#9b59b6', 'South': '#1abc9c',
+    'West': '#e67e22', 'Other': '#95a5a6'
+}
 
-for idx, quadrant in enumerate(quadrants):
-    ax = axes[idx]
-    quad_data = df[df['quadrant'] == quadrant]
-    quad_counts = quad_data['bank_name'].value_counts()
+for zone, color in zone_colors.items():
+    zone_data = df[df['zone'] == zone]
+    if len(zone_data) > 0:
+        # Get dominant bank in this zone
+        dominant_bank = zone_data['bank_name'].value_counts().index[0]
+        bob_count_zone = len(zone_data[zone_data['bank_name'] == 'Bank of Baku'])
 
-    colors = ['#e74c3c' if bank == 'Bank of Baku' else '#3498db' for bank in quad_counts.index]
-    quad_counts.plot(kind='barh', ax=ax, color=colors)
+        # Plot all branches in this zone
+        ax1.scatter(zone_data['long'], zone_data['lat'],
+                   s=60, alpha=0.6, color=color,
+                   label=f'{zone} ({len(zone_data)} br.)',
+                   edgecolors='white', linewidth=0.5)
 
-    ax.set_title(f'{quadrant} Quadrant ({len(quad_data)} branches)',
-                fontsize=12, fontweight='bold')
-    ax.set_xlabel('Number of Branches', fontsize=10)
-    ax.set_ylabel('Bank', fontsize=10)
+# Highlight Bank of Baku branches on top
+bob_df = df[df['bank_name'] == 'Bank of Baku']
+ax1.scatter(bob_df['long'], bob_df['lat'],
+           s=200, alpha=0.95, color='#e74c3c',
+           marker='s', edgecolors='black', linewidth=2.5,
+           label='Bank of Baku', zorder=100)
 
-    # Add value labels
-    for i, v in enumerate(quad_counts.values):
-        ax.text(v + 0.3, i, str(v), va='center', fontsize=9)
+ax1.set_xlabel('Longitude', fontsize=11, fontweight='bold')
+ax1.set_ylabel('Latitude', fontsize=11, fontweight='bold')
+ax1.set_title('Azerbaijan Geographic Zones\n(Bank of Baku branches highlighted as red squares)',
+             fontsize=14, fontweight='bold')
+ax1.legend(bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=9,
+          frameon=True, fancybox=True, shadow=True)
+ax1.grid(True, alpha=0.3, linestyle='--')
+ax1.set_facecolor('#f8f9fa')
 
-plt.suptitle('Market Share Analysis by Geographic Quadrants',
-             fontsize=16, fontweight='bold', y=0.995)
+# Right panel: Market share analysis by zone
+zone_market_data = []
+zones_order = ['Baku City', 'Absheron', 'North', 'Northwest', 'Central', 'South', 'West']
+
+for zone in zones_order:
+    zone_df = df[df['zone'] == zone]
+    if len(zone_df) > 0:
+        # Get top 3 banks in this zone
+        top_banks_zone = zone_df['bank_name'].value_counts().head(3)
+        bob_count_zone = len(zone_df[zone_df['bank_name'] == 'Bank of Baku'])
+        bob_rank_zone = (zone_df['bank_name'].value_counts() > bob_count_zone).sum() + 1 if bob_count_zone > 0 else 0
+
+        zone_market_data.append({
+            'Zone': zone,
+            'Total': len(zone_df),
+            'BoB_Count': bob_count_zone,
+            'BoB_Share': (bob_count_zone / len(zone_df) * 100) if len(zone_df) > 0 else 0,
+            'BoB_Rank': bob_rank_zone if bob_count_zone > 0 else 'N/A',
+            'Leader': top_banks_zone.index[0] if len(top_banks_zone) > 0 else 'N/A',
+            'Leader_Count': top_banks_zone.values[0] if len(top_banks_zone) > 0 else 0
+        })
+
+zone_analysis_df = pd.DataFrame(zone_market_data)
+
+# Create grouped bar chart
+x_pos = np.arange(len(zone_analysis_df))
+width = 0.35
+
+bars1 = ax2.bar(x_pos - width/2, zone_analysis_df['BoB_Count'], width,
+                label='Bank of Baku', color='#e74c3c', edgecolor='black', linewidth=1.2)
+bars2 = ax2.bar(x_pos + width/2, zone_analysis_df['Leader_Count'], width,
+                label='Zone Leader', color='#3498db', edgecolor='black', linewidth=1.2, alpha=0.7)
+
+ax2.set_xlabel('Geographic Zone', fontsize=11, fontweight='bold')
+ax2.set_ylabel('Number of Branches', fontsize=11, fontweight='bold')
+ax2.set_title('Bank of Baku vs Zone Leaders\n(Comparison by region)',
+             fontsize=14, fontweight='bold')
+ax2.set_xticks(x_pos)
+ax2.set_xticklabels(zone_analysis_df['Zone'], rotation=45, ha='right', fontsize=10)
+ax2.legend(fontsize=10, loc='upper right')
+ax2.grid(True, alpha=0.3, axis='y', linestyle='--')
+ax2.set_facecolor('#f8f9fa')
+
+# Add value labels on bars
+for i, (b1, b2) in enumerate(zip(bars1, bars2)):
+    height1 = b1.get_height()
+    height2 = b2.get_height()
+
+    if height1 > 0:
+        ax2.text(b1.get_x() + b1.get_width()/2., height1,
+                f'{int(height1)}', ha='center', va='bottom', fontsize=9, fontweight='bold')
+
+    if height2 > 0:
+        # Add leader bank name above bar
+        leader_name = zone_analysis_df.iloc[i]['Leader']
+        if len(leader_name) > 12:
+            leader_name = leader_name[:10] + '..'
+        ax2.text(b2.get_x() + b2.get_width()/2., height2,
+                f'{int(height2)}\n({leader_name})', ha='center', va='bottom',
+                fontsize=8, fontweight='bold')
+
 plt.tight_layout()
-plt.savefig('charts/12_quadrant_analysis.png', dpi=300, bbox_inches='tight')
+plt.savefig('charts/12_regional_market_dominance.png', dpi=300, bbox_inches='tight')
 plt.close()
 
+# Print insights
 print(f"✓ Chart 12 saved")
+print(f"  Regional Analysis:")
+for _, row in zone_analysis_df.iterrows():
+    if row['BoB_Count'] > 0:
+        print(f"    {row['Zone']:12s}: BoB has {int(row['BoB_Count'])} branches ({row['BoB_Share']:.1f}% share, Rank #{row['BoB_Rank']})")
+    else:
+        print(f"    {row['Zone']:12s}: BoB has NO presence (Leader: {row['Leader']} with {int(row['Leader_Count'])} branches)")
 print()
 
 # ============================================================================
