@@ -1,0 +1,2927 @@
+[
+  {
+    "bank_name": "AccessBank",
+    "lat": 40.979346149539,
+    "long": 45.624428658896
+  },
+  {
+    "bank_name": "AccessBank",
+    "lat": 39.205344326425,
+    "long": 45.423640886161
+  },
+  {
+    "bank_name": "AccessBank",
+    "lat": 40.968144,
+    "long": 47.837952
+  },
+  {
+    "bank_name": "AccessBank",
+    "lat": 40.388071578142,
+    "long": 49.826354159796
+  },
+  {
+    "bank_name": "AccessBank",
+    "lat": 40.394848,
+    "long": 49.950564
+  },
+  {
+    "bank_name": "AccessBank",
+    "lat": 41.705152080647,
+    "long": 46.425973572499
+  },
+  {
+    "bank_name": "AccessBank",
+    "lat": 40.393512,
+    "long": 49.840508
+  },
+  {
+    "bank_name": "AccessBank",
+    "lat": 40.371467,
+    "long": 49.839688
+  },
+  {
+    "bank_name": "AccessBank",
+    "lat": 40.428143,
+    "long": 49.956989
+  },
+  {
+    "bank_name": "AccessBank",
+    "lat": 40.487948,
+    "long": 50.137836
+  },
+  {
+    "bank_name": "AccessBank",
+    "lat": 40.576965,
+    "long": 49.681808
+  },
+  {
+    "bank_name": "AccessBank",
+    "lat": 40.453331,
+    "long": 49.747776
+  },
+  {
+    "bank_name": "AccessBank",
+    "lat": 40.345715,
+    "long": 49.81048
+  },
+  {
+    "bank_name": "AccessBank",
+    "lat": 40.374424,
+    "long": 49.953167
+  },
+  {
+    "bank_name": "AccessBank",
+    "lat": 40.424258033839,
+    "long": 49.842556948165
+  },
+  {
+    "bank_name": "AccessBank",
+    "lat": 40.320572,
+    "long": 49.728274
+  },
+  {
+    "bank_name": "AccessBank",
+    "lat": 40.401684,
+    "long": 49.868749
+  },
+  {
+    "bank_name": "AccessBank",
+    "lat": 40.377502630476,
+    "long": 49.856264425574
+  },
+  {
+    "bank_name": "AccessBank",
+    "lat": 40.67315,
+    "long": 46.356432
+  },
+  {
+    "bank_name": "AccessBank",
+    "lat": 41.169991,
+    "long": 47.166674
+  },
+  {
+    "bank_name": "AccessBank",
+    "lat": 40.83062484614,
+    "long": 46.021995219146
+  },
+  {
+    "bank_name": "AccessBank",
+    "lat": 38.752693,
+    "long": 48.850306
+  },
+  {
+    "bank_name": "AccessBank",
+    "lat": 40.601600646973,
+    "long": 46.778533935547
+  },
+  {
+    "bank_name": "AccessBank",
+    "lat": 41.090578,
+    "long": 45.361069
+  },
+  {
+    "bank_name": "AccessBank",
+    "lat": 40.7714,
+    "long": 47.043506
+  },
+  {
+    "bank_name": "AccessBank",
+    "lat": 39.21518,
+    "long": 48.523298
+  },
+  {
+    "bank_name": "AccessBank",
+    "lat": 40.650749,
+    "long": 47.739346
+  },
+  {
+    "bank_name": "AccessBank",
+    "lat": 41.628987,
+    "long": 46.634545
+  },
+  {
+    "bank_name": "AccessBank",
+    "lat": 39.589599,
+    "long": 48.974846
+  },
+  {
+    "bank_name": "AccessBank",
+    "lat": 40.384677,
+    "long": 47.12562
+  },
+  {
+    "bank_name": "AccessBank",
+    "lat": 40.790117,
+    "long": 48.153693
+  },
+  {
+    "bank_name": "AccessBank",
+    "lat": 40.004967,
+    "long": 48.470579
+  },
+  {
+    "bank_name": "AccessBank",
+    "lat": 41.705227,
+    "long": 46.42614
+  },
+  {
+    "bank_name": "AccessBank",
+    "lat": 39.027458190918,
+    "long": 48.664562225342
+  },
+  {
+    "bank_name": "AccessBank",
+    "lat": 40.039993790212,
+    "long": 47.452792937654
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.644077,
+    "long": 47.475788
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.377341,
+    "long": 49.849451
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.37817041786809,
+    "long": 49.95578483152176
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 41.212433,
+    "long": 48.986492
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.37918,
+    "long": 49.87869
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.649455,
+    "long": 47.748114
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 41.471161,
+    "long": 48.809338
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.343666,
+    "long": 48.157539
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 41.6288793,
+    "long": 46.6413267
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 41.0899,
+    "long": 45.35891
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 41.363458,
+    "long": 48.522153
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 39.21255,
+    "long": 45.40795
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 39.937862321630135,
+    "long": 48.36398497221913
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 39.605377,
+    "long": 48.985332
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.63248586370292,
+    "long": 48.63315617164039
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.613266,
+    "long": 47.14846
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.76657397925422,
+    "long": 47.058333177765526
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 39.035248,
+    "long": 48.668652
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.455276,
+    "long": 50.337276
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.372036,
+    "long": 49.836678
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.977936,
+    "long": 47.846554
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.2183625883016,
+    "long": 47.70675685132114
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 39.455777,
+    "long": 48.545321
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.5884722,
+    "long": 46.3177778
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.3807175,
+    "long": 49.8634624
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.411571546396864,
+    "long": 49.94276698592201
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.524254,
+    "long": 46.080952
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.051826247641216,
+    "long": 47.444376604761956
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.787579,
+    "long": 48.146694
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.567467,
+    "long": 48.402222
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 41.419292,
+    "long": 46.921598
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 41.719612,
+    "long": 46.415669
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 41.07514,
+    "long": 47.466616
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.992667,
+    "long": 45.616973
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 41.111888,
+    "long": 45.440918
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.525566,
+    "long": 45.812313
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.372044,
+    "long": 47.126541
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.339886,
+    "long": 46.932442
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 41.075969,
+    "long": 49.113477
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.509697,
+    "long": 47.65937
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.031333,
+    "long": 48.935333
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 39.844395,
+    "long": 47.986908
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.37400208633886,
+    "long": 49.819266096084036
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 39.81634804205688,
+    "long": 46.75202130372225
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.465714,
+    "long": 50.052151
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.580589,
+    "long": 49.68178
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.425592,
+    "long": 49.842635
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.4129563,
+    "long": 49.853611
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.3488352,
+    "long": 49.8360056
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.430256,
+    "long": 49.986922
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.570368,
+    "long": 49.690033
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.4486008,
+    "long": 49.7500943
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.68052,
+    "long": 46.3581
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.403295,
+    "long": 49.854145
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 38.753909,
+    "long": 48.855414
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.487396,
+    "long": 50.161011
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 41.205125,
+    "long": 47.177632
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.830095,
+    "long": 46.020204
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.593892,
+    "long": 49.678295
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.389328,
+    "long": 49.882416
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.3740776,
+    "long": 49.84202332
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.41462226848478,
+    "long": 49.967489938970196
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.591567,
+    "long": 49.988025
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 39.76091782602176,
+    "long": 46.752719002683264
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.419455,
+    "long": 49.933968
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.4022,
+    "long": 49.873241
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.424931,
+    "long": 49.959164
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 39.21406737446153,
+    "long": 48.51125596131286
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.397069,
+    "long": 49.801439
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.605344,
+    "long": 46.785962
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.369698,
+    "long": 49.839626
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.41774427731688,
+    "long": 49.90836859799611
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.675659,
+    "long": 46.358486
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.384804,
+    "long": 49.954494
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.76610830204269,
+    "long": 46.40579481564623
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 39.95402882632821,
+    "long": 48.945258472048444
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.407242,
+    "long": 49.811661
+  },
+  {
+    "bank_name": "ABB Bank",
+    "lat": 40.38482785304,
+    "long": 49.828788381791185
+  },
+  {
+    "bank_name": "ASB Bank",
+    "lat": 40.3987232,
+    "long": 50.0824759
+  },
+  {
+    "bank_name": "ASB Bank",
+    "lat": 40.427589416503906,
+    "long": 49.885231018066406
+  },
+  {
+    "bank_name": "ASB Bank",
+    "lat": 40.371098,
+    "long": 49.850102
+  },
+  {
+    "bank_name": "ASB Bank",
+    "lat": 40.4092687,
+    "long": 49.893422
+  },
+  {
+    "bank_name": "ASB Bank",
+    "lat": 40.58595275878906,
+    "long": 49.67038345336914
+  },
+  {
+    "bank_name": "ASB Bank",
+    "lat": 39.8650742,
+    "long": 48.0611116
+  },
+  {
+    "bank_name": "ASB Bank",
+    "lat": 40.6715341,
+    "long": 46.3577558
+  },
+  {
+    "bank_name": "Bank of Baku",
+    "lat": 40.410909190208585,
+    "long": 49.84899229999999
+  },
+  {
+    "bank_name": "Bank of Baku",
+    "lat": 40.414562268583346,
+    "long": 49.94297659678542
+  },
+  {
+    "bank_name": "Bank of Baku",
+    "lat": 40.41535440007173,
+    "long": 49.96787910204588
+  },
+  {
+    "bank_name": "Bank of Baku",
+    "lat": 40.412308,
+    "long": 49.847298
+  },
+  {
+    "bank_name": "Bank of Baku",
+    "lat": 40.370814492074324,
+    "long": 49.834230983691604
+  },
+  {
+    "bank_name": "Bank of Baku",
+    "lat": 40.37779443897376,
+    "long": 49.853203244992976
+  },
+  {
+    "bank_name": "Bank of Baku",
+    "lat": 40.360344775965444,
+    "long": 49.8335178898477
+  },
+  {
+    "bank_name": "Bank of Baku",
+    "lat": 40.38978320569834,
+    "long": 49.95439402423299
+  },
+  {
+    "bank_name": "Bank of Baku",
+    "lat": 40.49369490219319,
+    "long": 50.13356273593928
+  },
+  {
+    "bank_name": "Bank of Baku",
+    "lat": 40.40996629681911,
+    "long": 49.809954541966285
+  },
+  {
+    "bank_name": "Bank of Baku",
+    "lat": 40.37384233335939,
+    "long": 49.952664355645965
+  },
+  {
+    "bank_name": "Bank of Baku",
+    "lat": 40.38212403669002,
+    "long": 49.807239385020075
+  },
+  {
+    "bank_name": "Bank of Baku",
+    "lat": 40.454558318339004,
+    "long": 49.745618638131226
+  },
+  {
+    "bank_name": "Bank of Baku",
+    "lat": 40.3921077465421,
+    "long": 49.80310044862566
+  },
+  {
+    "bank_name": "Bank of Baku",
+    "lat": 40.867902571317,
+    "long": 46.41287792657992
+  },
+  {
+    "bank_name": "Bank of Baku",
+    "lat": 38.825092938301424,
+    "long": 48.84280598984695
+  },
+  {
+    "bank_name": "Bank of Baku",
+    "lat": 40.579146569610124,
+    "long": 49.683207393762885
+  },
+  {
+    "bank_name": "Bank of Baku",
+    "lat": 41.26543805976766,
+    "long": 47.15928485599611
+  },
+  {
+    "bank_name": "Bank of Baku",
+    "lat": 39.99749597404446,
+    "long": 48.95396099146083
+  },
+  {
+    "bank_name": "Bank of Baku",
+    "lat": 41.502652022862655,
+    "long": 48.79736229782541
+  },
+  {
+    "bank_name": "Bank of Baku",
+    "lat": 40.40258914563596,
+    "long": 49.873939063922016
+  },
+  {
+    "bank_name": "Bank Respublika",
+    "lat": 40.6420662,
+    "long": 47.7451923
+  },
+  {
+    "bank_name": "Bank Respublika",
+    "lat": 39.7701636,
+    "long": 47.6137369
+  },
+  {
+    "bank_name": "Bank Respublika",
+    "lat": 40.9750481,
+    "long": 47.8414498
+  },
+  {
+    "bank_name": "Bank Respublika",
+    "lat": 39.59948,
+    "long": 47.150647
+  },
+  {
+    "bank_name": "Bank Respublika",
+    "lat": 41.2115133,
+    "long": 48.9578668
+  },
+  {
+    "bank_name": "Bank Respublika",
+    "lat": 40.330608,
+    "long": 49.7836361
+  },
+  {
+    "bank_name": "Bank Respublika",
+    "lat": 41.0905398,
+    "long": 45.3607516
+  },
+  {
+    "bank_name": "Bank Respublika",
+    "lat": 40.4130419,
+    "long": 49.8535906
+  },
+  {
+    "bank_name": "Bank Respublika",
+    "lat": 40.0446243,
+    "long": 47.4536638
+  },
+  {
+    "bank_name": "Bank Respublika",
+    "lat": 39.219181,
+    "long": 45.407553
+  },
+  {
+    "bank_name": "Bank Respublika",
+    "lat": 40.4551122,
+    "long": 49.7381697
+  },
+  {
+    "bank_name": "Bank Respublika",
+    "lat": 41.2023238,
+    "long": 47.1765699
+  },
+  {
+    "bank_name": "Bank Respublika",
+    "lat": 40.59369340025972,
+    "long": 49.67176735401153
+  },
+  {
+    "bank_name": "Bank Respublika",
+    "lat": 40.99959341455489,
+    "long": 45.63514709472656
+  },
+  {
+    "bank_name": "Bank Respublika",
+    "lat": 40.672162,
+    "long": 46.367889
+  },
+  {
+    "bank_name": "Bank Respublika",
+    "lat": 40.76556625520051,
+    "long": 47.058555483818054
+  },
+  {
+    "bank_name": "Bank Respublika",
+    "lat": 40.61707081691601,
+    "long": 47.14813590049744
+  },
+  {
+    "bank_name": "Bank Respublika",
+    "lat": 40.3776982386996,
+    "long": 47.12587355895721
+  },
+  {
+    "bank_name": "Bank Respublika",
+    "lat": 41.63366365063957,
+    "long": 46.640567779541016
+  },
+  {
+    "bank_name": "Bank Respublika",
+    "lat": 39.9567968,
+    "long": 48.9381305
+  },
+  {
+    "bank_name": "Bank Respublika",
+    "lat": 40.005840046240984,
+    "long": 48.471059054136276
+  },
+  {
+    "bank_name": "Bank Respublika",
+    "lat": 41.361699691715046,
+    "long": 48.51355969905853
+  },
+  {
+    "bank_name": "Bank Respublika",
+    "lat": 41.41951149810361,
+    "long": 46.919474601745605
+  },
+  {
+    "bank_name": "Bank Respublika",
+    "lat": 39.024133994046764,
+    "long": 48.66821885108948
+  },
+  {
+    "bank_name": "Bank Respublika",
+    "lat": 38.75441794597313,
+    "long": 48.856791257858276
+  },
+  {
+    "bank_name": "Bank Respublika",
+    "lat": 40.45978893593613,
+    "long": 49.75383996963501
+  },
+  {
+    "bank_name": "Bank Respublika",
+    "lat": 41.46130798228363,
+    "long": 48.797769248485565
+  },
+  {
+    "bank_name": "Bank Respublika",
+    "lat": 40.373452166144304,
+    "long": 49.84465985818588
+  },
+  {
+    "bank_name": "Bank Respublika",
+    "lat": 40.38445298840345,
+    "long": 49.80322911663734
+  },
+  {
+    "bank_name": "Bank Respublika",
+    "lat": 40.4133593,
+    "long": 49.9396153
+  },
+  {
+    "bank_name": "Bank Respublika",
+    "lat": 40.37740777644492,
+    "long": 49.84975611726445
+  },
+  {
+    "bank_name": "Bank Respublika",
+    "lat": 40.3856335,
+    "long": 49.8281133
+  },
+  {
+    "bank_name": "Bank Respublika",
+    "lat": 40.4055418,
+    "long": 49.8148558
+  },
+  {
+    "bank_name": "Bank Respublika",
+    "lat": 40.41189494947813,
+    "long": 49.96860980987549
+  },
+  {
+    "bank_name": "Bank Respublika",
+    "lat": 40.38547946822021,
+    "long": 49.95419293642044
+  },
+  {
+    "bank_name": "Bank Respublika",
+    "lat": 40.40106916469152,
+    "long": 49.87422823905945
+  },
+  {
+    "bank_name": "Bank Respublika",
+    "lat": 40.3608186252178,
+    "long": 49.83401149511337
+  },
+  {
+    "bank_name": "Bank Respublika",
+    "lat": 40.38953409909272,
+    "long": 49.84288209999999
+  },
+  {
+    "bank_name": "Bank Respublika",
+    "lat": 39.21625701598024,
+    "long": 48.51415812969208
+  },
+  {
+    "bank_name": "Bank Respublika",
+    "lat": 40.330608,
+    "long": 49.7836361
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.3317261,
+    "long": 49.7814293
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.38107163735132,
+    "long": 49.84152146574979
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.4183807,
+    "long": 49.9124985
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.37214295893622,
+    "long": 49.844818650842384
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.4095099423086,
+    "long": 49.94256914321402
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.401912418946644,
+    "long": 49.84833954584166
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.32220659807489,
+    "long": 49.73087716163619
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.42186059408622,
+    "long": 50.001500486483565
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.397417399094344,
+    "long": 49.946291728975744
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.4015485097566,
+    "long": 49.81099411880433
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.40035726266819,
+    "long": 49.867674273080276
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.4190296184597,
+    "long": 49.93361835214919
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.52649579855604,
+    "long": 50.09840157508598
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.40927551957306,
+    "long": 49.86707416971347
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.37475492597779,
+    "long": 49.94484112235593
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 39.973233486691825,
+    "long": 49.442786065417366
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.3979836,
+    "long": 49.9501953
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.421402,
+    "long": 49.9665222
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.37248226149035,
+    "long": 49.81700488169915
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.40987996371933,
+    "long": 49.80784120653588
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.39336377108836,
+    "long": 49.8364635077574
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.386642439220005,
+    "long": 49.956370889966045
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.370709680533324,
+    "long": 49.84356945775485
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.38026907454943,
+    "long": 49.83018988343833
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.417840808344934,
+    "long": 49.93475521513684
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.372733520928904,
+    "long": 49.947073452445615
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.48636010652908,
+    "long": 50.1703951167884
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.400179847136464,
+    "long": 49.85265809040034
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.38107163735132,
+    "long": 49.84152146574979
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.42200190707761,
+    "long": 49.84252179859974
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.47568914571012,
+    "long": 49.9499800321653
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.41674316787991,
+    "long": 49.965307026218376
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.38931435951659,
+    "long": 49.80316549713975
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.326252,
+    "long": 49.7573891
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.40418144976618,
+    "long": 49.867596143155055
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.40335556013043,
+    "long": 49.85094249708956
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.43374838651857,
+    "long": 49.8431265327235
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.408145893778,
+    "long": 49.86354423265598
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.3790725053831,
+    "long": 49.8467612895239
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.40017143119143,
+    "long": 49.85266439671273
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.40515301282489,
+    "long": 49.87046310095197
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.358489390768895,
+    "long": 49.83694735868121
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.41342843605662,
+    "long": 49.855806701609445
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.37207628139291,
+    "long": 49.9537959586714
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.38069245359999,
+    "long": 49.81605818364643
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.383818102554635,
+    "long": 49.872310206933314
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.41379,
+    "long": 49.8543751
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.3790148903874,
+    "long": 49.84671639465593
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.382075331303234,
+    "long": 49.88621185236134
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.36988272352686,
+    "long": 49.817830863394555
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.36524262990447,
+    "long": 50.075458491283314
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.421702609732044,
+    "long": 49.96367794540284
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.393520354288555,
+    "long": 49.83828479946745
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.399498795811326,
+    "long": 49.87691597924971
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.40464720418882,
+    "long": 49.83705393384882
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.416593914146034,
+    "long": 49.8146651496483
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.42982735633248,
+    "long": 49.84144685638112
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.37987559086294,
+    "long": 49.82159287532155
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.40788814633709,
+    "long": 49.936678475796924
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.39428785345024,
+    "long": 49.80336166202685
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.40650954852901,
+    "long": 49.80698529180758
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.341472,
+    "long": 49.838354
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.40510032029071,
+    "long": 49.875314815239115
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.38678205032994,
+    "long": 49.81607473182514
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.376433833052054,
+    "long": 49.86371498807083
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.529354,
+    "long": 49.998302
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.37423,
+    "long": 49.86038
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.375883239488815,
+    "long": 49.86329061727881
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.37596241531596,
+    "long": 49.86352548708362
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.385062178892206,
+    "long": 49.85065046848412
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.40962580870081,
+    "long": 49.815461471164525
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.447706978023305,
+    "long": 50.08580236740942
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.465855364195924,
+    "long": 49.82833524103326
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.37647205395877,
+    "long": 49.97786761116751
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.223317220352726,
+    "long": 49.57708981349269
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.4528598257688,
+    "long": 49.75130830597639
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.4493027,
+    "long": 49.7482414
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.341404,
+    "long": 49.8357926
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.05241232725276,
+    "long": 47.46057999031279
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.055728073805135,
+    "long": 47.416698816876824
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.163702081788934,
+    "long": 47.15603666895763
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.64510186823032,
+    "long": 47.47500157064872
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 41.1129723,
+    "long": 45.44067
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.56702106182912,
+    "long": 48.402716309069646
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 38.450399595441795,
+    "long": 48.87403545346488
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 39.158184332686254,
+    "long": 45.44564362722187
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 41.72250002271381,
+    "long": 46.40294357838069
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 41.7070445,
+    "long": 46.4205046
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 39.77277796857929,
+    "long": 47.61643873702003
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 39.45476366909407,
+    "long": 48.54667824268275
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.38534386436442,
+    "long": 47.12482790416756
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 39.4505998462988,
+    "long": 48.54316788678726
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 39.211878038525526,
+    "long": 48.505507763390796
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 38.94710820076387,
+    "long": 45.63204367508405
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.52138939102746,
+    "long": 46.0826557705699
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 39.44766767940643,
+    "long": 47.33900228133563
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.57622576319756,
+    "long": 45.810365649726116
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.67460512791116,
+    "long": 46.36009218955952
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.677567095490694,
+    "long": 46.3757143417757
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.68679798329542,
+    "long": 46.36465239219415
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.69682926901757,
+    "long": 46.32892270004127
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.677135540326354,
+    "long": 46.359483996419655
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.60785959423708,
+    "long": 46.78899175084084
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.64705452889146,
+    "long": 47.74756350445836
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.58896381594055,
+    "long": 46.31810149213119
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.0277316386113,
+    "long": 48.935021781265874
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 41.46318854870102,
+    "long": 48.7952546467025
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 41.43012451808228,
+    "long": 48.81220821267798
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 41.460218553760335,
+    "long": 48.79761773141673
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.45347336011024,
+    "long": 49.74026801263433
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 41.62971078509723,
+    "long": 48.68643880327065
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 39.86813577249739,
+    "long": 48.05503323335416
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 39.87837870124703,
+    "long": 48.08420046432352
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.78210599106184,
+    "long": 48.155673622125434
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 39.39973122817569,
+    "long": 45.113075768644705
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 39.36265821494384,
+    "long": 45.07298086197821
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.35227745273703,
+    "long": 48.16381651900576
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.32207215090601,
+    "long": 48.1917499572622
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 41.422146594221026,
+    "long": 46.91397377625641
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 41.08875063962994,
+    "long": 45.356830657276625
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 41.3269081,
+    "long": 45.0783005
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.97644197710667,
+    "long": 47.844286727427644
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.979726514644724,
+    "long": 47.829412605615175
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.52867227110556,
+    "long": 48.93762597337871
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 41.35886907199199,
+    "long": 48.50358601896769
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 41.36449176852465,
+    "long": 48.55519641580866
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 41.41867218544334,
+    "long": 48.41677651884182
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.10224647658172,
+    "long": 47.51856932442378
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 38.77001002608787,
+    "long": 48.42031642617513
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 38.75330232223717,
+    "long": 48.85279121413192
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 38.73027405145033,
+    "long": 48.77626394237507
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 39.02891892708028,
+    "long": 48.66418751613544
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 39.02003025914203,
+    "long": 48.69205344748384
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.77095,
+    "long": 47.042714
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.77114592869218,
+    "long": 47.03533168048879
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.50580209866929,
+    "long": 46.81394379963507
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 38.95621689297143,
+    "long": 45.633928710620104
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 39.21275539195221,
+    "long": 45.410540535260346
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 39.2490196,
+    "long": 45.3372841
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 39.2210045,
+    "long": 45.4047089
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 39.389006958508325,
+    "long": 49.24675054072597
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 41.071784140564404,
+    "long": 47.46331213415401
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 38.904046128856244,
+    "long": 46.02027034872708
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 39.93903997841445,
+    "long": 48.37259646626233
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 39.95325897188949,
+    "long": 48.93574599714999
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 39.59734201756883,
+    "long": 48.98481686076884
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 39.61470622296784,
+    "long": 48.97354019887634
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.76560935188677,
+    "long": 46.40473204927059
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 39.723693161759364,
+    "long": 44.84971896116675
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 39.66237925904549,
+    "long": 44.81220123630025
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 41.07585949564536,
+    "long": 49.112976834124865
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.580114433475366,
+    "long": 49.67256649045884
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.59055912930536,
+    "long": 49.666938833588176
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.58719020497324,
+    "long": 49.66478244004734
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.58589251948316,
+    "long": 49.66773798730342
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.5678444,
+    "long": 49.6914482
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.5847516,
+    "long": 49.6704622
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.56009219864132,
+    "long": 49.69668435427424
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 41.200777652233526,
+    "long": 48.98304982871177
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 39.40505556592781,
+    "long": 45.56864299632605
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.63338438363587,
+    "long": 48.6428409800835
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.61320234801101,
+    "long": 48.664303921133246
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 41.199257108700415,
+    "long": 47.177159019864916
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 41.156853432501755,
+    "long": 47.181120130719634
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.82901953985266,
+    "long": 46.02380656096423
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 39.556559136351794,
+    "long": 44.98560547330853
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 39.95255058598073,
+    "long": 48.944077896131084
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.992073705598344,
+    "long": 45.61739874340583
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.98150835610008,
+    "long": 45.65759597834275
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.342265529585035,
+    "long": 46.930119220173864
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.509685698832925,
+    "long": 47.65437766144721
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 38.9033775,
+    "long": 48.2338562
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.616462257939624,
+    "long": 47.147917265580915
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 41.63048189140788,
+    "long": 46.63924008209484
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 40.22066202323987,
+    "long": 47.71016726963062
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 39.17812144783559,
+    "long": 46.75868073243745
+  },
+  {
+    "bank_name": "Kapital Bank",
+    "lat": 39.816888038836915,
+    "long": 46.75264988079478
+  },
+  {
+    "bank_name": "Premium Bank",
+    "lat": 40.404526,
+    "long": 49.857265
+  },
+  {
+    "bank_name": "Premium Bank",
+    "lat": 40.375477,
+    "long": 49.8489
+  },
+  {
+    "bank_name": "Premium Bank",
+    "lat": 40.468369,
+    "long": 50.053024
+  },
+  {
+    "bank_name": "Premium Bank",
+    "lat": 40.397141,
+    "long": 49.8251
+  },
+  {
+    "bank_name": "Premium Bank",
+    "lat": 40.468891,
+    "long": 50.053024
+  },
+  {
+    "bank_name": "Premium Bank",
+    "lat": 40.739323,
+    "long": 46.300507
+  },
+  {
+    "bank_name": "Premium Bank",
+    "lat": 38.758099,
+    "long": 48.806591
+  },
+  {
+    "bank_name": "Premium Bank",
+    "lat": 40.981972,
+    "long": 47.853699
+  },
+  {
+    "bank_name": "Rabita Bank",
+    "lat": 40.37937983314103,
+    "long": 49.84450178745809
+  },
+  {
+    "bank_name": "Rabita Bank",
+    "lat": 40.402812,
+    "long": 49.868525
+  },
+  {
+    "bank_name": "Rabita Bank",
+    "lat": 40.385775,
+    "long": 49.9602
+  },
+  {
+    "bank_name": "Rabita Bank",
+    "lat": 40.37756723898722,
+    "long": 49.843186381602976
+  },
+  {
+    "bank_name": "Rabita Bank",
+    "lat": 40.407419,
+    "long": 49.861565
+  },
+  {
+    "bank_name": "Rabita Bank",
+    "lat": 40.3853403,
+    "long": 49.8286822
+  },
+  {
+    "bank_name": "Rabita Bank",
+    "lat": 39.025935,
+    "long": 48.6649891
+  },
+  {
+    "bank_name": "Rabita Bank",
+    "lat": 40.259789054188076,
+    "long": 49.65171487116394
+  },
+  {
+    "bank_name": "Rabita Bank",
+    "lat": 40.5674995,
+    "long": 48.3914138
+  },
+  {
+    "bank_name": "Rabita Bank",
+    "lat": 40.3948169,
+    "long": 49.8705495
+  },
+  {
+    "bank_name": "Rabita Bank",
+    "lat": 40.38287,
+    "long": 49.871269
+  },
+  {
+    "bank_name": "Rabita Bank",
+    "lat": 40.0497807,
+    "long": 47.4599352
+  },
+  {
+    "bank_name": "Rabita Bank",
+    "lat": 39.955021,
+    "long": 48.944633
+  },
+  {
+    "bank_name": "Rabita Bank",
+    "lat": 40.830135,
+    "long": 46.0237627
+  },
+  {
+    "bank_name": "Rabita Bank",
+    "lat": 40.36702,
+    "long": 49.83
+  },
+  {
+    "bank_name": "Rabita Bank",
+    "lat": 41.464403588901526,
+    "long": 48.80207008137359
+  },
+  {
+    "bank_name": "Rabita Bank",
+    "lat": 41.4305898,
+    "long": 48.4383693
+  },
+  {
+    "bank_name": "Rabita Bank",
+    "lat": 40.40622953166509,
+    "long": 49.812888896664745
+  },
+  {
+    "bank_name": "Rabita Bank",
+    "lat": 40.63751,
+    "long": 48.63542
+  },
+  {
+    "bank_name": "Rabita Bank",
+    "lat": 40.69109067764315,
+    "long": 46.36669081372618
+  },
+  {
+    "bank_name": "Rabita Bank",
+    "lat": 41.20131,
+    "long": 47.1776499
+  },
+  {
+    "bank_name": "Rabita Bank",
+    "lat": 41.362279669812516,
+    "long": 48.52866521998275
+  },
+  {
+    "bank_name": "Rabita Bank",
+    "lat": 40.34626,
+    "long": 48.15505
+  },
+  {
+    "bank_name": "Rabita Bank",
+    "lat": 38.75260115858148,
+    "long": 48.851648189585276
+  },
+  {
+    "bank_name": "Rabita Bank",
+    "lat": 40.59713,
+    "long": 49.67478
+  },
+  {
+    "bank_name": "Rabita Bank",
+    "lat": 40.3842506,
+    "long": 49.8039883
+  },
+  {
+    "bank_name": "Rabita Bank",
+    "lat": 39.20972,
+    "long": 45.4081799
+  },
+  {
+    "bank_name": "Rabita Bank",
+    "lat": 40.99017546598266,
+    "long": 45.61964471041456
+  },
+  {
+    "bank_name": "Rabita Bank",
+    "lat": 40.374489,
+    "long": 47.118984
+  },
+  {
+    "bank_name": "Rabita Bank",
+    "lat": 39.8139286,
+    "long": 46.751007
+  },
+  {
+    "bank_name": "Rabita Bank",
+    "lat": 40.390879,
+    "long": 49.906559
+  },
+  {
+    "bank_name": "VTB Bank",
+    "lat": 40.391224,
+    "long": 49.862526
+  },
+  {
+    "bank_name": "VTB Bank",
+    "lat": 40.377575,
+    "long": 49.843521
+  },
+  {
+    "bank_name": "VTB Bank",
+    "lat": 40.401581,
+    "long": 49.85223
+  },
+  {
+    "bank_name": "VTB Bank",
+    "lat": 40.681568,
+    "long": 46.358612
+  },
+  {
+    "bank_name": "VTB Bank",
+    "lat": 40.411877,
+    "long": 49.942364
+  },
+  {
+    "bank_name": "VTB Bank",
+    "lat": 40.409683,
+    "long": 49.814976
+  },
+  {
+    "bank_name": "Xalq Bank",
+    "lat": 40.37684093623348,
+    "long": 49.8203690978759
+  },
+  {
+    "bank_name": "Xalq Bank",
+    "lat": 40.4217355,
+    "long": 49.9968877
+  },
+  {
+    "bank_name": "Xalq Bank",
+    "lat": 40.373421,
+    "long": 49.845421
+  },
+  {
+    "bank_name": "Xalq Bank",
+    "lat": 40.37685,
+    "long": 49.848148
+  },
+  {
+    "bank_name": "Xalq Bank",
+    "lat": 40.410671,
+    "long": 49.942631
+  },
+  {
+    "bank_name": "Xalq Bank",
+    "lat": 40.387157,
+    "long": 49.96199
+  },
+  {
+    "bank_name": "Xalq Bank",
+    "lat": 40.404926,
+    "long": 49.804379
+  },
+  {
+    "bank_name": "Xalq Bank",
+    "lat": 40.398659,
+    "long": 49.833404
+  },
+  {
+    "bank_name": "Xalq Bank",
+    "lat": 40.37978,
+    "long": 49.883236
+  },
+  {
+    "bank_name": "Xalq Bank",
+    "lat": 40.675846,
+    "long": 46.358421
+  },
+  {
+    "bank_name": "Xalq Bank",
+    "lat": 41.632965,
+    "long": 46.651352
+  },
+  {
+    "bank_name": "Xalq Bank",
+    "lat": 39.377796,
+    "long": 49.245377
+  },
+  {
+    "bank_name": "Xalq Bank",
+    "lat": 40.771534,
+    "long": 47.046772
+  },
+  {
+    "bank_name": "Xalq Bank",
+    "lat": 39.210655,
+    "long": 48.504318
+  },
+  {
+    "bank_name": "Xalq Bank",
+    "lat": 40.610424,
+    "long": 47.147102
+  },
+  {
+    "bank_name": "Xalq Bank",
+    "lat": 41.463463,
+    "long": 48.806805
+  },
+  {
+    "bank_name": "Xalq Bank",
+    "lat": 41.209164,
+    "long": 48.994358
+  },
+  {
+    "bank_name": "Xalq Bank",
+    "lat": 41.088779,
+    "long": 45.354904
+  },
+  {
+    "bank_name": "Xalq Bank",
+    "lat": 40.791603,
+    "long": 48.15546
+  },
+  {
+    "bank_name": "Xalq Bank",
+    "lat": 41.36253,
+    "long": 48.524834
+  },
+  {
+    "bank_name": "Xalq Bank",
+    "lat": 41.423927,
+    "long": 48.426739
+  },
+  {
+    "bank_name": "Xalq Bank",
+    "lat": 40.637798,
+    "long": 48.636768
+  },
+  {
+    "bank_name": "Xalq Bank",
+    "lat": 41.202698,
+    "long": 47.1777
+  },
+  {
+    "bank_name": "Xalq Bank",
+    "lat": 38.754158,
+    "long": 48.855434
+  },
+  {
+    "bank_name": "Xalq Bank",
+    "lat": 40.833984,
+    "long": 46.023399
+  },
+  {
+    "bank_name": "Xalq Bank",
+    "lat": 39.954517,
+    "long": 48.936035
+  },
+  {
+    "bank_name": "Xalq Bank",
+    "lat": 40.585751,
+    "long": 49.684441
+  },
+  {
+    "bank_name": "Xalq Bank",
+    "lat": 41.070374,
+    "long": 49.116631
+  },
+  {
+    "bank_name": "Xalq Bank",
+    "lat": 40.988838,
+    "long": 45.618156
+  },
+  {
+    "bank_name": "Xalq Bank",
+    "lat": 40.649593,
+    "long": 47.746639
+  },
+  {
+    "bank_name": "Xalq Bank",
+    "lat": 40.37210511482167,
+    "long": 49.84967310634824
+  },
+  {
+    "bank_name": "Yelo Bank",
+    "lat": 40.403065,
+    "long": 49.80669
+  },
+  {
+    "bank_name": "Yelo Bank",
+    "lat": 40.37125,
+    "long": 49.845016
+  },
+  {
+    "bank_name": "Yelo Bank",
+    "lat": 40.390068,
+    "long": 49.802959
+  },
+  {
+    "bank_name": "Yelo Bank",
+    "lat": 40.473045,
+    "long": 49.948151
+  },
+  {
+    "bank_name": "Yelo Bank",
+    "lat": 40.378178,
+    "long": 49.846416
+  },
+  {
+    "bank_name": "Yelo Bank",
+    "lat": 40.375111,
+    "long": 49.818783
+  },
+  {
+    "bank_name": "Yelo Bank",
+    "lat": 40.410072,
+    "long": 49.847126
+  },
+  {
+    "bank_name": "Yelo Bank",
+    "lat": 40.399216,
+    "long": 49.950325
+  },
+  {
+    "bank_name": "Yelo Bank",
+    "lat": 40.386639,
+    "long": 49.958248
+  },
+  {
+    "bank_name": "Yelo Bank",
+    "lat": 40.486038,
+    "long": 50.129776
+  },
+  {
+    "bank_name": "Yelo Bank",
+    "lat": 40.330994,
+    "long": 49.783878
+  },
+  {
+    "bank_name": "Yelo Bank",
+    "lat": 40.584908,
+    "long": 49.679775
+  },
+  {
+    "bank_name": "Yelo Bank",
+    "lat": 39.587204,
+    "long": 48.977547
+  },
+  {
+    "bank_name": "Yelo Bank",
+    "lat": 41.465351,
+    "long": 48.803127
+  },
+  {
+    "bank_name": "Yelo Bank",
+    "lat": 40.980186,
+    "long": 47.850704
+  },
+  {
+    "bank_name": "Yelo Bank",
+    "lat": 40.68248,
+    "long": 46.35844
+  },
+  {
+    "bank_name": "Yelo Bank",
+    "lat": 40.053253,
+    "long": 47.440228
+  },
+  {
+    "bank_name": "Yelo Bank",
+    "lat": 38.752934,
+    "long": 48.851913
+  },
+  {
+    "bank_name": "Yelo Bank",
+    "lat": 39.025009,
+    "long": 48.667622
+  },
+  {
+    "bank_name": "Yelo Bank",
+    "lat": 40.979584,
+    "long": 45.617321
+  },
+  {
+    "bank_name": "Yelo Bank",
+    "lat": 40.384602,
+    "long": 47.124157
+  },
+  {
+    "bank_name": "Yelo Bank",
+    "lat": 40.640057,
+    "long": 48.63839
+  },
+  {
+    "bank_name": "Unibank",
+    "lat": 39.7719,
+    "long": 47.6117
+  },
+  {
+    "bank_name": "Unibank",
+    "lat": 40.3253,
+    "long": 49.7803
+  },
+  {
+    "bank_name": "Unibank",
+    "lat": 40.4255,
+    "long": 49.8434
+  },
+  {
+    "bank_name": "Unibank",
+    "lat": 41.0004,
+    "long": 45.6083
+  },
+  {
+    "bank_name": "Unibank",
+    "lat": 40.3845,
+    "long": 47.1243
+  },
+  {
+    "bank_name": "Unibank",
+    "lat": 40.4556,
+    "long": 49.7405
+  },
+  {
+    "bank_name": "Unibank",
+    "lat": 41.3626,
+    "long": 48.5283
+  },
+  {
+    "bank_name": "Unibank",
+    "lat": 41.194,
+    "long": 47.1742
+  },
+  {
+    "bank_name": "Unibank",
+    "lat": 38.7558,
+    "long": 48.8503
+  },
+  {
+    "bank_name": "Unibank",
+    "lat": 40.8302,
+    "long": 46.0212
+  },
+  {
+    "bank_name": "Unibank",
+    "lat": 40.7693,
+    "long": 47.0537
+  },
+  {
+    "bank_name": "Unibank",
+    "lat": 40.3839,
+    "long": 49.824
+  },
+  {
+    "bank_name": "Unibank",
+    "lat": 40.6814,
+    "long": 46.3588
+  },
+  {
+    "bank_name": "Unibank",
+    "lat": 40.688,
+    "long": 46.3849
+  },
+  {
+    "bank_name": "Unibank",
+    "lat": 40.7846,
+    "long": 48.1497
+  },
+  {
+    "bank_name": "Unibank",
+    "lat": 40.411,
+    "long": 49.9421
+  },
+  {
+    "bank_name": "Unibank",
+    "lat": 40.3999,
+    "long": 49.8668
+  },
+  {
+    "bank_name": "Unibank",
+    "lat": 40.5818,
+    "long": 49.6814
+  },
+  {
+    "bank_name": "Unibank",
+    "lat": 40.4076,
+    "long": 49.8116
+  },
+  {
+    "bank_name": "Unibank",
+    "lat": 40.3859,
+    "long": 49.9545
+  },
+  {
+    "bank_name": "Unibank",
+    "lat": 40.3797,
+    "long": 49.8537
+  },
+  {
+    "bank_name": "Unibank",
+    "lat": 40.3916,
+    "long": 49.8029
+  },
+  {
+    "bank_name": "Unibank",
+    "lat": 40.3667,
+    "long": 49.8214
+  },
+  {
+    "bank_name": "Unibank",
+    "lat": 40.3723,
+    "long": 49.8449
+  },
+  {
+    "bank_name": "Unibank",
+    "lat": 40.4184,
+    "long": 49.9634
+  },
+  {
+    "bank_name": "Unibank",
+    "lat": 40.4087,
+    "long": 49.8631
+  },
+  {
+    "bank_name": "Unibank",
+    "lat": 40.4875,
+    "long": 50.1608
+  },
+  {
+    "bank_name": "Unibank",
+    "lat": 39.5893,
+    "long": 48.9748
+  },
+  {
+    "bank_name": "Unibank",
+    "lat": 41.4638,
+    "long": 48.8018
+  },
+  {
+    "bank_name": "Unibank",
+    "lat": 40.419,
+    "long": 49.9306
+  },
+  {
+    "bank_name": "Unibank",
+    "lat": 40.4087,
+    "long": 49.8631
+  },
+  {
+    "bank_name": "Unibank",
+    "lat": 38.7558,
+    "long": 48.8503
+  },
+  {
+    "bank_name": "Unibank",
+    "lat": 40.3828,
+    "long": 47.1243
+  },
+  {
+    "bank_name": "Unibank",
+    "lat": 40.4875,
+    "long": 50.1608
+  },
+  {
+    "bank_name": "Unibank",
+    "lat": 39.5893,
+    "long": 48.9748
+  },
+  {
+    "bank_name": "Unibank",
+    "lat": 41.4638,
+    "long": 48.8018
+  },
+  {
+    "bank_name": "AzerTurk Bank",
+    "lat": 40.3970232932525,
+    "long": 49.8264375
+  },
+  {
+    "bank_name": "AzerTurk Bank",
+    "lat": 40.40956358857328,
+    "long": 49.80787605894584
+  },
+  {
+    "bank_name": "AzerTurk Bank",
+    "lat": 40.37694122371889,
+    "long": 49.85531254602257
+  },
+  {
+    "bank_name": "AzerTurk Bank",
+    "lat": 40.36111915323849,
+    "long": 49.834063471164775
+  },
+  {
+    "bank_name": "AzerTurk Bank",
+    "lat": 40.371399030172846,
+    "long": 49.84228214417607
+  },
+  {
+    "bank_name": "AzerTurk Bank",
+    "lat": 40.401255898721175,
+    "long": 49.80603553936765
+  },
+  {
+    "bank_name": "AzerTurk Bank",
+    "lat": 40.372597631291455,
+    "long": 49.81967080312418
+  },
+  {
+    "bank_name": "AzerTurk Bank",
+    "lat": 40.3841467259977,
+    "long": 49.82888696931828
+  },
+  {
+    "bank_name": "AzerTurk Bank",
+    "lat": 40.382718806154756,
+    "long": 49.873079078480785
+  },
+  {
+    "bank_name": "AzerTurk Bank",
+    "lat": 40.38561187004786,
+    "long": 49.8036752625767
+  },
+  {
+    "bank_name": "AzerTurk Bank",
+    "lat": 40.3970232932525,
+    "long": 49.8264375
+  },
+  {
+    "bank_name": "AzerTurk Bank",
+    "lat": 40.37836033188881,
+    "long": 49.86848132684846
+  },
+  {
+    "bank_name": "AzerTurk Bank",
+    "lat": 40.32024,
+    "long": 49.75494
+  },
+  {
+    "bank_name": "AzerTurk Bank",
+    "lat": 40.58965481066812,
+    "long": 49.66779403602434
+  },
+  {
+    "bank_name": "AzerTurk Bank",
+    "lat": 40.67046258078339,
+    "long": 46.36269325315961
+  },
+  {
+    "bank_name": "AzerTurk Bank",
+    "lat": 39.959408674838805,
+    "long": 48.94704480738602
+  },
+  {
+    "bank_name": "AzerTurk Bank",
+    "lat": 39.21467482492664,
+    "long": 45.41151436818064
+  },
+  {
+    "bank_name": "AFB",
+    "lat": 40.3745514,
+    "long": 49.8238376
+  },
+  {
+    "bank_name": "AFB",
+    "lat": 40.3755885,
+    "long": 49.8328009
+  },
+  {
+    "bank_name": "AFB",
+    "lat": 40.3722855,
+    "long": 49.8379362
+  },
+  {
+    "bank_name": "AFB",
+    "lat": 40.3755885,
+    "long": 49.8328009
+  },
+  {
+    "bank_name": "AFB",
+    "lat": 40.703935,
+    "long": 49.657693
+  },
+  {
+    "bank_name": "AFB",
+    "lat": 40.6798083,
+    "long": 46.3597178
+  },
+  {
+    "bank_name": "AFB",
+    "lat": 40.9436064,
+    "long": 47.8213377
+  },
+  {
+    "bank_name": "Express Bank",
+    "lat": 40.405129980331,
+    "long": 49.84901261056
+  },
+  {
+    "bank_name": "Express Bank",
+    "lat": 40.37615053253,
+    "long": 49.842804197306
+  },
+  {
+    "bank_name": "Express Bank",
+    "lat": 40.37546560702,
+    "long": 49.812403654977
+  },
+  {
+    "bank_name": "Express Bank",
+    "lat": 40.400919445075,
+    "long": 49.806109583813
+  },
+  {
+    "bank_name": "Express Bank",
+    "lat": 40.383617572576,
+    "long": 49.878068681965
+  },
+  {
+    "bank_name": "Express Bank",
+    "lat": 40.385971182729,
+    "long": 49.95434182799
+  },
+  {
+    "bank_name": "Express Bank",
+    "lat": 40.407588921959,
+    "long": 49.938153926143
+  },
+  {
+    "bank_name": "Express Bank",
+    "lat": 40.299815164115,
+    "long": 49.754649078039
+  },
+  {
+    "bank_name": "Express Bank",
+    "lat": 40.589987531221,
+    "long": 49.676478654984
+  },
+  {
+    "bank_name": "Express Bank",
+    "lat": 40.680771859408,
+    "long": 46.358166572176
+  },
+  {
+    "bank_name": "Express Bank",
+    "lat": 40.769319889898,
+    "long": 47.053370168484
+  },
+  {
+    "bank_name": "Express Bank",
+    "lat": 40.380972079637,
+    "long": 47.124450639636
+  },
+  {
+    "bank_name": "Express Bank",
+    "lat": 39.967815545675,
+    "long": 48.943271476409
+  },
+  {
+    "bank_name": "Express Bank",
+    "lat": 41.431608401451,
+    "long": 48.440654239671
+  },
+  {
+    "bank_name": "Express Bank",
+    "lat": 41.466572093906,
+    "long": 48.804661194295
+  },
+  {
+    "bank_name": "Express Bank",
+    "lat": 38.753263,
+    "long": 48.852664
+  },
+  {
+    "bank_name": "Turan Bank",
+    "lat": 40.3755885,
+    "long": 49.8328009
+  },
+  {
+    "bank_name": "Turan Bank",
+    "lat": 40.3770942,
+    "long": 49.8532863
+  },
+  {
+    "bank_name": "Turan Bank",
+    "lat": 40.3755885,
+    "long": 49.8328009
+  },
+  {
+    "bank_name": "Turan Bank",
+    "lat": 40.3755885,
+    "long": 49.8328009
+  },
+  {
+    "bank_name": "Turan Bank",
+    "lat": 40.3755885,
+    "long": 49.8328009
+  },
+  {
+    "bank_name": "Turan Bank",
+    "lat": 40.3755885,
+    "long": 49.8328009
+  },
+  {
+    "bank_name": "Turan Bank",
+    "lat": 40.3755885,
+    "long": 49.8328009
+  },
+  {
+    "bank_name": "Turan Bank",
+    "lat": 40.6798083,
+    "long": 46.3597178
+  },
+  {
+    "bank_name": "Turan Bank",
+    "lat": 41.6307469,
+    "long": 46.6435449
+  },
+  {
+    "bank_name": "Turan Bank",
+    "lat": 40.703935,
+    "long": 49.657693
+  },
+  {
+    "bank_name": "Turan Bank",
+    "lat": 40.992505,
+    "long": 45.6159428
+  },
+  {
+    "bank_name": "Turan Bank",
+    "lat": 41.1980651,
+    "long": 45.5280953
+  },
+  {
+    "bank_name": "Turan Bank",
+    "lat": 41.4655339,
+    "long": 48.8011599
+  },
+  {
+    "bank_name": "Turan Bank",
+    "lat": 39.2103933,
+    "long": 48.5050593
+  },
+  {
+    "bank_name": "Turan Bank",
+    "lat": 40.050544,
+    "long": 47.4607462
+  },
+  {
+    "bank_name": "Turan Bank",
+    "lat": 40.6494415,
+    "long": 47.7412208
+  },
+  {
+    "bank_name": "Turan Bank",
+    "lat": 41.0911532,
+    "long": 45.361029
+  },
+  {
+    "bank_name": "Turan Bank",
+    "lat": 40.4531707,
+    "long": 49.7454579
+  },
+  {
+    "bank_name": "Turan Bank",
+    "lat": 40.3755885,
+    "long": 49.8328009
+  },
+  {
+    "bank_name": "Yapi Kredi Bank",
+    "lat": 40.3755885,
+    "long": 49.8328009
+  },
+  {
+    "bank_name": "Yapi Kredi Bank",
+    "lat": 40.3853619,
+    "long": 49.8288542
+  },
+  {
+    "bank_name": "Yapi Kredi Bank",
+    "lat": 40.3755885,
+    "long": 49.8328009
+  },
+  {
+    "bank_name": "Yapi Kredi Bank",
+    "lat": 40.574105,
+    "long": 49.6417905
+  },
+  {
+    "bank_name": "Yapi Kredi Bank",
+    "lat": 40.3867268,
+    "long": 49.9548306
+  },
+  {
+    "bank_name": "Yapi Kredi Bank",
+    "lat": 40.3726563,
+    "long": 49.8396752
+  },
+  {
+    "bank_name": "Yapi Kredi Bank",
+    "lat": 40.3729379,
+    "long": 49.8479199
+  },
+  {
+    "bank_name": "Yapi Kredi Bank",
+    "lat": 40.3950964,
+    "long": 49.8603743
+  },
+  {
+    "bank_name": "Ziraat Bank",
+    "lat": 40.3869432,
+    "long": 49.8429755
+  },
+  {
+    "bank_name": "Ziraat Bank",
+    "lat": 40.3755885,
+    "long": 49.8328009
+  },
+  {
+    "bank_name": "Ziraat Bank",
+    "lat": 40.4053996,
+    "long": 49.8675283
+  },
+  {
+    "bank_name": "Ziraat Bank",
+    "lat": 40.6798083,
+    "long": 46.3597178
+  },
+  {
+    "bank_name": "Ziraat Bank",
+    "lat": 41.3575808,
+    "long": 48.4997878
+  },
+  {
+    "bank_name": "Ziraat Bank",
+    "lat": 39.217497,
+    "long": 45.4069671
+  },
+  {
+    "bank_name": "Ziraat Bank",
+    "lat": 40.4190845,
+    "long": 49.9245723
+  },
+  {
+    "bank_name": "Ziraat Bank",
+    "lat": 40.3755885,
+    "long": 49.8328009
+  },
+  {
+    "bank_name": "Ziraat Bank",
+    "lat": 40.3769031,
+    "long": 49.8408392
+  },
+  {
+    "bank_name": "Ziraat Bank",
+    "lat": 40.703935,
+    "long": 49.657693
+  },
+  {
+    "bank_name": "Pasha Bank",
+    "lat": 40.3706625,
+    "long": 49.8391633
+  },
+  {
+    "bank_name": "Pasha Bank",
+    "lat": 40.4373767,
+    "long": 49.7235103
+  },
+  {
+    "bank_name": "Pasha Bank",
+    "lat": 40.3757723,
+    "long": 49.8620964
+  },
+  {
+    "bank_name": "Pasha Bank",
+    "lat": 40.371306,
+    "long": 49.9850706
+  },
+  {
+    "bank_name": "Pasha Bank",
+    "lat": 40.3266072,
+    "long": 49.7766034
+  },
+  {
+    "bank_name": "Pasha Bank",
+    "lat": 40.6760023,
+    "long": 46.3559534
+  },
+  {
+    "bank_name": "Pasha Bank",
+    "lat": 41.6201812,
+    "long": 46.6510403
+  },
+  {
+    "bank_name": "Pasha Bank",
+    "lat": 41.1880893,
+    "long": 48.3721452
+  },
+  {
+    "bank_name": "BTB",
+    "lat": 40.3875256,
+    "long": 49.8662766
+  },
+  {
+    "bank_name": "BTB",
+    "lat": 40.3968257,
+    "long": 49.8629681
+  },
+  {
+    "bank_name": "BTB",
+    "lat": 40.4667969,
+    "long": 49.8435877
+  },
+  {
+    "bank_name": "BTB",
+    "lat": 40.3938109,
+    "long": 49.9539603
+  },
+  {
+    "bank_name": "BTB",
+    "lat": 40.5366868,
+    "long": 50.0195463
+  },
+  {
+    "bank_name": "BTB",
+    "lat": 40.6798083,
+    "long": 46.3597178
+  },
+  {
+    "bank_name": "BTB",
+    "lat": 40.4373767,
+    "long": 49.7235103
+  },
+  {
+    "bank_name": "BTB",
+    "lat": 40.703935,
+    "long": 49.657693
+  }
+]
