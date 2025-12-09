@@ -341,32 +341,74 @@ Two entire regions (Central and West) have **ZERO Bank of Baku branches** while 
 
 ---
 
-### Chart 13: Growth Opportunity Score
+### Chart 13a: Growth Opportunity Score - Baku-Absheron
 
-![Growth Opportunity Score](charts/13_growth_opportunity_score.png)
+![Growth Opportunity Baku-Absheron](charts/13a_growth_opportunity_baku_absheron.png)
 
 **What This Shows:**
-Heatmap scoring 900 potential locations for expansion. Left: opportunity score heatmap. Right: top 20 recommended locations (numbered 1-5 for highest priority).
+Focused heatmap for **Baku-Absheron region** (coordinates: 40.30-40.65°N, 49.60-50.20°E), scoring urban expansion opportunities. Left: opportunity heatmap. Right: top 15 recommended locations.
 
-**Scoring Methodology:**
-- **Distance Factor (70% weight):** Farther from BoB branches = higher opportunity
-- **Demand Factor (30% weight):** More nearby competitors = proven demand
-- **High score** = Far from BoB branches + Near competitors = Gap opportunity
+**Current Status:**
+- **292 total branches** in Baku-Absheron area
+- **16 Bank of Baku branches** (5.5% of area total)
+- High competitive density requires precise targeting
 
-**Key Insights:**
-- **Top 20 locations identified:** Highest-scoring coordinates for expansion
-- **Warmer colors (red/orange):** Best opportunities
-- **Cool colors (blue/green):** Already served or low demand
-- **Numbered locations (1-5):** Highest priority expansion targets
+**Scoring Methodology (Urban-Optimized):**
+- **Distance Factor:** Farther from BoB branches = higher opportunity
+- **Demand Factor:** Competitors within 5km radius (tighter for urban density)
+- **Weight adjustment:** Higher emphasis on distance due to urban saturation
+
+**TOP 3 BAKU-ABSHERON EXPANSION OPPORTUNITIES:**
+
+| Priority | Location | Coordinates |
+|----------|----------|-------------|
+| **#1** | Near Nasimi | 40.39°N, 49.85°E |
+| **#2** | Near Nasimi | 40.40°N, 49.85°E |
+| **#3** | Near Nasimi | 40.38°N, 49.85°E |
 
 **Actionable Insights:**
-- 🎯 **Data-driven site selection:** Use top 20 coordinates for site visits
-- 📍 **Precise locations:** Lat/long provided for each opportunity
-- 💰 **ROI optimization:** These locations balance market need with low overlap
-- 🚀 **Phased expansion:** Start with #1-5, then #6-10, then #11-20
-- 📊 **Validation required:** Visit sites to confirm foot traffic, accessibility, competition
-- 💡 **Scoring transparency:** Methodology is clear and defensible to stakeholders
-- 🌟 **Continuous update:** Re-run analysis quarterly as network expands
+- 🏙️ **Urban focus:** Targets underserved neighborhoods within greater Baku
+- 📍 **Precise coordinates:** GPS-ready locations for site visits
+- 🚇 **Metro accessibility:** Consider proximity to public transport
+- 🏢 **Commercial zones:** Validate foot traffic and business activity
+- ⚡ **Quick deployment:** Urban infrastructure enables faster setup
+
+---
+
+### Chart 13b: Growth Opportunity Score - Regions
+
+![Growth Opportunity Regions](charts/13b_growth_opportunity_regions.png)
+
+**What This Shows:**
+Heatmap for **all regions outside Baku-Absheron**, scoring rural/regional expansion opportunities. Left: opportunity heatmap. Right: top 15 recommended locations.
+
+**Current Status:**
+- **293 total branches** in regional Azerbaijan
+- **Only 5 Bank of Baku branches** (1.7% of regional total)
+- **Significant expansion gap** compared to Baku presence
+
+**Scoring Methodology (Regional-Optimized):**
+- **Distance Factor:** Farther from BoB branches = higher opportunity
+- **Demand Factor:** Competitors within 30km radius (wider for rural coverage)
+- **Weight adjustment:** Balanced for regional market dynamics
+
+**TOP 3 EXPANSION OPPORTUNITIES BY REGION:**
+
+| Region | #1 Location | #2 Location | #3 Location |
+|--------|-------------|-------------|-------------|
+| **North** | Near Quba (41.36°N, 48.57°E) | Near Qəbələ (41.00°N, 48.00°E) | Near Quba (41.29°N, 48.57°E) |
+| **Northwest** | Near Şəmkir (40.71°N, 46.07°E) | Near Gəncə (40.71°N, 46.29°E) | Near Tərtər (40.50°N, 46.93°E) |
+| **Central** | Near Yevlax (40.57°N, 47.04°E) | Near Ağcabədi (40.04°N, 47.57°E) | Near Beyləqan (39.82°N, 47.57°E) |
+| **South** | Near Masallı (39.00°N, 48.71°E) | Near Astara (38.00°N, 50.00°E) | Near Astara (38.14°N, 50.00°E) |
+| **Naxcivan** | Near Culfa (38.00°N, 44.50°E) | Near Culfa (38.00°N, 44.68°E) | Near Culfa (38.14°N, 44.50°E) |
+
+**Actionable Insights:**
+- 🗺️ **National presence:** Critical for brand visibility across Azerbaijan
+- 🏘️ **Regional cities:** Target Ganja, Sumgait, Lankaran, Mingachevir
+- 📊 **Market validation:** Competitor presence proves demand exists
+- 🚀 **Growth priority:** Regional expansion offers highest ROI potential
+- 💡 **Strategic positioning:** First-mover advantage in underserved areas
+- 🌟 **Long-term value:** Regional branches often have loyal customer bases
 
 ---
 
@@ -451,7 +493,7 @@ Six-panel visual dashboard summarizing key strategic metrics for executive prese
 
 **Recommended Actions:**
 1. **Immediate (3-6 months):**
-   - Site visits to top 20 gap locations from Chart 13
+   - Site visits to top locations from Chart 13a (Baku-Absheron) and Chart 13b (Regions)
    - Prioritize: Ganja, Sumqayit, Lankaran, Mingachevir, Shirvan
    - Target: Open 3-5 regional branches in Year 1
 
@@ -488,7 +530,7 @@ Six-panel visual dashboard summarizing key strategic metrics for executive prese
 
 **Recommended Actions:**
 1. **Immediate (0-3 months):**
-   - Site selection team visits to top 20 coordinates from Chart 13
+   - Site selection team visits to top 15 coordinates from Chart 13a (Baku) and Chart 13b (Regions)
    - Evaluate: Foot traffic, accessibility, parking, nearby businesses
    - Ground-truth the data with local market research
 
@@ -697,14 +739,14 @@ Track these metrics quarterly to measure progress:
 4. Review Key Performance Indicators for tracking
 
 ### For Strategy Team
-1. Study all 15 charts in detail
-2. Use Chart 13 (Growth Opportunity Score) for site selection
+1. Study all charts in detail
+2. Use Chart 13a (Baku-Absheron) and Chart 13b (Regions) for site selection
 3. Analyze regional dominance patterns in Chart 12
 4. Focus on gap analysis (Chart 9) for immediate opportunities
 
 ### For Branch Network Team
 1. Prioritize Chart 9 (Gap Analysis) for expansion locations
-2. Use Chart 13 (Growth Opportunity Score) for site prioritization
+2. Use Chart 13a/13b (Growth Opportunity Scores) for site prioritization
 3. Review Chart 6-7 for Baku vs Regional balance
 4. Monitor KPIs quarterly
 
@@ -777,7 +819,7 @@ Bank of Baku faces both **challenges and opportunities**:
 
 **Opportunities:**
 - 198 identified gap locations (validated by competitor presence)
-- Data-driven expansion roadmap (Chart 13 heatmap)
+- Data-driven expansion roadmap (Chart 13a for Baku-Absheron, Chart 13b for Regions)
 - Underserved regional markets (below 48.3% industry average)
 - Potential for differentiation (service, digital, specialization)
 - Clear path to 8-10% market share (top 5-6 position)

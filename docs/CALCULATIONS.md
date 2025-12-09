@@ -655,35 +655,93 @@ Two regions with **zero Bank of Baku presence** (Central and West) represent hig
 
 ---
 
-## Chart 13: Growth Opportunity Score
+## Chart 13a: Growth Opportunity Score - Baku-Absheron
 
 ### Purpose
-Create a heatmap scoring every location for expansion potential.
+Create a focused heatmap scoring urban expansion opportunities in the Baku-Absheron region.
+
+### Geographic Boundaries
+```python
+baku_lat_min, baku_lat_max = 40.30, 40.65
+baku_long_min, baku_long_max = 49.60, 50.20
+```
 
 ### Calculation Method
 
-**Grid Generation:**
+**Grid Generation (Urban-focused):**
 ```python
-lat_min, lat_max = df['lat'].min() - 0.1, df['lat'].max() + 0.1
-long_min, long_max = df['long'].min() - 0.1, df['long'].max() + 0.1
+grid_resolution_baku = 35  # 35×35 = 1225 points for higher resolution
 
-grid_resolution = 30  # 30×30 = 900 points
-lat_grid = np.linspace(lat_min, lat_max, grid_resolution)
-long_grid = np.linspace(long_min, long_max, grid_resolution)
+lat_grid_baku = np.linspace(baku_lat_min, baku_lat_max, grid_resolution_baku)
+long_grid_baku = np.linspace(baku_long_min, baku_long_max, grid_resolution_baku)
 
-grid_points = [[lat, long] for lat in lat_grid for long in long_grid]
+grid_points_baku = [[lat, long] for lat in lat_grid_baku for long in long_grid_baku]
 ```
 
-**Opportunity Score Formula:**
+**Opportunity Score Formula (Urban-Optimized):**
 ```python
-def calculate_opportunity_score(point):
+def calculate_opportunity_score_baku(point):
     # Factor 1: Distance to nearest BoB branch (higher = better)
-    distances_bob = np.sqrt(((bob_coords - point)**2).sum(axis=1))
+    distances_bob = np.sqrt(((bob_coords_baku - point)**2).sum(axis=1))
     dist_score = distances_bob.min()
 
-    # Factor 2: Number of competitors nearby (higher = more demand)
-    distances_comp = np.sqrt(((comp_coords - point)**2).sum(axis=1))
-    nearby_comps = (distances_comp < 0.2).sum()  # Within ~20km
+    # Factor 2: Number of competitors nearby (5km radius for urban density)
+    distances_comp = np.sqrt(((comp_coords_baku - point)**2).sum(axis=1))
+    nearby_comps = (distances_comp < 0.05).sum()  # Within ~5km
+
+    # Combined score (higher weight on distance for urban areas)
+    opportunity_score = dist_score * 15 + nearby_comps * 0.8
+
+    return opportunity_score
+```
+
+### City Labels Included
+- Baku Center, Sumqayit, Khirdalan, Binəqədi, Sabunçu, Suraxanı
+- Nəsimi, Yasamal, Xətai, Qaradağ, Pirallahı, Mərdəkan
+
+### Output Metrics
+- **Grid Points:** 1,225 locations evaluated
+- **Top 15 Opportunities:** Highest scoring coordinates
+- **Current Status:** 292 total branches, 16 BoB branches (5.5%)
+
+---
+
+## Chart 13b: Growth Opportunity Score - Regions
+
+### Purpose
+Create a heatmap scoring regional expansion opportunities outside Baku-Absheron.
+
+### Geographic Boundaries
+All of Azerbaijan EXCEPT the Baku-Absheron rectangle defined above.
+
+### Calculation Method
+
+**Grid Generation (Regional):**
+```python
+grid_resolution_regions = 30  # 30×30 = 900 points
+
+# Dynamic bounds based on regional data
+region_lat_min, region_lat_max = df_regions['lat'].min() - 0.1, df_regions['lat'].max() + 0.1
+region_long_min, region_long_max = df_regions['long'].min() - 0.1, df_regions['long'].max() + 0.1
+
+grid_points_regions = [[lat, long] for lat in lat_grid_regions for long in long_grid_regions]
+```
+
+**Opportunity Score Formula (Regional-Optimized):**
+```python
+def calculate_opportunity_score_regions(point):
+    # Skip points within Baku-Absheron
+    if (baku_lat_min <= point[0] <= baku_lat_max and
+        baku_long_min <= point[1] <= baku_long_max):
+        return 0
+
+    # Factor 1: Distance to nearest BoB branch (higher = better)
+    distances_bob = np.sqrt(((bob_coords_regions - point)**2).sum(axis=1))
+    dist_score = distances_bob.min()
+
+    # Factor 2: Number of competitors nearby (30km radius for rural areas)
+    distances_comp = np.sqrt(((comp_coords_regions - point)**2).sum(axis=1))
+    nearby_comps = (distances_comp < 0.3).sum()  # Within ~30km
 
     # Combined score
     opportunity_score = dist_score * 10 + nearby_comps * 0.5
@@ -691,21 +749,23 @@ def calculate_opportunity_score(point):
     return opportunity_score
 ```
 
-**Scoring Logic:**
-- **High score** = Far from BoB branches BUT near competitors
-- This indicates: Market demand (competitors present) + Unserved by BoB (gap)
-
-**Weights:**
-- Distance factor: ×10 (more important)
-- Competitor proximity: ×0.5
+### City Labels Included (Major Cities)
+- Gəncə, Mingəçevir, Lənkəran, Şəki, Şirvan, Xaçmaz, Quba
+- Naxçıvan, Zaqatala, Bərdə, Yevlax, Şamaxı, Masallı, Tovuz, Qazax, Şuşa
 
 ### Output Metrics
 - **Grid Points:** 900 locations evaluated
-- **Top 20 Opportunities:** Highest scoring coordinates
-- **Score Range:** Variable (higher = better opportunity)
+- **Top 15 Opportunities:** Highest scoring coordinates
+- **Current Status:** 293 total branches, 5 BoB branches (1.7%)
 
-**Interpretation:**
+### Key Difference from Chart 13a
+- Larger competitor search radius (30km vs 5km)
+- Lower resolution grid (appropriate for regional analysis)
+- Focus on identifying underserved regional markets
+
+**Interpretation for Both Charts:**
 Warmer colors (red/orange) = better expansion opportunities
+Blue markers = major city reference points
 
 ---
 

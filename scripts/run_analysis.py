@@ -1,8 +1,13 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
 Bank Branch Network Analysis Script
 Generates all charts and analysis for Bank of Baku
 """
+
+import sys
+import io
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 import pandas as pd
 import numpy as np
@@ -951,85 +956,373 @@ for _, row in zone_analysis_df.iterrows():
 print()
 
 # ============================================================================
-# Chart 13: Growth Opportunity Score
+# Chart 13a: Growth Opportunity Score - Baku-Absheron
 # ============================================================================
-print("Generating Chart 13: Growth Opportunity Score...")
+print("Generating Chart 13a: Growth Opportunity Score (Baku-Absheron)...")
 
-# Create grid of potential locations
-lat_min, lat_max = df['lat'].min() - 0.1, df['lat'].max() + 0.1
-long_min, long_max = df['long'].min() - 0.1, df['long'].max() + 0.1
+# Define Baku-Absheron boundaries (expanded to include Sumqayit and surrounding areas)
+baku_lat_min, baku_lat_max = 40.30, 40.65
+baku_long_min, baku_long_max = 49.60, 50.20
 
-# Create grid points
-grid_resolution = 30
-lat_grid = np.linspace(lat_min, lat_max, grid_resolution)
-long_grid = np.linspace(long_min, long_max, grid_resolution)
-grid_points = np.array([[lat, long] for lat in lat_grid for long in long_grid])
+# Major cities/areas in Baku-Absheron region with coordinates
+baku_cities = {
+    'Baku Center': (40.4093, 49.8671),
+    'Sumqayit': (40.5855, 49.6317),
+    'Khirdalan': (40.4486, 49.7553),
+    'Binəqədi': (40.4500, 49.8200),
+    'Sabunçu': (40.4400, 49.9450),
+    'Suraxanı': (40.4300, 50.0100),
+    'Nəsimi': (40.3950, 49.8500),
+    'Yasamal': (40.3850, 49.8050),
+    'Xətai': (40.3700, 49.9000),
+    'Qaradağ': (40.3200, 49.9800),
+    'Pirallahı': (40.4800, 50.1400),
+    'Mərdəkan': (40.4950, 50.1500),
+}
 
-# Calculate opportunity score for each grid point
-def calculate_opportunity_score(point):
+# Filter data for Baku-Absheron
+df_baku = df[(df['lat'] >= baku_lat_min) & (df['lat'] <= baku_lat_max) &
+             (df['long'] >= baku_long_min) & (df['long'] <= baku_long_max)]
+bob_baku = df_baku[df_baku['bank_name'] == 'Bank of Baku']
+comp_baku = df_baku[df_baku['bank_name'] != 'Bank of Baku']
+
+bob_coords_baku = bob_baku[['lat', 'long']].values if len(bob_baku) > 0 else np.array([[40.4, 49.85]])
+comp_coords_baku = comp_baku[['lat', 'long']].values
+
+# Create grid for Baku-Absheron
+grid_resolution_baku = 35
+lat_grid_baku = np.linspace(baku_lat_min, baku_lat_max, grid_resolution_baku)
+long_grid_baku = np.linspace(baku_long_min, baku_long_max, grid_resolution_baku)
+grid_points_baku = np.array([[lat, long] for lat in lat_grid_baku for long in long_grid_baku])
+
+# Calculate opportunity score for Baku-Absheron
+def calculate_opportunity_score_baku(point):
     # Distance to nearest BoB branch (higher = better)
-    distances_bob = np.sqrt(((bob_coords - point)**2).sum(axis=1))
+    distances_bob = np.sqrt(((bob_coords_baku - point)**2).sum(axis=1))
     dist_score = distances_bob.min()
 
-    # Number of competitors nearby (higher = more demand)
-    distances_comp = np.sqrt(((comp_coords - point)**2).sum(axis=1))
-    nearby_comps = (distances_comp < 0.2).sum()  # Within ~20km
+    # Number of competitors nearby (higher = more demand) - smaller radius for urban area
+    distances_comp = np.sqrt(((comp_coords_baku - point)**2).sum(axis=1))
+    nearby_comps = (distances_comp < 0.05).sum()  # Within ~5km for urban density
 
-    # Combined score (normalize both)
-    score = dist_score * 10 + nearby_comps * 0.5
+    # Combined score
+    score = dist_score * 15 + nearby_comps * 0.8
     return score
 
-opportunity_scores = np.array([calculate_opportunity_score(point) for point in grid_points])
-opportunity_scores = opportunity_scores.reshape(grid_resolution, grid_resolution)
+opportunity_scores_baku = np.array([calculate_opportunity_score_baku(point) for point in grid_points_baku])
+opportunity_scores_baku = opportunity_scores_baku.reshape(grid_resolution_baku, grid_resolution_baku)
 
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(18, 7))
 
-# Heatmap of opportunity scores
-im = ax1.contourf(long_grid, lat_grid, opportunity_scores, levels=20, cmap='YlOrRd', alpha=0.8)
-ax1.scatter(bob_coords[:, 1], bob_coords[:, 0], s=140, color='#e74c3c',
+# Heatmap of opportunity scores for Baku
+im = ax1.contourf(long_grid_baku, lat_grid_baku, opportunity_scores_baku, levels=20, cmap='YlOrRd', alpha=0.8)
+ax1.scatter(bob_coords_baku[:, 1], bob_coords_baku[:, 0], s=140, color='#e74c3c',
            marker='s', edgecolors='black', linewidth=2.5, label='Bank of Baku', zorder=5)
-ax1.scatter(comp_coords[:, 1], comp_coords[:, 0], s=15, color='gray',
+ax1.scatter(comp_coords_baku[:, 1], comp_coords_baku[:, 0], s=15, color='gray',
            alpha=0.4, label='Competitors', edgecolors='white', linewidth=0.2)
+
+# Add city labels for Baku-Absheron on heatmap
+for city_name, (lat, lon) in baku_cities.items():
+    if baku_lat_min <= lat <= baku_lat_max and baku_long_min <= lon <= baku_long_max:
+        ax1.annotate(city_name, (lon, lat), fontsize=8, fontweight='bold', color='#2c3e50',
+                    ha='center', va='bottom', zorder=15,
+                    bbox=dict(boxstyle='round,pad=0.2', facecolor='white', edgecolor='#3498db', alpha=0.85))
+        ax1.scatter(lon, lat, s=60, color='#3498db', marker='o', edgecolors='white', linewidth=1.5, zorder=10)
+
 ax1.set_xlabel('Longitude', fontsize=11)
 ax1.set_ylabel('Latitude', fontsize=11)
-ax1.set_title('Expansion Opportunity Heatmap for Bank of Baku\n(Warmer colors = higher opportunity)',
+ax1.set_title('Baku-Absheron: Expansion Opportunity Heatmap\n(Warmer colors = higher opportunity)',
              fontsize=13, fontweight='bold')
-ax1.legend(fontsize=10, frameon=True, fancybox=True)
+ax1.legend(fontsize=9, frameon=True, fancybox=True, loc='upper right')
 ax1.grid(True, alpha=0.3, linestyle='--')
 ax1.set_facecolor('#f8f9fa')
 plt.colorbar(im, ax=ax1, label='Opportunity Score')
 
-# Top opportunity locations
-top_n = 20
-flat_indices = opportunity_scores.flatten().argsort()[-top_n:][::-1]
-top_opportunities = grid_points[flat_indices]
+# Top opportunity locations for Baku
+top_n_baku = 15
+flat_indices_baku = opportunity_scores_baku.flatten().argsort()[-top_n_baku:][::-1]
+top_opportunities_baku = grid_points_baku[flat_indices_baku]
 
-# Plot top opportunities
-ax2.scatter(df['long'], df['lat'], s=18, alpha=0.2, color='#95a5a6', label='Existing branches')
-ax2.scatter(bob_coords[:, 1], bob_coords[:, 0], s=140, color='#e74c3c',
+# Function to find nearest city for a coordinate
+def find_nearest_city_baku(lat, lon):
+    min_dist = float('inf')
+    nearest = "Unknown area"
+    for city_name, (city_lat, city_lon) in baku_cities.items():
+        dist = np.sqrt((lat - city_lat)**2 + (lon - city_lon)**2)
+        if dist < min_dist:
+            min_dist = dist
+            nearest = city_name
+    return nearest
+
+# Plot top opportunities for Baku
+ax2.scatter(df_baku['long'], df_baku['lat'], s=18, alpha=0.2, color='#95a5a6', label='Existing branches')
+ax2.scatter(bob_coords_baku[:, 1], bob_coords_baku[:, 0], s=140, color='#e74c3c',
            marker='s', edgecolors='black', linewidth=2.5, label='Bank of Baku', zorder=5)
-ax2.scatter(top_opportunities[:, 1], top_opportunities[:, 0],
-           s=320, color='#f39c12', marker='*',
-           edgecolors='black', linewidth=2, label='Top expansion opportunities', zorder=10, alpha=0.95)
 
-# Number the top 5
-for i in range(min(5, len(top_opportunities))):
-    ax2.annotate(str(i+1), (top_opportunities[i, 1], top_opportunities[i, 0]),
-                fontsize=11, fontweight='bold', ha='center', va='center', color='white',
-                bbox=dict(boxstyle='circle', facecolor='#2c3e50', edgecolor='white', linewidth=2))
+# Add city labels for Baku-Absheron on recommendations
+for city_name, (lat, lon) in baku_cities.items():
+    if baku_lat_min <= lat <= baku_lat_max and baku_long_min <= lon <= baku_long_max:
+        ax2.annotate(city_name, (lon, lat), fontsize=8, fontweight='bold', color='#2c3e50',
+                    ha='center', va='bottom', zorder=15,
+                    bbox=dict(boxstyle='round,pad=0.2', facecolor='white', edgecolor='#3498db', alpha=0.85))
+        ax2.scatter(lon, lat, s=60, color='#3498db', marker='o', edgecolors='white', linewidth=1.5, zorder=8)
+
+# Plot top 3 opportunities with markers, rest as small dots
+for i in range(len(top_opportunities_baku)):
+    lat, lon = top_opportunities_baku[i, 0], top_opportunities_baku[i, 1]
+    if i < 3:
+        # Top 3: diamond markers with numbers
+        ax2.scatter(lon, lat, s=200, color='#e74c3c', marker='D', edgecolors='white', linewidth=2, zorder=12)
+        ax2.annotate(str(i+1), (lon, lat), fontsize=9, fontweight='bold', ha='center', va='center',
+                    color='white', zorder=13)
+    else:
+        # Rest: small green dots
+        ax2.scatter(lon, lat, s=40, color='#27ae60', marker='o', edgecolors='white', linewidth=0.5, zorder=10, alpha=0.7)
+
+# Add dummy scatter for legend
+ax2.scatter([], [], s=120, color='#e74c3c', marker='D', edgecolors='white', linewidth=2, label='Top 3 priorities')
+ax2.scatter([], [], s=40, color='#27ae60', marker='o', edgecolors='white', linewidth=0.5, label='Other opportunities')
 
 ax2.set_xlabel('Longitude', fontsize=11)
 ax2.set_ylabel('Latitude', fontsize=11)
-ax2.set_title(f'Top {top_n} Recommended Expansion Locations', fontsize=13, fontweight='bold')
-ax2.legend(fontsize=10, frameon=True, fancybox=True, shadow=True)
+ax2.set_title(f'Baku-Absheron: Top {top_n_baku} Recommended Expansion Locations', fontsize=13, fontweight='bold')
+ax2.legend(fontsize=9, frameon=True, fancybox=True, shadow=True, loc='upper right')
 ax2.grid(True, alpha=0.3, linestyle='--')
 ax2.set_facecolor('#f8f9fa')
 
 plt.tight_layout()
-plt.savefig('charts/13_growth_opportunity_score.png', dpi=300, bbox_inches='tight')
+
+plt.savefig('charts/13a_growth_opportunity_baku_absheron.png', dpi=300, bbox_inches='tight')
 plt.close()
 
-print(f"✓ Chart 13 saved")
+print(f"✓ Chart 13a (Baku-Absheron) saved")
+
+# Print top 5 Baku-Absheron opportunities
+print("  Top 5 Baku-Absheron expansion opportunities:")
+for i in range(min(5, len(top_opportunities_baku))):
+    print(f"    {i+1}. Lat: {top_opportunities_baku[i, 0]:.4f}, Long: {top_opportunities_baku[i, 1]:.4f}")
+print()
+
+# ============================================================================
+# Chart 13b: Growth Opportunity Score - Regions (Outside Baku-Absheron)
+# ============================================================================
+print("Generating Chart 13b: Growth Opportunity Score (Regions)...")
+
+# Major cities in Azerbaijan regions with coordinates
+regional_cities = {
+    'Gəncə': (40.6828, 46.3606),
+    'Sumqayıt': (40.5855, 49.6317),
+    'Mingəçevir': (40.7703, 47.0496),
+    'Lənkəran': (38.7536, 48.8511),
+    'Şəki': (41.1919, 47.1706),
+    'Şirvan': (39.9375, 48.9206),
+    'Yevlax': (40.6200, 47.1500),
+    'Xaçmaz': (41.4631, 48.8022),
+    'Şamaxı': (40.6319, 48.6414),
+    'Quba': (41.3611, 48.5128),
+    'Qusar': (41.4275, 48.4303),
+    'Zaqatala': (41.6314, 46.6439),
+    'Qax': (41.4206, 46.9219),
+    'Bərdə': (40.3747, 47.1256),
+    'Ağdam': (39.9914, 46.9928),
+    'Ağdaş': (40.6475, 47.4672),
+    'Göyçay': (40.6533, 47.7406),
+    'Naxçıvan': (39.2089, 45.4122),
+    'Ordubad': (38.9050, 46.0236),
+    'Culfa': (38.9606, 45.6297),
+    'Masallı': (39.0344, 48.6658),
+    'Astara': (38.4561, 48.8750),
+    'Salyan': (39.5936, 48.9836),
+    'Neftçala': (39.3756, 49.2467),
+    'İmişli': (39.8697, 48.0597),
+    'Saatlı': (39.9319, 48.3692),
+    'Sabirabad': (40.0081, 48.4783),
+    'Kürdəmir': (40.3397, 48.1617),
+    'Ucar': (40.5086, 47.6492),
+    'Ağsu': (40.5672, 48.3950),
+    'İsmayıllı': (40.7872, 48.1519),
+    'Qəbələ': (40.9814, 47.8458),
+    'Oğuz': (41.0728, 47.4653),
+    'Balakən': (41.7256, 46.4042),
+    'Tovuz': (40.9925, 45.6286),
+    'Qazax': (41.0922, 45.3656),
+    'Ağstafa': (41.1194, 45.4539),
+    'Samux': (40.7619, 46.4069),
+    'Göygöl': (40.5867, 46.3256),
+    'Daşkəsən': (40.5167, 46.0833),
+    'Gədəbəy': (40.5700, 45.8100),
+    'Şəmkir': (40.8297, 46.0172),
+    'Goranboy': (40.6100, 46.7900),
+    'Tərtər': (40.3439, 46.9328),
+    'Xocalı': (39.9131, 46.7914),
+    'Xocavənd': (39.7900, 47.1100),
+    'Cəbrayıl': (39.3986, 47.0264),
+    'Füzuli': (39.6008, 47.1456),
+    'Zəngilan': (39.0853, 46.6539),
+    'Qubadlı': (39.3450, 46.5800),
+    'Laçın': (39.6378, 46.5461),
+    'Kəlbəcər': (40.1025, 46.0361),
+    'Şuşa': (39.7586, 46.7489),
+    'Xankəndi': (39.8153, 46.7519),
+    'Ağcabədi': (40.0508, 47.4561),
+    'Beyləqan': (39.7742, 47.6183),
+    'Biləsuvar': (39.4597, 48.5494),
+    'Cəlilabad': (39.2081, 48.5017),
+    'Yardımlı': (38.9058, 48.2456),
+    'Lerik': (38.7736, 48.4150),
+    'Siyəzən': (41.0783, 49.1122),
+    'Şabran': (41.2158, 48.9986),
+    'Xızı': (40.9097, 49.0708),
+}
+
+# Filter data for Regions (outside Baku-Absheron)
+df_regions = df[~((df['lat'] >= baku_lat_min) & (df['lat'] <= baku_lat_max) &
+                  (df['long'] >= baku_long_min) & (df['long'] <= baku_long_max))]
+bob_regions = df_regions[df_regions['bank_name'] == 'Bank of Baku']
+comp_regions = df_regions[df_regions['bank_name'] != 'Bank of Baku']
+
+bob_coords_regions = bob_regions[['lat', 'long']].values if len(bob_regions) > 0 else np.array([[40.0, 48.0]])
+comp_coords_regions = comp_regions[['lat', 'long']].values
+
+# Create grid for Regions (entire Azerbaijan minus Baku)
+region_lat_min, region_lat_max = df_regions['lat'].min() - 0.1, df_regions['lat'].max() + 0.1
+region_long_min, region_long_max = df_regions['long'].min() - 0.1, df_regions['long'].max() + 0.1
+
+grid_resolution_regions = 30
+lat_grid_regions = np.linspace(region_lat_min, region_lat_max, grid_resolution_regions)
+long_grid_regions = np.linspace(region_long_min, region_long_max, grid_resolution_regions)
+grid_points_regions = np.array([[lat, long] for lat in lat_grid_regions for long in long_grid_regions])
+
+# Calculate opportunity score for Regions
+def calculate_opportunity_score_regions(point):
+    # Skip points that fall within Baku-Absheron
+    if (baku_lat_min <= point[0] <= baku_lat_max and baku_long_min <= point[1] <= baku_long_max):
+        return 0
+
+    # Distance to nearest BoB branch (higher = better)
+    if len(bob_coords_regions) > 0:
+        distances_bob = np.sqrt(((bob_coords_regions - point)**2).sum(axis=1))
+        dist_score = distances_bob.min()
+    else:
+        dist_score = 2.0  # High score if no BoB presence in regions
+
+    # Number of competitors nearby (higher = more demand) - larger radius for rural areas
+    distances_comp = np.sqrt(((comp_coords_regions - point)**2).sum(axis=1))
+    nearby_comps = (distances_comp < 0.3).sum()  # Within ~30km for regional coverage
+
+    # Combined score
+    score = dist_score * 10 + nearby_comps * 0.5
+    return score
+
+opportunity_scores_regions = np.array([calculate_opportunity_score_regions(point) for point in grid_points_regions])
+opportunity_scores_regions = opportunity_scores_regions.reshape(grid_resolution_regions, grid_resolution_regions)
+
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(18, 7))
+
+# Heatmap of opportunity scores for Regions
+im = ax1.contourf(long_grid_regions, lat_grid_regions, opportunity_scores_regions, levels=20, cmap='YlOrRd', alpha=0.8)
+if len(bob_coords_regions) > 0:
+    ax1.scatter(bob_coords_regions[:, 1], bob_coords_regions[:, 0], s=140, color='#e74c3c',
+               marker='s', edgecolors='black', linewidth=2.5, label='Bank of Baku', zorder=5)
+ax1.scatter(comp_coords_regions[:, 1], comp_coords_regions[:, 0], s=15, color='gray',
+           alpha=0.4, label='Competitors', edgecolors='white', linewidth=0.2)
+
+# Add major city labels for Regions on heatmap (selected major cities only to avoid clutter)
+major_regional_cities = ['Gəncə', 'Mingəçevir', 'Lənkəran', 'Şəki', 'Şirvan', 'Xaçmaz', 'Quba',
+                         'Naxçıvan', 'Zaqatala', 'Bərdə', 'Yevlax', 'Şamaxı', 'Masallı', 'Tovuz', 'Qazax', 'Şuşa']
+for city_name, (lat, lon) in regional_cities.items():
+    if city_name in major_regional_cities:
+        if region_lat_min <= lat <= region_lat_max and region_long_min <= lon <= region_long_max:
+            ax1.annotate(city_name, (lon, lat), fontsize=7, fontweight='bold', color='#2c3e50',
+                        ha='center', va='bottom', zorder=15,
+                        bbox=dict(boxstyle='round,pad=0.2', facecolor='white', edgecolor='#3498db', alpha=0.85))
+            ax1.scatter(lon, lat, s=50, color='#3498db', marker='o', edgecolors='white', linewidth=1.5, zorder=10)
+
+ax1.set_xlabel('Longitude', fontsize=11)
+ax1.set_ylabel('Latitude', fontsize=11)
+ax1.set_title('Regions (Outside Baku): Expansion Opportunity Heatmap\n(Warmer colors = higher opportunity)',
+             fontsize=13, fontweight='bold')
+ax1.legend(fontsize=9, frameon=True, fancybox=True, loc='upper right')
+ax1.grid(True, alpha=0.3, linestyle='--')
+ax1.set_facecolor('#f8f9fa')
+plt.colorbar(im, ax=ax1, label='Opportunity Score')
+
+# Top opportunity locations for Regions
+top_n_regions = 15
+flat_indices_regions = opportunity_scores_regions.flatten().argsort()[-top_n_regions:][::-1]
+top_opportunities_regions = grid_points_regions[flat_indices_regions]
+
+# Filter out any that accidentally fall in Baku area
+top_opportunities_regions = np.array([p for p in top_opportunities_regions
+                                       if not (baku_lat_min <= p[0] <= baku_lat_max and
+                                              baku_long_min <= p[1] <= baku_long_max)])[:top_n_regions]
+
+# Function to find nearest city for a regional coordinate
+def find_nearest_city_regions(lat, lon):
+    min_dist = float('inf')
+    nearest = "Unknown area"
+    for city_name, (city_lat, city_lon) in regional_cities.items():
+        dist = np.sqrt((lat - city_lat)**2 + (lon - city_lon)**2)
+        if dist < min_dist:
+            min_dist = dist
+            nearest = city_name
+    return nearest
+
+# Plot top opportunities for Regions
+ax2.scatter(df_regions['long'], df_regions['lat'], s=18, alpha=0.2, color='#95a5a6', label='Existing branches')
+if len(bob_coords_regions) > 0:
+    ax2.scatter(bob_coords_regions[:, 1], bob_coords_regions[:, 0], s=140, color='#e74c3c',
+               marker='s', edgecolors='black', linewidth=2.5, label='Bank of Baku', zorder=5)
+
+# Add major city labels for Regions on recommendations
+for city_name, (lat, lon) in regional_cities.items():
+    if city_name in major_regional_cities:
+        if region_lat_min <= lat <= region_lat_max and region_long_min <= lon <= region_long_max:
+            ax2.annotate(city_name, (lon, lat), fontsize=7, fontweight='bold', color='#2c3e50',
+                        ha='center', va='bottom', zorder=15,
+                        bbox=dict(boxstyle='round,pad=0.2', facecolor='white', edgecolor='#3498db', alpha=0.85))
+            ax2.scatter(lon, lat, s=50, color='#3498db', marker='o', edgecolors='white', linewidth=1.5, zorder=8)
+
+# Plot top 3 opportunities with markers, rest as small dots
+for i in range(len(top_opportunities_regions)):
+    lat, lon = top_opportunities_regions[i, 0], top_opportunities_regions[i, 1]
+    if i < 3:
+        # Top 3: diamond markers with numbers
+        ax2.scatter(lon, lat, s=200, color='#e74c3c', marker='D', edgecolors='white', linewidth=2, zorder=12)
+        ax2.annotate(str(i+1), (lon, lat), fontsize=9, fontweight='bold', ha='center', va='center',
+                    color='white', zorder=13)
+    else:
+        # Rest: small green dots
+        ax2.scatter(lon, lat, s=40, color='#27ae60', marker='o', edgecolors='white', linewidth=0.5, zorder=10, alpha=0.7)
+
+# Add dummy scatter for legend
+ax2.scatter([], [], s=120, color='#e74c3c', marker='D', edgecolors='white', linewidth=2, label='Top 3 priorities')
+ax2.scatter([], [], s=40, color='#27ae60', marker='o', edgecolors='white', linewidth=0.5, label='Other opportunities')
+
+ax2.set_xlabel('Longitude', fontsize=11)
+ax2.set_ylabel('Latitude', fontsize=11)
+ax2.set_title(f'Regions: Top {len(top_opportunities_regions)} Recommended Expansion Locations', fontsize=13, fontweight='bold')
+ax2.legend(fontsize=9, frameon=True, fancybox=True, shadow=True, loc='upper right')
+ax2.grid(True, alpha=0.3, linestyle='--')
+ax2.set_facecolor('#f8f9fa')
+
+plt.tight_layout()
+
+plt.savefig('charts/13b_growth_opportunity_regions.png', dpi=300, bbox_inches='tight')
+plt.close()
+
+print(f"✓ Chart 13b (Regions) saved")
+
+# Print top 5 Regional opportunities
+print("  Top 5 Regional expansion opportunities:")
+for i in range(min(5, len(top_opportunities_regions))):
+    print(f"    {i+1}. Lat: {top_opportunities_regions[i, 0]:.4f}, Long: {top_opportunities_regions[i, 1]:.4f}")
+print()
+
+# Print summary statistics
+print(f"  Summary:")
+print(f"    Baku-Absheron: {len(df_baku)} total branches, {len(bob_baku)} BoB branches")
+print(f"    Regions: {len(df_regions)} total branches, {len(bob_regions)} BoB branches")
 print()
 
 # ============================================================================
