@@ -113,7 +113,7 @@ export default function BankSelector({ selectedBank, onSelectBank }: BankSelecto
         {/* Individual Banks */}
         {filteredBanks.map(([bank, count], index) => {
           const isSelected = selectedBank === bank;
-          const isBankOfBaku = bank === 'Bank of Baku';
+          const isAzerTurkBank = bank === 'AzerTurk Bank';
           const rank = sortedBanks.findIndex(([b]) => b === bank) + 1;
 
           return (
@@ -123,7 +123,7 @@ export default function BankSelector({ selectedBank, onSelectBank }: BankSelecto
               style={{ animationDelay: `${index * 50}ms` }}
               className={`group w-full text-left px-4 py-3 rounded-xl transition-all duration-300 animate-slideIn ${
                 isSelected
-                  ? isBankOfBaku
+                  ? isAzerTurkBank
                     ? 'bg-gradient-to-r from-red-500 to-pink-500 text-white shadow-lg shadow-red-500/30 scale-105'
                     : 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-lg shadow-blue-500/30 scale-105'
                   : 'bg-white hover:bg-gray-50 text-gray-700 border border-gray-100 hover:border-gray-300 hover:shadow-md'
@@ -140,7 +140,7 @@ export default function BankSelector({ selectedBank, onSelectBank }: BankSelecto
                   </span>
                   <span className="text-sm font-semibold">{bank}</span>
                 </div>
-                {isBankOfBaku && !isSelected && (
+                {isAzerTurkBank && !isSelected && (
                   <span className="text-xs font-bold text-red-600 bg-red-50 px-2 py-0.5 rounded-md">
                     Focus
                   </span>

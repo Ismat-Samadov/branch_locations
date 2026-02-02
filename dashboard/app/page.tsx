@@ -32,8 +32,8 @@ export default function Home() {
   // Calculate statistics
   const totalBranches = branches.length;
   const totalBanks = new Set(branches.map((b) => b.bank_name)).size;
-  const bobBranches = branches.filter((b) => b.bank_name === 'Bank of Baku').length;
-  const marketShare = totalBranches > 0 ? ((bobBranches / totalBranches) * 100).toFixed(1) : '0';
+  const atbBranches = branches.filter((b) => b.bank_name === 'AzerTurk Bank').length;
+  const marketShare = totalBranches > 0 ? ((atbBranches / totalBranches) * 100).toFixed(1) : '0';
 
   // Get bank ranking
   const bankCounts: { [key: string]: number } = {};
@@ -41,7 +41,7 @@ export default function Home() {
     bankCounts[branch.bank_name] = (bankCounts[branch.bank_name] || 0) + 1;
   });
   const sortedBanks = Object.entries(bankCounts).sort((a, b) => b[1] - a[1]);
-  const bobRank = sortedBanks.findIndex(([bank]) => bank === 'Bank of Baku') + 1;
+  const atbRank = sortedBanks.findIndex(([bank]) => bank === 'AzerTurk Bank') + 1;
 
   if (loading) {
     return (
@@ -105,20 +105,20 @@ export default function Home() {
             tooltip="Total number of bank branches across all banks operating in Azerbaijan"
           />
           <StatsCard
-            title="Bank of Baku"
-            value={bobBranches}
-            subtitle={`Rank #${bobRank} in market`}
+            title="AzerTurk Bank"
+            value={atbBranches}
+            subtitle={`Rank #${atbRank} in market`}
             icon={Building2}
             color="red"
-            tooltip={`Bank of Baku has ${bobBranches} branches and is ranked #${bobRank} among ${totalBanks} banks`}
+            tooltip={`AzerTurk Bank has ${atbBranches} branches and is ranked #${atbRank} among ${totalBanks} banks`}
           />
           <StatsCard
             title="Market Share"
             value={`${marketShare}%`}
-            subtitle="Bank of Baku coverage"
+            subtitle="AzerTurk Bank coverage"
             icon={TrendingUp}
             color="green"
-            tooltip={`Bank of Baku controls ${marketShare}% of all bank branches in Azerbaijan`}
+            tooltip={`AzerTurk Bank controls ${marketShare}% of all bank branches in Azerbaijan`}
           />
           <StatsCard
             title="Banks"
@@ -188,7 +188,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Bank of Baku Highlight */}
+      {/* AzerTurk Bank Highlight */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 sm:mb-12 md:mb-16">
         <div className="glass rounded-xl sm:rounded-2xl p-5 sm:p-8 border border-white/30 bg-gradient-to-br from-red-50 to-pink-50">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6">
@@ -197,7 +197,7 @@ export default function Home() {
                 <Building2 className="w-8 h-8 sm:w-10 sm:h-10 text-white" strokeWidth={2.5} />
               </div>
               <div>
-                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-0.5 sm:mb-1">Bank of Baku</h3>
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-0.5 sm:mb-1">AzerTurk Bank</h3>
                 <p className="text-sm sm:text-base text-gray-600">Primary focus of this analysis</p>
               </div>
             </div>
@@ -205,14 +205,14 @@ export default function Home() {
             <div className="grid grid-cols-3 gap-3 sm:gap-6 text-center w-full md:w-auto">
               <div className="px-3 sm:px-6 py-2 sm:py-3 bg-white rounded-lg sm:rounded-xl shadow">
                 <div className="text-2xl sm:text-3xl font-extrabold bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent">
-                  {bobBranches}
+                  {atbBranches}
                 </div>
                 <div className="text-xs sm:text-sm text-gray-600 font-semibold">Branches</div>
               </div>
 
               <div className="px-3 sm:px-6 py-2 sm:py-3 bg-white rounded-lg sm:rounded-xl shadow">
                 <div className="text-2xl sm:text-3xl font-extrabold bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent">
-                  #{bobRank}
+                  #{atbRank}
                 </div>
                 <div className="text-xs sm:text-sm text-gray-600 font-semibold">Rank</div>
               </div>
@@ -233,8 +233,8 @@ export default function Home() {
         <FunFacts
           totalBranches={totalBranches}
           totalBanks={totalBanks}
-          bobBranches={bobBranches}
-          bobRank={bobRank}
+          atbBranches={atbBranches}
+          atbRank={atbRank}
           marketShare={marketShare}
         />
       )}

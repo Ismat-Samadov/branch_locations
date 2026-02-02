@@ -14,9 +14,9 @@ interface BranchMapProps {
   selectedBank?: string | null;
 }
 
-// Define color mapping for banks - Bank of Baku in distinct red, others in cool tones
+// Define color mapping for banks - AzerTurk Bank in distinct red, others in cool tones
 const bankColors: { [key: string]: string } = {
-  'Bank of Baku': '#FF0000',        // Bright red - highly distinct
+  'AzerTurk Bank': '#FF0000',       // Bright red - highly distinct
   'Kapital Bank': '#2196F3',        // Blue
   'ABB Bank': '#4CAF50',            // Green
   'Yelo Bank': '#FFC107',           // Amber/Yellow
@@ -103,11 +103,11 @@ export default function BranchMap({ selectedBank }: BranchMapProps) {
 
         {displayedBranches.map((branch, idx) => {
           const color = bankColors[branch.bank_name] || bankColors['default'];
-          const isBankOfBaku = branch.bank_name === 'Bank of Baku';
+          const isAzerTurkBank = branch.bank_name === 'AzerTurk Bank';
           const isSelected = selectedBank === branch.bank_name;
 
-          // Make Bank of Baku and selected banks larger
-          const isHighlighted = isBankOfBaku || isSelected;
+          // Make AzerTurk Bank and selected banks larger
+          const isHighlighted = isAzerTurkBank || isSelected;
 
           return (
             <Marker

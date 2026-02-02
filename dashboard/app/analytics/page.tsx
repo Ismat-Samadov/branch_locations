@@ -36,9 +36,9 @@ export default function AnalyticsPage() {
   const top5Banks = sortedBanks.slice(0, 5);
 
   const totalBranches = branches.length;
-  const bobBranches = branches.filter((b) => b.bank_name === 'Bank of Baku').length;
-  const bobRank = sortedBanks.findIndex(([bank]) => bank === 'Bank of Baku') + 1;
-  const marketShare = totalBranches > 0 ? ((bobBranches / totalBranches) * 100).toFixed(1) : '0';
+  const atbBranches = branches.filter((b) => b.bank_name === 'AzerTurk Bank').length;
+  const atbRank = sortedBanks.findIndex(([bank]) => bank === 'AzerTurk Bank') + 1;
+  const marketShare = totalBranches > 0 ? ((atbBranches / totalBranches) * 100).toFixed(1) : '0';
 
   if (loading) {
     return (
@@ -83,7 +83,7 @@ export default function AnalyticsPage() {
             <div className="space-y-4">
               {top5Banks.map(([bank, count], index) => {
                 const percentage = ((count / totalBranches) * 100).toFixed(1);
-                const isBankOfBaku = bank === 'Bank of Baku';
+                const isAzerTurkBank = bank === 'AzerTurk Bank';
 
                 return (
                   <div key={bank} className="group">
@@ -93,13 +93,13 @@ export default function AnalyticsPage() {
                           index === 0 ? 'bg-gradient-to-br from-yellow-500 to-orange-500' :
                           index === 1 ? 'bg-gradient-to-br from-gray-400 to-gray-500' :
                           index === 2 ? 'bg-gradient-to-br from-orange-600 to-orange-700' :
-                          isBankOfBaku ? 'bg-gradient-to-br from-red-500 to-pink-500' :
+                          isAzerTurkBank ? 'bg-gradient-to-br from-red-500 to-pink-500' :
                           'bg-gradient-to-br from-blue-500 to-cyan-500'
                         }`}>
                           #{index + 1}
                         </div>
                         <div>
-                          <p className={`font-bold text-lg ${isBankOfBaku ? 'text-red-600' : 'text-gray-900'}`}>
+                          <p className={`font-bold text-lg ${isAzerTurkBank ? 'text-red-600' : 'text-gray-900'}`}>
                             {bank}
                           </p>
                           <p className="text-sm text-gray-600">{count} branches • {percentage}% share</p>
@@ -116,7 +116,7 @@ export default function AnalyticsPage() {
                     <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
                       <div
                         className={`h-full rounded-full transition-all duration-500 ${
-                          isBankOfBaku
+                          isAzerTurkBank
                             ? 'bg-gradient-to-r from-red-500 to-pink-500'
                             : 'bg-gradient-to-r from-blue-500 to-cyan-500'
                         }`}
@@ -130,14 +130,14 @@ export default function AnalyticsPage() {
           </div>
         </section>
 
-        {/* Bank of Baku Insights */}
+        {/* AzerTurk Bank Insights */}
         <section className="mb-12">
           <div className="flex items-center space-x-3 mb-6">
             <div className="p-3 bg-gradient-to-br from-red-500 to-pink-500 rounded-xl shadow-lg">
               <Target className="w-6 h-6 text-white" strokeWidth={2.5} />
             </div>
             <h2 className="text-3xl font-extrabold bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent">
-              Bank of Baku Performance
+              AzerTurk Bank Performance
             </h2>
           </div>
 
@@ -146,7 +146,7 @@ export default function AnalyticsPage() {
               <div className="text-center">
                 <p className="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-2">Current Rank</p>
                 <p className="text-5xl font-extrabold bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent mb-2">
-                  #{bobRank}
+                  #{atbRank}
                 </p>
                 <p className="text-sm text-gray-600">Out of {sortedBanks.length} banks</p>
               </div>
@@ -156,7 +156,7 @@ export default function AnalyticsPage() {
               <div className="text-center">
                 <p className="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-2">Total Branches</p>
                 <p className="text-5xl font-extrabold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent mb-2">
-                  {bobBranches}
+                  {atbBranches}
                 </p>
                 <p className="text-sm text-gray-600">Physical locations</p>
               </div>
@@ -193,19 +193,19 @@ export default function AnalyticsPage() {
                   <div className="p-4 bg-blue-50 rounded-xl border border-blue-100">
                     <p className="text-sm text-gray-600 mb-1">To reach 5% market share</p>
                     <p className="text-2xl font-extrabold text-blue-600">
-                      +{Math.ceil((totalBranches * 0.05) - bobBranches)} branches needed
+                      +{Math.ceil((totalBranches * 0.05) - atbBranches)} branches needed
                     </p>
                   </div>
                   <div className="p-4 bg-purple-50 rounded-xl border border-purple-100">
                     <p className="text-sm text-gray-600 mb-1">To reach 10% market share</p>
                     <p className="text-2xl font-extrabold text-purple-600">
-                      +{Math.ceil((totalBranches * 0.10) - bobBranches)} branches needed
+                      +{Math.ceil((totalBranches * 0.10) - atbBranches)} branches needed
                     </p>
                   </div>
                   <div className="p-4 bg-green-50 rounded-xl border border-green-100">
                     <p className="text-sm text-gray-600 mb-1">To reach Top 5 position</p>
                     <p className="text-2xl font-extrabold text-green-600">
-                      +{Math.max(0, top5Banks[4][1] - bobBranches + 1)} branches needed
+                      +{Math.max(0, top5Banks[4][1] - atbBranches + 1)} branches needed
                     </p>
                   </div>
                 </div>

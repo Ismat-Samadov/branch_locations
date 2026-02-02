@@ -38,10 +38,10 @@
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     },
     {
-      "name": "Bank of Baku",
-      "short_name": "BoB",
-      "description": "View Bank of Baku branches",
-      "url": "/?filter=bob",
+      "name": "AzerTurk Bank",
+      "short_name": "ATB",
+      "description": "View AzerTurk Bank branches",
+      "url": "/?filter=atb",
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     }
   ]

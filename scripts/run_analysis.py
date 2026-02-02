@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 Bank Branch Network Analysis Script
-Generates all charts and analysis for Bank of Baku
+Generates all charts and analysis for AzerTurk Bank
 """
 
 import sys
@@ -32,7 +32,7 @@ plt.rcParams['font.size'] = 10
 
 print("=" * 80)
 print("BANK BRANCH NETWORK ANALYSIS")
-print("Focus: Strategic Insights for Bank of Baku")
+print("Focus: Strategic Insights for AzerTurk Bank")
 print("=" * 80)
 print()
 
@@ -58,12 +58,12 @@ print("Generating Chart 1: Branch Count Comparison...")
 fig, ax = plt.subplots(figsize=(14, 7))
 
 branch_counts = df['bank_name'].value_counts().sort_values(ascending=True)
-colors = ['#e74c3c' if bank == 'Bank of Baku' else '#3498db' for bank in branch_counts.index]
+colors = ['#e74c3c' if bank == 'AzerTurk Bank' else '#3498db' for bank in branch_counts.index]
 
 branch_counts.plot(kind='barh', ax=ax, color=colors)
 ax.set_xlabel('Number of Branches', fontsize=12, fontweight='bold')
 ax.set_ylabel('Bank Name', fontsize=12, fontweight='bold')
-ax.set_title('Branch Network Size Comparison - Bank of Baku vs Competitors',
+ax.set_title('Branch Network Size Comparison - AzerTurk Bank vs Competitors',
              fontsize=14, fontweight='bold', pad=20)
 
 # Add value labels
@@ -75,12 +75,12 @@ plt.savefig('charts/01_branch_count_comparison.png', dpi=300, bbox_inches='tight
 plt.close()
 
 # Key insight
-bob_count = df[df['bank_name'] == 'Bank of Baku'].shape[0]
+atb_count = df[df['bank_name'] == 'AzerTurk Bank'].shape[0]
 total_count = len(df)
-bob_rank = (df['bank_name'].value_counts() > bob_count).sum() + 1
+atb_rank = (df['bank_name'].value_counts() > atb_count).sum() + 1
 
 print(f"✓ Chart 1 saved")
-print(f"  Bank of Baku: {bob_count} branches, Rank #{bob_rank}, Market share: {bob_count/total_count*100:.1f}%")
+print(f"  AzerTurk Bank: {atb_count} branches, Rank #{atb_rank}, Market share: {atb_count/total_count*100:.1f}%")
 print()
 
 # ============================================================================
@@ -94,7 +94,7 @@ market_share = df['bank_name'].value_counts()
 
 # 1. Complete market ranking - horizontal bar chart (top left, spans 2 rows)
 ax1 = plt.subplot(gs[:, 0])
-colors_rank = ['#e74c3c' if bank == 'Bank of Baku' else '#3498db' for bank in market_share.index]
+colors_rank = ['#e74c3c' if bank == 'AzerTurk Bank' else '#3498db' for bank in market_share.index]
 y_pos = range(len(market_share))
 
 bars = ax1.barh(y_pos, market_share.values, color=colors_rank, edgecolor='black', linewidth=1.2, alpha=0.85)
@@ -111,7 +111,7 @@ for i, (bar, bank) in enumerate(zip(bars, market_share.index)):
     label = f'{int(width)} ({pct:.1f}%)'
     ax1.text(width + 3, bar.get_y() + bar.get_height()/2, label,
             ha='left', va='center', fontweight='bold', fontsize=10,
-            color='#e74c3c' if bank == 'Bank of Baku' else '#2c3e50')
+            color='#e74c3c' if bank == 'AzerTurk Bank' else '#2c3e50')
 
 ax1.grid(True, alpha=0.3, axis='x')
 ax1.set_xlim(0, market_share.max() * 1.15)
@@ -125,7 +125,7 @@ left = 0
 colors_stack = []
 labels_stack = []
 for bank in market_pct.index:
-    if bank == 'Bank of Baku':
+    if bank == 'AzerTurk Bank':
         color = '#e74c3c'
     elif market_pct[bank] >= 5:
         color = '#3498db'
@@ -151,16 +151,16 @@ ax2.set_title('Market Share Distribution', fontsize=14, fontweight='bold', pad=1
 ax2.set_yticks([])
 ax2.grid(True, alpha=0.3, axis='x')
 
-# 3. Bank of Baku vs Top 5 Competitors (bottom right)
+# 3. AzerTurk Bank vs Top 5 Competitors (bottom right)
 ax3 = plt.subplot(gs[1, 1])
 
-# Get top 5 competitors (excluding Bank of Baku if it's in top 5, then add it)
-top_competitors = market_share[market_share.index != 'Bank of Baku'].head(5)
-bob_value = market_share['Bank of Baku']
+# Get top 5 competitors (excluding AzerTurk Bank if it's in top 5, then add it)
+top_competitors = market_share[market_share.index != 'AzerTurk Bank'].head(5)
+atb_value = market_share['AzerTurk Bank']
 
 # Create comparison data
-comparison_banks = ['Bank of Baku'] + list(top_competitors.index[:5])
-comparison_values = [bob_value] + list(top_competitors.values[:5])
+comparison_banks = ['AzerTurk Bank'] + list(top_competitors.index[:5])
+comparison_values = [atb_value] + list(top_competitors.values[:5])
 comparison_pct = [v/total_count*100 for v in comparison_values]
 
 colors_comp = ['#e74c3c'] + ['#95a5a6'] * 5
@@ -171,7 +171,7 @@ bars = ax3.barh(y_pos_comp, comparison_values, color=colors_comp,
 ax3.set_yticks(y_pos_comp)
 ax3.set_yticklabels(comparison_banks, fontsize=11, fontweight='bold')
 ax3.set_xlabel('Number of Branches', fontsize=12, fontweight='bold')
-ax3.set_title('Bank of Baku vs Top 5 Competitors', fontsize=14, fontweight='bold', pad=15)
+ax3.set_title('AzerTurk Bank vs Top 5 Competitors', fontsize=14, fontweight='bold', pad=15)
 ax3.invert_yaxis()
 
 # Add value labels
@@ -194,7 +194,7 @@ if len(comparison_values) > 1:
                 ha='center',
                 arrowprops=dict(arrowstyle='->', color='#e74c3c', lw=2))
 
-plt.suptitle('Market Share Analysis - Bank of Baku Position',
+plt.suptitle('Market Share Analysis - AzerTurk Bank Position',
              fontsize=16, fontweight='bold', y=0.98)
 
 plt.savefig('charts/02_market_share_analysis.png', dpi=300, bbox_inches='tight')
@@ -211,7 +211,7 @@ fig, ax = plt.subplots(figsize=(18, 12))
 
 # Define distinct color palette for better visibility (20 distinct colors)
 distinct_colors = [
-    '#e74c3c',  # Red - Bank of Baku
+    '#e74c3c',  # Red - AzerTurk Bank
     '#3498db',  # Blue
     '#2ecc71',  # Green
     '#f39c12',  # Orange
@@ -244,8 +244,8 @@ bank_counts_sorted = df['bank_name'].value_counts()
 for idx, bank in enumerate(bank_counts_sorted.index):
     bank_data = df[df['bank_name'] == bank]
 
-    if bank == 'Bank of Baku':
-        # Bank of Baku - highlighted prominently
+    if bank == 'AzerTurk Bank':
+        # AzerTurk Bank - highlighted prominently
         ax.scatter(bank_data['long'], bank_data['lat'],
                   s=200, alpha=0.95, label=bank,
                   color=distinct_colors[0],
@@ -263,7 +263,7 @@ for idx, bank in enumerate(bank_counts_sorted.index):
 
 ax.set_xlabel('Longitude', fontsize=12, fontweight='bold')
 ax.set_ylabel('Latitude', fontsize=12, fontweight='bold')
-ax.set_title('Geographic Distribution of Bank Branches in Azerbaijan\\n(Bank of Baku highlighted as red squares)',
+ax.set_title('Geographic Distribution of Bank Branches in Azerbaijan\\n(AzerTurk Bank highlighted as red squares)',
              fontsize=14, fontweight='bold', pad=20)
 
 # Improved legend with branch counts
@@ -282,11 +282,11 @@ print(f"✓ Chart 3 saved")
 print()
 
 # ============================================================================
-# Chart 4: Bank of Baku vs top 3 competitors
+# Chart 4: AzerTurk Bank vs top 3 competitors
 # ============================================================================
-print("Generating Chart 4: Bank of Baku vs Top Competitors...")
+print("Generating Chart 4: AzerTurk Bank vs Top Competitors...")
 top_3_competitors = df['bank_name'].value_counts().head(3).index.tolist()
-comparison_banks = ['Bank of Baku'] + [b for b in top_3_competitors if b != 'Bank of Baku'][:3]
+comparison_banks = ['AzerTurk Bank'] + [b for b in top_3_competitors if b != 'AzerTurk Bank'][:3]
 
 fig, axes = plt.subplots(2, 2, figsize=(16, 14))
 axes = axes.flatten()
@@ -302,7 +302,7 @@ for idx, bank in enumerate(comparison_banks):
     # Highlight this bank
     bank_data = df[df['bank_name'] == bank]
     color = competitor_colors[idx]
-    marker = 's' if bank == 'Bank of Baku' else 'o'
+    marker = 's' if bank == 'AzerTurk Bank' else 'o'
 
     ax.scatter(bank_data['long'], bank_data['lat'],
               s=120, alpha=0.9, color=color, label=bank,
@@ -316,10 +316,10 @@ for idx, bank in enumerate(comparison_banks):
     ax.grid(True, alpha=0.3, linestyle='--')
     ax.set_facecolor('#f8f9fa')
 
-plt.suptitle('Geographic Coverage Comparison: Bank of Baku vs Top Competitors',
+plt.suptitle('Geographic Coverage Comparison: AzerTurk Bank vs Top Competitors',
              fontsize=16, fontweight='bold', y=1.00)
 plt.tight_layout()
-plt.savefig('charts/04_bob_vs_competitors_geographic.png', dpi=300, bbox_inches='tight')
+plt.savefig('charts/04_atb_vs_competitors_geographic.png', dpi=300, bbox_inches='tight')
 plt.close()
 
 print(f"✓ Chart 4 saved")
@@ -368,17 +368,17 @@ ax1.grid(True, alpha=0.3, linestyle='--')
 ax1.legend(bbox_to_anchor=(1.02, 1), loc='upper left', fontsize=8, ncol=1, frameon=True, fancybox=True)
 ax1.set_facecolor('#f8f9fa')
 
-# Bank of Baku presence in clusters
-bob_clusters = df[df['bank_name'] == 'Bank of Baku']['cluster'].value_counts().sort_index()
+# AzerTurk Bank presence in clusters
+atb_clusters = df[df['bank_name'] == 'AzerTurk Bank']['cluster'].value_counts().sort_index()
 all_clusters = df['cluster'].value_counts().sort_index()
 
 cluster_df = pd.DataFrame({
     'Total Branches': all_clusters,
-    'Bank of Baku': bob_clusters
+    'AzerTurk Bank': atb_clusters
 }).fillna(0)
 
 cluster_df.plot(kind='bar', ax=ax2, color=['#3498db', '#e74c3c'])
-ax2.set_title('Bank of Baku Presence by Regional Cluster', fontsize=14, fontweight='bold')
+ax2.set_title('AzerTurk Bank Presence by Regional Cluster', fontsize=14, fontweight='bold')
 ax2.set_xlabel('Cluster ID (-1 = outliers)', fontsize=11)
 ax2.set_ylabel('Number of Branches', fontsize=11)
 ax2.legend(fontsize=10)
@@ -423,7 +423,7 @@ for idx, bank in enumerate(baku_bank_counts.index):
     color_idx = idx % len(baku_distinct_colors)
     marker_idx = idx % len(baku_marker_styles)
 
-    if bank == 'Bank of Baku':
+    if bank == 'AzerTurk Bank':
         ax1.scatter(bank_data['long'], bank_data['lat'],
                    s=180, alpha=0.95, label=f'{bank} ({len(bank_data)})',
                    color=baku_distinct_colors[0],
@@ -437,7 +437,7 @@ for idx, bank in enumerate(baku_bank_counts.index):
 
 ax1.set_xlabel('Longitude', fontsize=11)
 ax1.set_ylabel('Latitude', fontsize=11)
-ax1.set_title('Baku City - Branch Distribution\n(Bank of Baku highlighted as red squares)',
+ax1.set_title('Baku City - Branch Distribution\n(AzerTurk Bank highlighted as red squares)',
              fontsize=14, fontweight='bold')
 ax1.legend(bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=8,
           frameon=True, fancybox=True, shadow=True)
@@ -446,7 +446,7 @@ ax1.set_facecolor('#f8f9fa')
 
 # Baku market share
 baku_counts = baku_df['bank_name'].value_counts()
-colors = ['#e74c3c' if bank == 'Bank of Baku' else '#3498db' for bank in baku_counts.index]
+colors = ['#e74c3c' if bank == 'AzerTurk Bank' else '#3498db' for bank in baku_counts.index]
 baku_counts.plot(kind='barh', ax=ax2, color=colors)
 ax2.set_xlabel('Number of Branches', fontsize=11)
 ax2.set_ylabel('Bank Name', fontsize=11)
@@ -459,11 +459,11 @@ plt.tight_layout()
 plt.savefig('charts/06_baku_city_analysis.png', dpi=300, bbox_inches='tight')
 plt.close()
 
-bob_baku = len(baku_df[baku_df['bank_name'] == 'Bank of Baku'])
+atb_baku = len(baku_df[baku_df['bank_name'] == 'AzerTurk Bank'])
 total_baku = len(baku_df)
 
 print(f"✓ Chart 6 saved")
-print(f"  Baku: {bob_baku} Bank of Baku branches out of {total_baku} total ({bob_baku/total_baku*100:.1f}%)")
+print(f"  Baku: {atb_baku} AzerTurk Bank branches out of {total_baku} total ({atb_baku/total_baku*100:.1f}%)")
 print()
 
 # ============================================================================
@@ -483,11 +483,11 @@ axes[0].set_ylabel('Number of Branches', fontsize=10)
 axes[0].tick_params(axis='x', rotation=45)
 axes[0].legend(title='Region')
 
-# Bank of Baku specific
-bob_region = df[df['bank_name'] == 'Bank of Baku']['region'].value_counts()
-bob_region.plot(kind='pie', ax=axes[1], autopct='%1.1f%%',
+# AzerTurk Bank specific
+atb_region = df[df['bank_name'] == 'AzerTurk Bank']['region'].value_counts()
+atb_region.plot(kind='pie', ax=axes[1], autopct='%1.1f%%',
                 colors=['#3498db', '#e74c3c'], startangle=90)
-axes[1].set_title('Bank of Baku: Baku vs Regions', fontsize=12, fontweight='bold')
+axes[1].set_title('AzerTurk Bank: Baku vs Regions', fontsize=12, fontweight='bold')
 axes[1].set_ylabel('')
 
 # Percentage in regions
@@ -524,20 +524,20 @@ plt.colorbar(scatter1, ax=ax1, label='Density')
 ax1.grid(True, alpha=0.3, linestyle='--')
 ax1.set_facecolor('#f8f9fa')
 
-# Bank of Baku branches overlaid on competition density
-competitors_df = df[df['bank_name'] != 'Bank of Baku']
+# AzerTurk Bank branches overlaid on competition density
+competitors_df = df[df['bank_name'] != 'AzerTurk Bank']
 xy_comp = np.vstack([competitors_df['long'], competitors_df['lat']])
 z_comp = gaussian_kde(xy_comp)(xy_comp)
 
 scatter2 = ax2.scatter(competitors_df['long'], competitors_df['lat'],
                        c=z_comp, s=40, cmap='Blues', alpha=0.5, edgecolors='white', linewidth=0.3)
-bob_df = df[df['bank_name'] == 'Bank of Baku']
-ax2.scatter(bob_df['long'], bob_df['lat'],
+atb_df = df[df['bank_name'] == 'AzerTurk Bank']
+ax2.scatter(atb_df['long'], atb_df['lat'],
            s=280, alpha=0.95, color='#e74c3c',
            edgecolors='black', linewidth=2.5, marker='*',
-           label='Bank of Baku', zorder=10)
+           label='AzerTurk Bank', zorder=10)
 
-ax2.set_title('Bank of Baku Locations vs Competitor Density', fontsize=14, fontweight='bold')
+ax2.set_title('AzerTurk Bank Locations vs Competitor Density', fontsize=14, fontweight='bold')
 ax2.set_xlabel('Longitude', fontsize=11)
 ax2.set_ylabel('Latitude', fontsize=11)
 plt.colorbar(scatter2, ax=ax2, label='Competitor Density')
@@ -556,15 +556,15 @@ print()
 # Chart 9: Gap Analysis - Underserved Areas
 # ============================================================================
 print("Generating Chart 9: Gap Analysis...")
-bob_coords = df[df['bank_name'] == 'Bank of Baku'][['lat', 'long']].values
-comp_coords = df[df['bank_name'] != 'Bank of Baku'][['lat', 'long']].values
-comp_banks = df[df['bank_name'] != 'Bank of Baku']['bank_name'].values
+atb_coords = df[df['bank_name'] == 'AzerTurk Bank'][['lat', 'long']].values
+comp_coords = df[df['bank_name'] != 'AzerTurk Bank'][['lat', 'long']].values
+comp_banks = df[df['bank_name'] != 'AzerTurk Bank']['bank_name'].values
 
-# Calculate distance to nearest Bank of Baku branch
-nbrs = NearestNeighbors(n_neighbors=1).fit(bob_coords)
+# Calculate distance to nearest AzerTurk Bank branch
+nbrs = NearestNeighbors(n_neighbors=1).fit(atb_coords)
 distances, indices = nbrs.kneighbors(comp_coords)
 
-# Create dataframe of competitor locations with their distance to nearest BoB
+# Create dataframe of competitor locations with their distance to nearest ATB
 gap_df = pd.DataFrame({
     'lat': comp_coords[:, 0],
     'long': comp_coords[:, 1],
@@ -579,16 +579,16 @@ fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(18, 7))
 
 # Map of gaps
 ax1.scatter(df['long'], df['lat'], s=20, alpha=0.2, color='gray', label='All branches')
-ax1.scatter(bob_coords[:, 1], bob_coords[:, 0],
+ax1.scatter(atb_coords[:, 1], atb_coords[:, 0],
            s=100, alpha=0.8, color='#e74c3c',
-           edgecolors='black', linewidth=1, marker='s', label='Bank of Baku', zorder=5)
+           edgecolors='black', linewidth=1, marker='s', label='AzerTurk Bank', zorder=5)
 ax1.scatter(gaps['long'], gaps['lat'],
            s=gaps['distance_to_bob']*200, alpha=0.6, color='#f39c12',
            edgecolors='black', linewidth=1, label='Gap opportunities', zorder=3)
 
 ax1.set_xlabel('Longitude', fontsize=11)
 ax1.set_ylabel('Latitude', fontsize=11)
-ax1.set_title('Market Gaps - Competitor Locations Far from Bank of Baku\\n(Larger circles = greater distance)',
+ax1.set_title('Market Gaps - Competitor Locations Far from AzerTurk Bank\\n(Larger circles = greater distance)',
              fontsize=13, fontweight='bold')
 ax1.legend(fontsize=10)
 ax1.grid(True, alpha=0.3)
@@ -624,10 +624,10 @@ for i, (y_pos, distance, bank) in enumerate(zip(y_positions, distances, top_gaps
 
 ax2.set_yticks(y_positions)
 ax2.set_yticklabels([f'#{i+1}' for i in range(len(top_gaps))], fontsize=10, fontweight='bold')
-ax2.set_xlabel('Distance to Nearest Bank of Baku Branch (degrees)\n[1° ≈ 111 km]',
+ax2.set_xlabel('Distance to Nearest AzerTurk Bank Branch (degrees)\n[1° ≈ 111 km]',
               fontsize=11, fontweight='bold')
 ax2.set_ylabel('Opportunity Rank', fontsize=11, fontweight='bold')
-ax2.set_title('Top 15 Expansion Opportunities by Distance\n(Greener bars = farther from BoB = higher priority)',
+ax2.set_title('Top 15 Expansion Opportunities by Distance\n(Greener bars = farther from ATB = higher priority)',
              fontsize=13, fontweight='bold')
 ax2.grid(True, alpha=0.3, axis='x', linestyle='--')
 ax2.set_facecolor('#f8f9fa')
@@ -652,16 +652,16 @@ print()
 # ============================================================================
 print("Generating Chart 10: Nearest Competitor Analysis...")
 nbrs_comp = NearestNeighbors(n_neighbors=1).fit(comp_coords)
-dist_to_comp, idx_comp = nbrs_comp.kneighbors(bob_coords)
+dist_to_comp, idx_comp = nbrs_comp.kneighbors(atb_coords)
 
-bob_analysis = df[df['bank_name'] == 'Bank of Baku'].copy()
-bob_analysis['dist_to_competitor'] = dist_to_comp.flatten()
-bob_analysis['nearest_competitor'] = [comp_banks[i] for i in idx_comp.flatten()]
+atb_analysis = df[df['bank_name'] == 'AzerTurk Bank'].copy()
+atb_analysis['dist_to_competitor'] = dist_to_comp.flatten()
+atb_analysis['nearest_competitor'] = [comp_banks[i] for i in idx_comp.flatten()]
 
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(18, 7))
 
 # Distribution of distances - Enhanced histogram
-n, bins, patches = ax1.hist(bob_analysis['dist_to_competitor'], bins=15,
+n, bins, patches = ax1.hist(atb_analysis['dist_to_competitor'], bins=15,
                              edgecolor='black', linewidth=1.5, alpha=0.85)
 
 # Color bars with gradient based on distance (closer = red, farther = green)
@@ -672,8 +672,8 @@ for i, patch in enumerate(patches):
     patch.set_facecolor(colors[i % len(colors)])
 
 # Add prominent mean and median lines
-mean_val = bob_analysis['dist_to_competitor'].mean()
-median_val = bob_analysis['dist_to_competitor'].median()
+mean_val = atb_analysis['dist_to_competitor'].mean()
+median_val = atb_analysis['dist_to_competitor'].median()
 
 ax1.axvline(mean_val, color='#e74c3c', linestyle='--', linewidth=3.5,
            label=f'Mean: {mean_val:.4f}° (~{mean_val*111:.1f}km)', zorder=10, alpha=0.9)
@@ -688,19 +688,19 @@ for i, (count, bin_edge) in enumerate(zip(n, bins[:-1])):
 
 ax1.set_xlabel('Distance to Nearest Competitor (degrees)\n[1° ≈ 111 km]',
               fontsize=11, fontweight='bold')
-ax1.set_ylabel('Number of Bank of Baku Branches', fontsize=11, fontweight='bold')
-ax1.set_title('Bank of Baku: Distance to Nearest Competitor Distribution\n(Redder bars = closer, Greener bars = farther)',
+ax1.set_ylabel('Number of AzerTurk Bank Branches', fontsize=11, fontweight='bold')
+ax1.set_title('AzerTurk Bank: Distance to Nearest Competitor Distribution\n(Redder bars = closer, Greener bars = farther)',
              fontsize=13, fontweight='bold')
 ax1.legend(fontsize=10, frameon=True, fancybox=True, shadow=True, loc='upper right')
 ax1.grid(True, alpha=0.3, axis='y', linestyle='--')
 ax1.set_facecolor('#f8f9fa')
 
 # Nearest competitor frequency
-nearest_comp_counts = bob_analysis['nearest_competitor'].value_counts()
+nearest_comp_counts = atb_analysis['nearest_competitor'].value_counts()
 nearest_comp_counts.plot(kind='barh', ax=ax2, color='#9b59b6')
 ax2.set_xlabel('Number of Times as Nearest Competitor', fontsize=11)
 ax2.set_ylabel('Bank Name', fontsize=11)
-ax2.set_title('Most Frequent Direct Competitors to Bank of Baku Branches',
+ax2.set_title('Most Frequent Direct Competitors to AzerTurk Bank Branches',
              fontsize=13, fontweight='bold')
 
 for i, v in enumerate(nearest_comp_counts.values):
@@ -751,7 +751,7 @@ intensity_comparison = pd.DataFrame([
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(18, 7))
 
 # Average competitive intensity
-colors = ['#e74c3c' if bank == 'Bank of Baku' else '#3498db'
+colors = ['#e74c3c' if bank == 'AzerTurk Bank' else '#3498db'
           for bank in intensity_comparison['Bank']]
 ax1.barh(intensity_comparison['Bank'], intensity_comparison['Avg_Competitors_Nearby'],
         color=colors)
@@ -762,9 +762,9 @@ ax1.set_title('Average Competitive Intensity by Bank', fontsize=13, fontweight='
 for i, v in enumerate(intensity_comparison['Avg_Competitors_Nearby'].values):
     ax1.text(v + 0.5, i, f'{v:.1f}', va='center', fontweight='bold')
 
-# Bank of Baku intensity distribution - Enhanced histogram
-bob_intensities = intensity_data['Bank of Baku']
-n, bins, patches = ax2.hist(bob_intensities, bins=15, edgecolor='black', linewidth=1.5, alpha=0.85)
+# AzerTurk Bank intensity distribution - Enhanced histogram
+atb_intensities = intensity_data['AzerTurk Bank']
+n, bins, patches = ax2.hist(atb_intensities, bins=15, edgecolor='black', linewidth=1.5, alpha=0.85)
 
 # Color bars with gradient: fewer competitors = green (good), more = red (high pressure)
 colors_intensity = ['#2ecc71', '#27ae60', '#16a085', '#1abc9c', '#3498db',
@@ -774,8 +774,8 @@ for i, patch in enumerate(patches):
     patch.set_facecolor(colors_intensity[i % len(colors_intensity)])
 
 # Add prominent mean and median lines
-mean_intensity = np.mean(bob_intensities)
-median_intensity = np.median(bob_intensities)
+mean_intensity = np.mean(atb_intensities)
+median_intensity = np.median(atb_intensities)
 
 ax2.axvline(mean_intensity, color='#e74c3c', linestyle='--', linewidth=3.5,
            label=f'Mean: {mean_intensity:.1f} competitors', zorder=10, alpha=0.9)
@@ -789,8 +789,8 @@ for i, (count, bin_edge) in enumerate(zip(n, bins[:-1])):
                 int(count), ha='center', va='bottom', fontweight='bold', fontsize=9)
 
 ax2.set_xlabel('Number of Competitors Within 10km', fontsize=11, fontweight='bold')
-ax2.set_ylabel('Number of Bank of Baku Branches', fontsize=11, fontweight='bold')
-ax2.set_title('Bank of Baku: Competitive Intensity Distribution\n(Greener bars = lower competition, Redder bars = higher competition)',
+ax2.set_ylabel('Number of AzerTurk Bank Branches', fontsize=11, fontweight='bold')
+ax2.set_title('AzerTurk Bank: Competitive Intensity Distribution\n(Greener bars = lower competition, Redder bars = higher competition)',
              fontsize=13, fontweight='bold')
 ax2.legend(fontsize=10, frameon=True, fancybox=True, shadow=True, loc='upper right')
 ax2.grid(True, alpha=0.3, axis='y', linestyle='--')
@@ -800,10 +800,10 @@ plt.tight_layout()
 plt.savefig('charts/11_competitive_intensity.png', dpi=300, bbox_inches='tight')
 plt.close()
 
-bob_avg_intensity = intensity_comparison[intensity_comparison['Bank'] == 'Bank of Baku']['Avg_Competitors_Nearby'].values[0]
+atb_avg_intensity = intensity_comparison[intensity_comparison['Bank'] == 'AzerTurk Bank']['Avg_Competitors_Nearby'].values[0]
 
 print(f"✓ Chart 11 saved")
-print(f"  Bank of Baku avg competitive intensity: {bob_avg_intensity:.1f} competitors within 10km")
+print(f"  AzerTurk Bank avg competitive intensity: {atb_avg_intensity:.1f} competitors within 10km")
 print()
 
 # ============================================================================
@@ -856,7 +856,7 @@ for zone, color in zone_colors.items():
     if len(zone_data) > 0:
         # Get dominant bank in this zone
         dominant_bank = zone_data['bank_name'].value_counts().index[0]
-        bob_count_zone = len(zone_data[zone_data['bank_name'] == 'Bank of Baku'])
+        atb_count_zone = len(zone_data[zone_data['bank_name'] == 'AzerTurk Bank'])
 
         # Plot all branches in this zone
         ax1.scatter(zone_data['long'], zone_data['lat'],
@@ -864,16 +864,16 @@ for zone, color in zone_colors.items():
                    label=f'{zone} ({len(zone_data)} br.)',
                    edgecolors='white', linewidth=0.5)
 
-# Highlight Bank of Baku branches on top
-bob_df = df[df['bank_name'] == 'Bank of Baku']
-ax1.scatter(bob_df['long'], bob_df['lat'],
+# Highlight AzerTurk Bank branches on top
+atb_df = df[df['bank_name'] == 'AzerTurk Bank']
+ax1.scatter(atb_df['long'], atb_df['lat'],
            s=200, alpha=0.95, color='#e74c3c',
            marker='s', edgecolors='black', linewidth=2.5,
-           label='Bank of Baku', zorder=100)
+           label='AzerTurk Bank', zorder=100)
 
 ax1.set_xlabel('Longitude', fontsize=11, fontweight='bold')
 ax1.set_ylabel('Latitude', fontsize=11, fontweight='bold')
-ax1.set_title('Azerbaijan Geographic Zones\n(Bank of Baku branches highlighted as red squares)',
+ax1.set_title('Azerbaijan Geographic Zones\n(AzerTurk Bank branches highlighted as red squares)',
              fontsize=14, fontweight='bold')
 ax1.legend(bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=9,
           frameon=True, fancybox=True, shadow=True)
@@ -889,15 +889,15 @@ for zone in zones_order:
     if len(zone_df) > 0:
         # Get top 3 banks in this zone
         top_banks_zone = zone_df['bank_name'].value_counts().head(3)
-        bob_count_zone = len(zone_df[zone_df['bank_name'] == 'Bank of Baku'])
-        bob_rank_zone = (zone_df['bank_name'].value_counts() > bob_count_zone).sum() + 1 if bob_count_zone > 0 else 0
+        atb_count_zone = len(zone_df[zone_df['bank_name'] == 'AzerTurk Bank'])
+        atb_rank_zone = (zone_df['bank_name'].value_counts() > atb_count_zone).sum() + 1 if atb_count_zone > 0 else 0
 
         zone_market_data.append({
             'Zone': zone,
             'Total': len(zone_df),
-            'BoB_Count': bob_count_zone,
-            'BoB_Share': (bob_count_zone / len(zone_df) * 100) if len(zone_df) > 0 else 0,
-            'BoB_Rank': bob_rank_zone if bob_count_zone > 0 else 'N/A',
+            'ATB_Count': atb_count_zone,
+            'ATB_Share': (atb_count_zone / len(zone_df) * 100) if len(zone_df) > 0 else 0,
+            'ATB_Rank': atb_rank_zone if atb_count_zone > 0 else 'N/A',
             'Leader': top_banks_zone.index[0] if len(top_banks_zone) > 0 else 'N/A',
             'Leader_Count': top_banks_zone.values[0] if len(top_banks_zone) > 0 else 0
         })
@@ -908,14 +908,14 @@ zone_analysis_df = pd.DataFrame(zone_market_data)
 x_pos = np.arange(len(zone_analysis_df))
 width = 0.35
 
-bars1 = ax2.bar(x_pos - width/2, zone_analysis_df['BoB_Count'], width,
-                label='Bank of Baku', color='#e74c3c', edgecolor='black', linewidth=1.2)
+bars1 = ax2.bar(x_pos - width/2, zone_analysis_df['ATB_Count'], width,
+                label='AzerTurk Bank', color='#e74c3c', edgecolor='black', linewidth=1.2)
 bars2 = ax2.bar(x_pos + width/2, zone_analysis_df['Leader_Count'], width,
                 label='Zone Leader', color='#3498db', edgecolor='black', linewidth=1.2, alpha=0.7)
 
 ax2.set_xlabel('Geographic Zone', fontsize=11, fontweight='bold')
 ax2.set_ylabel('Number of Branches', fontsize=11, fontweight='bold')
-ax2.set_title('Bank of Baku vs Zone Leaders\n(Comparison by region)',
+ax2.set_title('AzerTurk Bank vs Zone Leaders\n(Comparison by region)',
              fontsize=14, fontweight='bold')
 ax2.set_xticks(x_pos)
 ax2.set_xticklabels(zone_analysis_df['Zone'], rotation=45, ha='right', fontsize=10)
@@ -949,10 +949,10 @@ plt.close()
 print(f"✓ Chart 12 saved")
 print(f"  Regional Analysis:")
 for _, row in zone_analysis_df.iterrows():
-    if row['BoB_Count'] > 0:
-        print(f"    {row['Zone']:12s}: BoB has {int(row['BoB_Count'])} branches ({row['BoB_Share']:.1f}% share, Rank #{row['BoB_Rank']})")
+    if row['ATB_Count'] > 0:
+        print(f"    {row['Zone']:12s}: ATB has {int(row['ATB_Count'])} branches ({row['ATB_Share']:.1f}% share, Rank #{row['ATB_Rank']})")
     else:
-        print(f"    {row['Zone']:12s}: BoB has NO presence (Leader: {row['Leader']} with {int(row['Leader_Count'])} branches)")
+        print(f"    {row['Zone']:12s}: ATB has NO presence (Leader: {row['Leader']} with {int(row['Leader_Count'])} branches)")
 print()
 
 # ============================================================================
@@ -983,10 +983,10 @@ baku_cities = {
 # Filter data for Baku-Absheron
 df_baku = df[(df['lat'] >= baku_lat_min) & (df['lat'] <= baku_lat_max) &
              (df['long'] >= baku_long_min) & (df['long'] <= baku_long_max)]
-bob_baku = df_baku[df_baku['bank_name'] == 'Bank of Baku']
-comp_baku = df_baku[df_baku['bank_name'] != 'Bank of Baku']
+atb_baku = df_baku[df_baku['bank_name'] == 'AzerTurk Bank']
+comp_baku = df_baku[df_baku['bank_name'] != 'AzerTurk Bank']
 
-bob_coords_baku = bob_baku[['lat', 'long']].values if len(bob_baku) > 0 else np.array([[40.4, 49.85]])
+atb_coords_baku = atb_baku[['lat', 'long']].values if len(atb_baku) > 0 else np.array([[40.4, 49.85]])
 comp_coords_baku = comp_baku[['lat', 'long']].values
 
 # Create grid for Baku-Absheron
@@ -997,8 +997,8 @@ grid_points_baku = np.array([[lat, long] for lat in lat_grid_baku for long in lo
 
 # Calculate opportunity score for Baku-Absheron
 def calculate_opportunity_score_baku(point):
-    # Distance to nearest BoB branch (higher = better)
-    distances_bob = np.sqrt(((bob_coords_baku - point)**2).sum(axis=1))
+    # Distance to nearest ATB branch (higher = better)
+    distances_bob = np.sqrt(((atb_coords_baku - point)**2).sum(axis=1))
     dist_score = distances_bob.min()
 
     # Number of competitors nearby (higher = more demand) - smaller radius for urban area
@@ -1016,8 +1016,8 @@ fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(18, 7))
 
 # Heatmap of opportunity scores for Baku
 im = ax1.contourf(long_grid_baku, lat_grid_baku, opportunity_scores_baku, levels=20, cmap='YlOrRd', alpha=0.8)
-ax1.scatter(bob_coords_baku[:, 1], bob_coords_baku[:, 0], s=140, color='#e74c3c',
-           marker='s', edgecolors='black', linewidth=2.5, label='Bank of Baku', zorder=5)
+ax1.scatter(atb_coords_baku[:, 1], atb_coords_baku[:, 0], s=140, color='#e74c3c',
+           marker='s', edgecolors='black', linewidth=2.5, label='AzerTurk Bank', zorder=5)
 ax1.scatter(comp_coords_baku[:, 1], comp_coords_baku[:, 0], s=15, color='gray',
            alpha=0.4, label='Competitors', edgecolors='white', linewidth=0.2)
 
@@ -1056,8 +1056,8 @@ def find_nearest_city_baku(lat, lon):
 
 # Plot top opportunities for Baku
 ax2.scatter(df_baku['long'], df_baku['lat'], s=18, alpha=0.2, color='#95a5a6', label='Existing branches')
-ax2.scatter(bob_coords_baku[:, 1], bob_coords_baku[:, 0], s=140, color='#e74c3c',
-           marker='s', edgecolors='black', linewidth=2.5, label='Bank of Baku', zorder=5)
+ax2.scatter(atb_coords_baku[:, 1], atb_coords_baku[:, 0], s=140, color='#e74c3c',
+           marker='s', edgecolors='black', linewidth=2.5, label='AzerTurk Bank', zorder=5)
 
 # Add city labels for Baku-Absheron on recommendations
 for city_name, (lat, lon) in baku_cities.items():
@@ -1178,10 +1178,10 @@ regional_cities = {
 # Filter data for Regions (outside Baku-Absheron)
 df_regions = df[~((df['lat'] >= baku_lat_min) & (df['lat'] <= baku_lat_max) &
                   (df['long'] >= baku_long_min) & (df['long'] <= baku_long_max))]
-bob_regions = df_regions[df_regions['bank_name'] == 'Bank of Baku']
-comp_regions = df_regions[df_regions['bank_name'] != 'Bank of Baku']
+atb_regions = df_regions[df_regions['bank_name'] == 'AzerTurk Bank']
+comp_regions = df_regions[df_regions['bank_name'] != 'AzerTurk Bank']
 
-bob_coords_regions = bob_regions[['lat', 'long']].values if len(bob_regions) > 0 else np.array([[40.0, 48.0]])
+atb_coords_regions = atb_regions[['lat', 'long']].values if len(atb_regions) > 0 else np.array([[40.0, 48.0]])
 comp_coords_regions = comp_regions[['lat', 'long']].values
 
 # Create grid for Regions (entire Azerbaijan minus Baku)
@@ -1199,12 +1199,12 @@ def calculate_opportunity_score_regions(point):
     if (baku_lat_min <= point[0] <= baku_lat_max and baku_long_min <= point[1] <= baku_long_max):
         return 0
 
-    # Distance to nearest BoB branch (higher = better)
-    if len(bob_coords_regions) > 0:
-        distances_bob = np.sqrt(((bob_coords_regions - point)**2).sum(axis=1))
+    # Distance to nearest ATB branch (higher = better)
+    if len(atb_coords_regions) > 0:
+        distances_bob = np.sqrt(((atb_coords_regions - point)**2).sum(axis=1))
         dist_score = distances_bob.min()
     else:
-        dist_score = 2.0  # High score if no BoB presence in regions
+        dist_score = 2.0  # High score if no ATB presence in regions
 
     # Number of competitors nearby (higher = more demand) - larger radius for rural areas
     distances_comp = np.sqrt(((comp_coords_regions - point)**2).sum(axis=1))
@@ -1221,9 +1221,9 @@ fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(18, 7))
 
 # Heatmap of opportunity scores for Regions
 im = ax1.contourf(long_grid_regions, lat_grid_regions, opportunity_scores_regions, levels=20, cmap='YlOrRd', alpha=0.8)
-if len(bob_coords_regions) > 0:
-    ax1.scatter(bob_coords_regions[:, 1], bob_coords_regions[:, 0], s=140, color='#e74c3c',
-               marker='s', edgecolors='black', linewidth=2.5, label='Bank of Baku', zorder=5)
+if len(atb_coords_regions) > 0:
+    ax1.scatter(atb_coords_regions[:, 1], atb_coords_regions[:, 0], s=140, color='#e74c3c',
+               marker='s', edgecolors='black', linewidth=2.5, label='AzerTurk Bank', zorder=5)
 ax1.scatter(comp_coords_regions[:, 1], comp_coords_regions[:, 0], s=15, color='gray',
            alpha=0.4, label='Competitors', edgecolors='white', linewidth=0.2)
 
@@ -1270,9 +1270,9 @@ def find_nearest_city_regions(lat, lon):
 
 # Plot top opportunities for Regions
 ax2.scatter(df_regions['long'], df_regions['lat'], s=18, alpha=0.2, color='#95a5a6', label='Existing branches')
-if len(bob_coords_regions) > 0:
-    ax2.scatter(bob_coords_regions[:, 1], bob_coords_regions[:, 0], s=140, color='#e74c3c',
-               marker='s', edgecolors='black', linewidth=2.5, label='Bank of Baku', zorder=5)
+if len(atb_coords_regions) > 0:
+    ax2.scatter(atb_coords_regions[:, 1], atb_coords_regions[:, 0], s=140, color='#e74c3c',
+               marker='s', edgecolors='black', linewidth=2.5, label='AzerTurk Bank', zorder=5)
 
 # Add major city labels for Regions on recommendations
 for city_name, (lat, lon) in regional_cities.items():
@@ -1321,8 +1321,8 @@ print()
 
 # Print summary statistics
 print(f"  Summary:")
-print(f"    Baku-Absheron: {len(df_baku)} total branches, {len(bob_baku)} BoB branches")
-print(f"    Regions: {len(df_regions)} total branches, {len(bob_regions)} BoB branches")
+print(f"    Baku-Absheron: {len(df_baku)} total branches, {len(atb_baku)} ATB branches")
+print(f"    Regions: {len(df_regions)} total branches, {len(atb_regions)} ATB branches")
 print()
 
 # ============================================================================
@@ -1331,8 +1331,8 @@ print()
 print("Generating Chart 14: Multi-Metric Comparison...")
 
 top_5_banks = df['bank_name'].value_counts().head(5).index
-if 'Bank of Baku' not in top_5_banks:
-    comparison_banks = list(top_5_banks[:4]) + ['Bank of Baku']
+if 'AzerTurk Bank' not in top_5_banks:
+    comparison_banks = list(top_5_banks[:4]) + ['AzerTurk Bank']
 else:
     comparison_banks = list(top_5_banks)
 
@@ -1386,7 +1386,7 @@ for idx, row in metrics_normalized.iterrows():
                  'Avg_Competitive_Intensity']].values.tolist()
     values += values[:1]
 
-    if row['Bank'] == 'Bank of Baku':
+    if row['Bank'] == 'AzerTurk Bank':
         ax1.plot(angles, values, 'o-', linewidth=3, label=row['Bank'], color='#e74c3c')
         ax1.fill(angles, values, alpha=0.15, color='#e74c3c')
     else:
@@ -1395,7 +1395,7 @@ for idx, row in metrics_normalized.iterrows():
 ax1.set_xticks(angles[:-1])
 ax1.set_xticklabels(categories, fontsize=10)
 ax1.set_ylim(0, 100)
-ax1.set_title('Multi-Metric Comparison: Bank of Baku vs Leaders\\n(Normalized to 100)',
+ax1.set_title('Multi-Metric Comparison: AzerTurk Bank vs Leaders\\n(Normalized to 100)',
              fontsize=13, fontweight='bold', pad=20)
 ax1.legend(loc='upper right', bbox_to_anchor=(1.3, 1.1), fontsize=9)
 ax1.grid(True)
@@ -1424,9 +1424,9 @@ table.auto_set_font_size(False)
 table.set_fontsize(10)
 table.scale(1, 2)
 
-# Color Bank of Baku row
+# Color AzerTurk Bank row
 for i, row in enumerate(table_data):
-    if row[0] == 'Bank of Baku':
+    if row[0] == 'AzerTurk Bank':
         for j in range(5):
             table[(i+1, j)].set_facecolor('#ffcccc')
 
@@ -1455,7 +1455,7 @@ gs = fig.add_gridspec(2, 3, hspace=0.35, wspace=0.35)
 # 1. Market Position Ranking
 ax1 = fig.add_subplot(gs[0, 0])
 top_banks = df['bank_name'].value_counts().head(8)
-colors_rank = ['#e74c3c' if bank == 'Bank of Baku' else '#95a5a6' for bank in top_banks.index]
+colors_rank = ['#e74c3c' if bank == 'AzerTurk Bank' else '#95a5a6' for bank in top_banks.index]
 bars = ax1.barh(range(len(top_banks)), top_banks.values, color=colors_rank, edgecolor='black', linewidth=1.2)
 ax1.set_yticks(range(len(top_banks)))
 ax1.set_yticklabels([f'#{i+1}. {bank}' for i, bank in enumerate(top_banks.index)], fontsize=10)
@@ -1470,7 +1470,7 @@ ax1.grid(True, alpha=0.3, axis='x')
 ax2 = fig.add_subplot(gs[0, 1])
 metric_comparison = pd.DataFrame({
     'Metric': ['Branches', 'Market\nShare %', 'Regional\nCoverage %'],
-    'Bank of Baku': [bob_count, bob_count/total_count*100, bob_region['Regions']/bob_count*100],
+    'AzerTurk Bank': [atb_count, atb_count/total_count*100, atb_region['Regions']/atb_count*100],
     'Industry Avg': [
         df.groupby('bank_name').size().mean(),
         100/df['bank_name'].nunique(),
@@ -1480,12 +1480,12 @@ metric_comparison = pd.DataFrame({
 
 x = np.arange(len(metric_comparison))
 width = 0.35
-bars1 = ax2.bar(x - width/2, metric_comparison['Bank of Baku'], width, label='Bank of Baku',
+bars1 = ax2.bar(x - width/2, metric_comparison['AzerTurk Bank'], width, label='AzerTurk Bank',
                 color='#e74c3c', edgecolor='black', linewidth=1.2)
 bars2 = ax2.bar(x + width/2, metric_comparison['Industry Avg'], width, label='Industry Avg',
                 color='#3498db', edgecolor='black', linewidth=1.2)
 ax2.set_ylabel('Value', fontsize=11, fontweight='bold')
-ax2.set_title('Bank of Baku vs Industry Average', fontsize=12, fontweight='bold')
+ax2.set_title('AzerTurk Bank vs Industry Average', fontsize=12, fontweight='bold')
 ax2.set_xticks(x)
 ax2.set_xticklabels(metric_comparison['Metric'], fontsize=10)
 ax2.legend(fontsize=10, loc='upper right')
@@ -1500,13 +1500,13 @@ for bars in [bars1, bars2]:
 
 # 3. Expansion Opportunities
 ax3 = fig.add_subplot(gs[0, 2])
-cluster_df['BoB_Share'] = (cluster_df['Bank of Baku'] / cluster_df['Total Branches'] * 100).fillna(0)
+cluster_df['ATB_Share'] = (cluster_df['AzerTurk Bank'] / cluster_df['Total Branches'] * 100).fillna(0)
 opportunity_summary = pd.DataFrame({
     'Category': ['High Gap\nAreas', 'Underserved\nClusters', 'Regional\nGap'],
     'Count': [
         len(gaps),
-        (cluster_df['BoB_Share'] < 5).sum(),
-        df.groupby('bank_name')['region'].apply(lambda x: (x=='Regions').sum()).max() - bob_region['Regions']
+        (cluster_df['ATB_Share'] < 5).sum(),
+        df.groupby('bank_name')['region'].apply(lambda x: (x=='Regions').sum()).max() - atb_region['Regions']
     ]
 })
 
@@ -1524,17 +1524,17 @@ ax3.grid(True, alpha=0.3, axis='y')
 
 # 4. Baku vs Regional Distribution
 ax4 = fig.add_subplot(gs[1, 0])
-bob_region_pct = bob_region / bob_count * 100
+atb_region_pct = atb_region / atb_count * 100
 colors_region = ['#3498db', '#e74c3c']
 explode_region = [0.05, 0.05]
-wedges, texts, autotexts = ax4.pie(bob_region_pct.values,
-                                     labels=bob_region_pct.index,
-                                     autopct=lambda pct: f'{pct:.1f}%\n({int(pct/100*bob_count)} br.)',
+wedges, texts, autotexts = ax4.pie(atb_region_pct.values,
+                                     labels=atb_region_pct.index,
+                                     autopct=lambda pct: f'{pct:.1f}%\n({int(pct/100*atb_count)} br.)',
                                      colors=colors_region,
                                      explode=explode_region,
                                      startangle=90,
                                      textprops={'fontsize': 11, 'fontweight': 'bold'})
-ax4.set_title('Bank of Baku: Geographic Distribution', fontsize=12, fontweight='bold')
+ax4.set_title('AzerTurk Bank: Geographic Distribution', fontsize=12, fontweight='bold')
 
 # 5. Direct Competitors
 ax5 = fig.add_subplot(gs[1, 1])
@@ -1550,18 +1550,18 @@ ax5.set_title('Most Frequent Direct Competitors', fontsize=12, fontweight='bold'
 
 # 6. Competitive Intensity Distribution
 ax6 = fig.add_subplot(gs[1, 2])
-bob_intensities = intensity_data['Bank of Baku']
-ax6.hist(bob_intensities, bins=12, color='#e74c3c', alpha=0.7,
+atb_intensities = intensity_data['AzerTurk Bank']
+ax6.hist(atb_intensities, bins=12, color='#e74c3c', alpha=0.7,
         edgecolor='black', linewidth=1.5)
-ax6.axvline(np.mean(bob_intensities), color='black', linestyle='--',
-           linewidth=2.5, label=f'Mean: {np.mean(bob_intensities):.1f}', zorder=5)
+ax6.axvline(np.mean(atb_intensities), color='black', linestyle='--',
+           linewidth=2.5, label=f'Mean: {np.mean(atb_intensities):.1f}', zorder=5)
 ax6.set_xlabel('Competitors Within 10km Radius', fontsize=11, fontweight='bold')
-ax6.set_ylabel('Number of BoB Branches', fontsize=11, fontweight='bold')
+ax6.set_ylabel('Number of ATB Branches', fontsize=11, fontweight='bold')
 ax6.set_title('Competitive Intensity Distribution', fontsize=12, fontweight='bold')
 ax6.legend(fontsize=10, loc='upper right')
 ax6.grid(True, alpha=0.3, axis='y')
 
-plt.suptitle('Bank of Baku - Executive Summary Dashboard',
+plt.suptitle('AzerTurk Bank - Executive Summary Dashboard',
              fontsize=16, fontweight='bold', y=0.98)
 plt.savefig('charts/15_executive_summary_dashboard.png', dpi=300, bbox_inches='tight')
 plt.close()
@@ -1584,20 +1584,20 @@ EXECUTIVE SUMMARY
 ================================================================================
 
 CURRENT MARKET POSITION:
-• Market Rank: #{bob_rank} out of {df['bank_name'].nunique()} banks
-• Total Branches: {bob_count}
-• Market Share: {bob_count/total_count*100:.1f}%
-• Gap to Market Leader (Kapital Bank): {branch_counts.max() - bob_count} branches
+• Market Rank: #{atb_rank} out of {df['bank_name'].nunique()} banks
+• Total Branches: {atb_count}
+• Market Share: {atb_count/total_count*100:.1f}%
+• Gap to Market Leader (Kapital Bank): {branch_counts.max() - atb_count} branches
 
 GEOGRAPHIC FOOTPRINT:
-• Baku Concentration: {bob_region['Baku']}/{bob_count} branches ({bob_region['Baku']/bob_count*100:.1f}%)
-• Regional Presence: {bob_region['Regions']}/{bob_count} branches ({bob_region['Regions']/bob_count*100:.1f}%)
-• Average Competitive Intensity: {bob_avg_intensity:.1f} competitors within 10km radius
+• Baku Concentration: {atb_region['Baku']}/{atb_count} branches ({atb_region['Baku']/atb_count*100:.1f}%)
+• Regional Presence: {atb_region['Regions']}/{atb_count} branches ({atb_region['Regions']/atb_count*100:.1f}%)
+• Average Competitive Intensity: {atb_avg_intensity:.1f} competitors within 10km radius
 
 COMPETITIVE LANDSCAPE:
 • Most Frequent Direct Competitors: {', '.join(nearest_comp_counts.head(3).index.tolist())}
-• Average Distance to Nearest Competitor: {bob_analysis['dist_to_competitor'].mean():.4f}° (~{bob_analysis['dist_to_competitor'].mean()*111:.1f}km)
-• Total Market Competitors Identified: {len(gaps)} competitor locations >30km from nearest BoB branch
+• Average Distance to Nearest Competitor: {atb_analysis['dist_to_competitor'].mean():.4f}° (~{atb_analysis['dist_to_competitor'].mean()*111:.1f}km)
+• Total Market Competitors Identified: {len(gaps)} competitor locations >30km from nearest ATB branch
 
 ================================================================================
 STRATEGIC RECOMMENDATIONS
@@ -1606,14 +1606,14 @@ STRATEGIC RECOMMENDATIONS
 1. REGIONAL EXPANSION (PRIORITY: HIGH)
 
    Current Situation:
-   • Bank of Baku's regional coverage ({bob_region['Regions']/bob_count*100:.1f}%) is significantly below
+   • AzerTurk Bank's regional coverage ({atb_region['Regions']/atb_count*100:.1f}%) is significantly below
      the industry average ({df.groupby('bank_name')['region'].apply(lambda x: (x=='Regions').sum()/len(x)*100).mean():.1f}%)
-   • Heavy concentration in Baku ({bob_region['Baku']/bob_count*100:.1f}%) limits growth potential
-   • {len(gaps)} high-potential locations identified where competitors operate without BoB presence
+   • Heavy concentration in Baku ({atb_region['Baku']/atb_count*100:.1f}%) limits growth potential
+   • {len(gaps)} high-potential locations identified where competitors operate without ATB presence
 
    Recommended Actions:
    • Prioritize expansion into regional cities with existing competitor presence
-   • Focus on underserved clusters where BoB market share is below 5%
+   • Focus on underserved clusters where ATB market share is below 5%
    • Target cities like: Ganja, Sumqayit, Lankaran, Mingachevir, Shirvan
    • Allocate 60% of new branch budget to regional expansion
 
@@ -1625,31 +1625,31 @@ STRATEGIC RECOMMENDATIONS
 2. STRATEGIC LOCATION SELECTION (PRIORITY: HIGH)
 
    Current Situation:
-   • Gap Analysis identified {len(gaps)} competitor locations far from BoB branches
+   • Gap Analysis identified {len(gaps)} competitor locations far from ATB branches
    • Growth Opportunity Score analysis pinpointed top 20 optimal expansion coordinates
-   • Current branches face high competitive intensity ({bob_avg_intensity:.1f} competitors within 10km)
+   • Current branches face high competitive intensity ({atb_avg_intensity:.1f} competitors within 10km)
 
    Recommended Actions:
    • Use the Growth Opportunity Heatmap (Chart 13) to identify specific coordinates
-   • Balance two factors: (a) distance from existing BoB branches, (b) proximity to competitor activity
-   • Prioritize locations with distance >0.3° from nearest BoB branch
+   • Balance two factors: (a) distance from existing ATB branches, (b) proximity to competitor activity
+   • Prioritize locations with distance >0.3° from nearest ATB branch
    • Focus on areas with moderate competitor presence (indicates demand but not oversaturation)
 
    Top Expansion Locations:
    (Refer to Chart 13 for precise coordinates of top 20 opportunities)
    • Locations are ranked by combined score of market gap and competitor density
-   • Each location represents validated market demand (competitor presence) without BoB coverage
+   • Each location represents validated market demand (competitor presence) without ATB coverage
 
    Expected Impact:
    • Capture market share in underserved areas before competitors expand
-   • Reduce customer travel distance to nearest BoB branch
+   • Reduce customer travel distance to nearest ATB branch
    • Optimal resource allocation with data-driven site selection
 
 3. COMPETITIVE POSITIONING (PRIORITY: MEDIUM)
 
    Current Situation:
    • Main competitors in proximity: {', '.join(nearest_top5.index[:3].tolist())}
-   • Average {bob_avg_intensity:.1f} competitors within 10km of each BoB branch
+   • Average {atb_avg_intensity:.1f} competitors within 10km of each ATB branch
    • High competitive intensity in Baku market
 
    Recommended Actions:
@@ -1666,23 +1666,23 @@ STRATEGIC RECOMMENDATIONS
 4. MARKET SHARE GROWTH PATH (PRIORITY: MEDIUM)
 
    Current Situation:
-   • Current market share: {bob_count/total_count*100:.1f}%
-   • To reach 10% market share: Need {int(total_count * 0.10) - bob_count} additional branches
-   • To match #5 position: Need {sorted(branch_counts.values, reverse=True)[4] - bob_count} additional branches
+   • Current market share: {atb_count/total_count*100:.1f}%
+   • To reach 10% market share: Need {int(total_count * 0.10) - atb_count} additional branches
+   • To match #5 position: Need {sorted(branch_counts.values, reverse=True)[4] - atb_count} additional branches
 
    Recommended Growth Strategy:
 
-   Phase 1 (Year 1): Add {int((int(total_count * 0.10) - bob_count) * 0.4)} branches
+   Phase 1 (Year 1): Add {int((int(total_count * 0.10) - atb_count) * 0.4)} branches
    • 60% in regional areas (identified gap locations)
    • 40% in Baku suburbs (underserved neighborhoods)
    • Focus on quick wins with existing infrastructure support
 
-   Phase 2 (Year 2): Add {int((int(total_count * 0.10) - bob_count) * 0.35)} branches
+   Phase 2 (Year 2): Add {int((int(total_count * 0.10) - atb_count) * 0.35)} branches
    • Continue regional expansion
    • Enter new regional clusters identified in cluster analysis
    • Evaluate Phase 1 performance and adjust strategy
 
-   Phase 3 (Year 3): Add {int((int(total_count * 0.10) - bob_count) * 0.25)} branches
+   Phase 3 (Year 3): Add {int((int(total_count * 0.10) - atb_count) * 0.25)} branches
    • Fill remaining gaps in network coverage
    • Optimize branch network based on performance data
    • Consider branch format innovation (micro-branches, mobile branches)
@@ -1700,7 +1700,7 @@ STRATEGIC RECOMMENDATIONS
    • Digital channels can extend reach without physical expansion
 
    Recommended Actions:
-   • Conduct performance audit of existing {bob_count} branches
+   • Conduct performance audit of existing {atb_count} branches
    • Identify underperforming branches (bottom quartile by revenue/customers)
    • Consider relocating 2-3 underperforming branches to gap areas
    • Invest in digital banking to serve customers in areas without branches
@@ -1722,7 +1722,7 @@ KEY PERFORMANCE INDICATORS TO TRACK
 
 2. Geographic Coverage:
    • Regional branch percentage (target: >40% within 2 years)
-   • Number of cities with BoB presence
+   • Number of cities with ATB presence
    • Average customer distance to nearest branch
 
 3. Competitive Metrics:
@@ -1739,22 +1739,22 @@ KEY PERFORMANCE INDICATORS TO TRACK
 CONCLUSION
 ================================================================================
 
-Bank of Baku currently holds a modest position in the Azerbaijan banking market
-with {bob_count} branches ({bob_count/total_count*100:.1f}% market share, ranked #{bob_rank}). However, significant
+AzerTurk Bank currently holds a modest position in the Azerbaijan banking market
+with {atb_count} branches ({atb_count/total_count*100:.1f}% market share, ranked #{atb_rank}). However, significant
 growth opportunities exist:
 
 STRENGTHS:
-✓ Strong presence in Baku ({bob_region['Baku']} branches)
+✓ Strong presence in Baku ({atb_region['Baku']} branches)
 ✓ Established brand and infrastructure
 ✓ Opportunities for strategic expansion with minimal direct competition
 
 OPPORTUNITIES:
-✓ {len(gaps)} identified gap locations with competitor presence but no BoB branch
-✓ Regional markets significantly underserved (only {bob_region['Regions']/bob_count*100:.1f}% of branches)
-✓ Clear path to 10% market share with {int(total_count * 0.10) - bob_count} strategic branch additions
+✓ {len(gaps)} identified gap locations with competitor presence but no ATB branch
+✓ Regional markets significantly underserved (only {atb_region['Regions']/atb_count*100:.1f}% of branches)
+✓ Clear path to 10% market share with {int(total_count * 0.10) - atb_count} strategic branch additions
 
 CHALLENGES:
-⚠ High competitive intensity in Baku ({bob_avg_intensity:.1f} competitors per branch within 10km)
+⚠ High competitive intensity in Baku ({atb_avg_intensity:.1f} competitors per branch within 10km)
 ⚠ Below-average regional coverage compared to competitors
 ⚠ Significant gap to market leaders (Kapital Bank: {branch_counts.max()} branches)
 
@@ -1799,7 +1799,7 @@ print("Charts generated:")
 print("  1. Branch Count Comparison")
 print("  2. Market Share Analysis")
 print("  3. Geographic Distribution - All Banks")
-print("  4. Bank of Baku vs Top Competitors")
+print("  4. AzerTurk Bank vs Top Competitors")
 print("  5. Regional Clustering Analysis")
 print("  6. Baku City Analysis")
 print("  7. Baku vs Regions Coverage")
@@ -1815,9 +1815,9 @@ print()
 print("=" * 80)
 print("KEY INSIGHTS FOR BANK OF BAKU:")
 print("=" * 80)
-print(f"• Current Position: Rank #{bob_rank} with {bob_count} branches ({bob_count/total_count*100:.1f}% market share)")
-print(f"• Baku Concentration: {bob_region['Baku']/bob_count*100:.1f}% of branches")
+print(f"• Current Position: Rank #{atb_rank} with {atb_count} branches ({atb_count/total_count*100:.1f}% market share)")
+print(f"• Baku Concentration: {atb_region['Baku']/atb_count*100:.1f}% of branches")
 print(f"• Expansion Opportunities: {len(gaps)} high-potential locations identified")
-print(f"• Competitive Intensity: {bob_avg_intensity:.1f} competitors within 10km average")
-print(f"• Growth Target: {int(total_count * 0.10) - bob_count} branches needed for 10% market share")
+print(f"• Competitive Intensity: {atb_avg_intensity:.1f} competitors within 10km average")
+print(f"• Growth Target: {int(total_count * 0.10) - atb_count} branches needed for 10% market share")
 print("=" * 80)

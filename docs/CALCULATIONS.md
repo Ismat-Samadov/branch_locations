@@ -1,7 +1,7 @@
 # Bank Branch Network Analysis - Calculation Methodology
 
 **Project:** Azerbaijan Bank Branch Analysis
-**Focus:** Strategic Insights for Bank of Baku
+**Focus:** Strategic Insights for AzerTurk Bank
 **Data Source:** `data/combined_atms.csv`
 **Total Records:** 585 bank branches across 20 banks
 **Generated:** December 2025 (Updated)
@@ -27,7 +27,7 @@ df = df.dropna(subset=['lat', 'long'])
 
 # Key variables
 total_count = len(df)  # 585 total branches
-bob_count = df[df['bank_name'] == 'Bank of Baku'].shape[0]  # 21 branches
+atb_count = df[df['bank_name'] == 'AzerTurk Bank'].shape[0]  # 17 branches
 ```
 
 ---
@@ -47,20 +47,19 @@ bob_count = df[df['bank_name'] == 'Bank of Baku'].shape[0]  # 21 branches
 6. Rabita Bank - 31 branches
 7. Xalq Bank - 31 branches
 8. Yelo Bank - 22 branches
-9. **Bank of Baku - 21 branches** (Focus of this analysis)
-10. Turan Bank - 19 branches
+9. Turan Bank - 19 branches
 
 **Smaller Banks:**
-11. AzerTurk Bank - 17 branches
-12. Express Bank - 16 branches
-13. Ziraat Bank - 10 branches
-14. Premium Bank - 8 branches
-15. Yapi Kredi Bank - 8 branches
-16. Pasha Bank - 8 branches
-17. BTB (Baku Business Bank) - 8 branches
-18. ASB Bank - 7 branches
-19. AFB (Azərbaycan Fəhlə Bankı) - 7 branches
-20. VTB Bank - 6 branches
+10. **AzerTurk Bank - 17 branches** (Focus of this analysis)
+11. Express Bank - 16 branches
+12. Ziraat Bank - 10 branches
+13. Premium Bank - 8 branches
+14. Yapi Kredi Bank - 8 branches
+15. Pasha Bank - 8 branches
+16. BTB (Baku Business Bank) - 8 branches
+17. ASB Bank - 7 branches
+18. AFB (Azərbaycan Fəhlə Bankı) - 7 branches
+19. VTB Bank - 6 branches
 
 **Data Update History:**
 - Original dataset: 11 banks, 456 branches
@@ -72,7 +71,7 @@ bob_count = df[df['bank_name'] == 'Bank of Baku'].shape[0]  # 21 branches
 ## Chart 1: Branch Count Comparison
 
 ### Purpose
-Compare total branch counts across all banks, highlighting Bank of Baku's position.
+Compare total branch counts across all banks, highlighting AzerTurk Bank's position.
 
 ### Calculation Method
 ```python
@@ -80,10 +79,10 @@ Compare total branch counts across all banks, highlighting Bank of Baku's positi
 branch_counts = df['bank_name'].value_counts().sort_values(ascending=True)
 
 # Calculate market rank
-bob_rank = (df['bank_name'].value_counts() > bob_count).sum() + 1
+atb_rank = (df['bank_name'].value_counts() > atb_count).sum() + 1
 
 # Market share
-bob_market_share = (bob_count / total_count) * 100
+atb_market_share = (atb_count / total_count) * 100
 ```
 
 ### Key Metrics
@@ -93,13 +92,13 @@ bob_market_share = (bob_count / total_count) * 100
 
 ### Output
 - Horizontal bar chart sorted by branch count
-- Bank of Baku highlighted in red (#e74c3c)
+- AzerTurk Bank highlighted in red (#e74c3c)
 - Value labels on each bar
 
 **Result:**
-- Bank of Baku: 21 branches
-- Market Rank: #9 out of 20 banks
-- Market Share: 3.6%
+- AzerTurk Bank: 17 branches
+- Market Rank: #11 out of 20 banks
+- Market Share: 2.91%
 
 ---
 
@@ -141,15 +140,15 @@ for bank in market_pct.index:
 - Each segment width = bank's market share percentage
 - Total segments = 100%
 
-### Panel 3: Bank of Baku vs Top 5 Competitors
+### Panel 3: AzerTurk Bank vs Top 5 Competitors
 
 **Calculation:**
 ```python
-top_competitors = market_share[market_share.index != 'Bank of Baku'].head(5)
-bob_value = market_share['Bank of Baku']
+top_competitors = market_share[market_share.index != 'AzerTurk Bank'].head(5)
+atb_value = market_share['AzerTurk Bank']
 
 # Gap calculation
-gap_to_leader = top_competitors.iloc[0] - bob_value  # 156 branches (Kapital Bank: 177 vs BoB: 21)
+gap_to_leader = top_competitors.iloc[0] - atb_value  # 160 branches (Kapital Bank: 177 vs ATB: 17)
 ```
 
 **Metrics:**
@@ -161,7 +160,7 @@ gap_to_leader = top_competitors.iloc[0] - bob_value  # 156 branches (Kapital Ban
 ## Chart 3: Geographic Distribution - All Banks
 
 ### Purpose
-Plot all branch locations on a coordinate system, highlighting Bank of Baku.
+Plot all branch locations on a coordinate system, highlighting AzerTurk Bank.
 
 ### Calculation Method
 ```python
@@ -173,8 +172,8 @@ for bank in df['bank_name'].unique():
     lat = bank_data['lat'].values
     long = bank_data['long'].values
 
-    # Special styling for Bank of Baku
-    if bank == 'Bank of Baku':
+    # Special styling for AzerTurk Bank
+    if bank == 'AzerTurk Bank':
         marker = 's'  # square
         size = 150
         zorder = 5  # plot on top
@@ -185,21 +184,21 @@ for bank in df['bank_name'].unique():
 ```
 
 ### Metrics
-- **Geographic Spread (Bank of Baku):**
+- **Geographic Spread (AzerTurk Bank):**
   - Latitude range: `max(lat) - min(lat)`
   - Longitude range: `max(long) - min(long)`
 
 **Result:**
 - Latitude range: Variable across Azerbaijan
 - All 585 branches plotted
-- Bank of Baku branches shown as red squares
+- AzerTurk Bank branches shown as red squares
 
 ---
 
-## Chart 4: Bank of Baku vs Top Competitors - Geographic
+## Chart 4: AzerTurk Bank vs Top Competitors - Geographic
 
 ### Purpose
-Side-by-side geographic comparison of Bank of Baku with top 3 competitors.
+Side-by-side geographic comparison of AzerTurk Bank with top 3 competitors.
 
 ### Calculation Method
 ```python
@@ -207,7 +206,7 @@ Side-by-side geographic comparison of Bank of Baku with top 3 competitors.
 top_3_competitors = df['bank_name'].value_counts().head(3).index.tolist()
 
 # Create comparison set
-comparison_banks = ['Bank of Baku'] + [b for b in top_3_competitors if b != 'Bank of Baku'][:3]
+comparison_banks = ['AzerTurk Bank'] + [b for b in top_3_competitors if b != 'AzerTurk Bank'][:3]
 
 # For each bank, plot:
 # 1. All other branches in gray (context)
@@ -248,24 +247,24 @@ num_clusters = df['cluster'].nunique() - 1  # -1 excludes outliers (label=-1)
 - `min_samples=5`: Minimum points required to form a cluster
 - Outliers labeled as `-1`
 
-**Bank of Baku Cluster Analysis:**
+**AzerTurk Bank Cluster Analysis:**
 ```python
-# Count BoB presence per cluster
-bob_clusters = df[df['bank_name'] == 'Bank of Baku']['cluster'].value_counts()
+# Count ATB presence per cluster
+atb_clusters = df[df['bank_name'] == 'AzerTurk Bank']['cluster'].value_counts()
 all_clusters = df['cluster'].value_counts()
 
-# Calculate BoB share per cluster
-cluster_df['BoB_Share'] = (cluster_df['Bank of Baku'] / cluster_df['Total Branches']) * 100
+# Calculate ATB share per cluster
+cluster_df['ATB_Share'] = (cluster_df['AzerTurk Bank'] / cluster_df['Total Branches']) * 100
 ```
 
 ### Metrics
 - **Clusters Identified:** 3 major regions + outliers
-- **BoB Share per Cluster:** Percentage of branches in each cluster belonging to BoB
-- **Underserved Clusters:** Clusters where BoB Share < 5%
+- **ATB Share per Cluster:** Percentage of branches in each cluster belonging to ATB
+- **Underserved Clusters:** Clusters where ATB Share < 5%
 
 **Result:**
 - 3 major regional clusters identified
-- Bank of Baku present in multiple clusters
+- AzerTurk Bank present in multiple clusters
 - Several underserved clusters identified
 
 ---
@@ -294,18 +293,18 @@ baku_df = df[
 **Metrics:**
 ```python
 total_baku = len(baku_df)  # Total branches in Baku
-bob_baku = len(baku_df[baku_df['bank_name'] == 'Bank of Baku'])  # BoB branches
+atb_baku = len(baku_df[baku_df['bank_name'] == 'AzerTurk Bank'])  # ATB branches
 
 # Baku market share
-baku_market_share = (bob_baku / total_baku) * 100
+baku_market_share = (atb_baku / total_baku) * 100
 
 # Baku rank
-baku_rank = (baku_df['bank_name'].value_counts() > bob_baku).sum() + 1
+baku_rank = (baku_df['bank_name'].value_counts() > atb_baku).sum() + 1
 ```
 
 ### Output Metrics
 - Total Baku branches: ~250-300 (varies with dataset)
-- Bank of Baku in Baku: 14 branches (confirmed)
+- AzerTurk Bank in Baku: needs recalculation for 17 branches
 - Baku market share: Calculated as (14 / total_baku) × 100
 - Baku rank: Calculated based on branch counts
 - Note: Exact totals recalculated with each analysis run
@@ -342,11 +341,11 @@ region_pct = region_dist.div(region_dist.sum(axis=1), axis=0) * 100
 regional_coverage = region_pct['Regions']  # % of branches outside Baku
 ```
 
-3. **Bank of Baku Specifics:**
+3. **AzerTurk Bank Specifics:**
 ```python
-bob_region = df[df['bank_name'] == 'Bank of Baku']['region'].value_counts()
-# Baku: 14 branches (66.7%) - above industry average concentration
-# Regions: 7 branches (33.3%) - below industry average (48.3%)
+atb_region = df[df['bank_name'] == 'AzerTurk Bank']['region'].value_counts()
+# Baku/Regional split needs recalculation for 17 branches
+# Previous stats (66.7%/33.3%) no longer applicable for ATB
 ```
 
 **Industry Average:**
@@ -357,8 +356,8 @@ avg_regional_coverage = df.groupby('bank_name')['region'].apply(
 ```
 
 ### Output Metrics
-- BoB Baku concentration: 66.7% (14/21 branches)
-- BoB Regional coverage: 33.3% (7/21 branches)
+- ATB Baku concentration: needs recalculation for 17 branches
+- ATB Regional coverage: needs recalculation for 17 branches
 - Industry average regional: 48.3% (across 20 banks)
 - Gap to average: -15.0 percentage points (below average)
 
@@ -380,8 +379,8 @@ xy_all = np.vstack([df['long'], df['lat']])
 z_all = gaussian_kde(xy_all)(xy_all)
 # Returns density value for each point
 
-# Competitor density (excluding Bank of Baku)
-competitors_df = df[df['bank_name'] != 'Bank of Baku']
+# Competitor density (excluding AzerTurk Bank)
+competitors_df = df[df['bank_name'] != 'AzerTurk Bank']
 xy_comp = np.vstack([competitors_df['long'], competitors_df['lat']])
 z_comp = gaussian_kde(xy_comp)(xy_comp)
 ```
@@ -397,14 +396,14 @@ z_comp = gaussian_kde(xy_comp)(xy_comp)
 - **Low Density Areas:** Lighter/cooler colors
 
 **Insight:**
-Bank of Baku branches predominantly located in high-density areas (where competitors are also present).
+AzerTurk Bank branches predominantly located in high-density areas (where competitors are also present).
 
 ---
 
 ## Chart 9: Gap Analysis - Underserved Areas
 
 ### Purpose
-Identify competitor locations far from any Bank of Baku branch (expansion opportunities).
+Identify competitor locations far from any AzerTurk Bank branch (expansion opportunities).
 
 ### Calculation Method
 
@@ -412,11 +411,11 @@ Identify competitor locations far from any Bank of Baku branch (expansion opport
 ```python
 from sklearn.neighbors import NearestNeighbors
 
-bob_coords = df[df['bank_name'] == 'Bank of Baku'][['lat', 'long']].values
-comp_coords = df[df['bank_name'] != 'Bank of Baku'][['lat', 'long']].values
+atb_coords = df[df['bank_name'] == 'AzerTurk Bank'][['lat', 'long']].values
+comp_coords = df[df['bank_name'] != 'AzerTurk Bank'][['lat', 'long']].values
 
-# Find nearest BoB branch for each competitor location
-nbrs = NearestNeighbors(n_neighbors=1).fit(bob_coords)
+# Find nearest ATB branch for each competitor location
+nbrs = NearestNeighbors(n_neighbors=1).fit(atb_coords)
 distances, indices = nbrs.kneighbors(comp_coords)
 
 # Euclidean distance formula:
@@ -425,10 +424,10 @@ distances, indices = nbrs.kneighbors(comp_coords)
 
 **Gap Identification:**
 ```python
-gap_df['distance_to_bob'] = distances.flatten()
+gap_df['distance_to_atb'] = distances.flatten()
 
 # Define significant gaps (>0.3° ≈ 30km)
-gaps = gap_df[gap_df['distance_to_bob'] > 0.3].sort_values('distance_to_bob', ascending=False)
+gaps = gap_df[gap_df['distance_to_atb'] > 0.3].sort_values('distance_to_atb', ascending=False)
 ```
 
 **Distance Conversion:**
@@ -437,13 +436,13 @@ gaps = gap_df[gap_df['distance_to_bob'] > 0.3].sort_values('distance_to_bob', as
 - At Azerbaijan's latitude (~40°), approximately 85km per degree longitude
 
 ### Metrics
-- **Gap Locations:** 198 competitor locations >30km from nearest BoB branch
+- **Gap Locations:** 198 competitor locations >30km from nearest ATB branch
 - **Distance Threshold:** 0.3° (approximately 30km)
 - **Top Opportunities:** Sorted by distance (furthest = highest priority)
 
 **Formula:**
 ```
-Distance (degrees) = √((lat_comp - lat_bob)² + (long_comp - long_bob)²)
+Distance (degrees) = √((lat_comp - lat_atb)² + (long_comp - long_atb)²)
 Distance (km) ≈ Distance (degrees) × 111
 ```
 
@@ -452,19 +451,19 @@ Distance (km) ≈ Distance (degrees) × 111
 ## Chart 10: Nearest Competitor Analysis
 
 ### Purpose
-Analyze which competitors are most frequently nearest to Bank of Baku branches.
+Analyze which competitors are most frequently nearest to AzerTurk Bank branches.
 
 ### Calculation Method
 
-**For Each BoB Branch:**
+**For Each ATB Branch:**
 ```python
-bob_coords = df[df['bank_name'] == 'Bank of Baku'][['lat', 'long']].values
-comp_coords = df[df['bank_name'] != 'Bank of Baku'][['lat', 'long']].values
-comp_banks = df[df['bank_name'] != 'Bank of Baku']['bank_name'].values
+atb_coords = df[df['bank_name'] == 'AzerTurk Bank'][['lat', 'long']].values
+comp_coords = df[df['bank_name'] != 'AzerTurk Bank'][['lat', 'long']].values
+comp_banks = df[df['bank_name'] != 'AzerTurk Bank']['bank_name'].values
 
-# Find nearest competitor for each BoB branch
+# Find nearest competitor for each ATB branch
 nbrs_comp = NearestNeighbors(n_neighbors=1).fit(comp_coords)
-distances, indices = nbrs_comp.kneighbors(bob_coords)
+distances, indices = nbrs_comp.kneighbors(atb_coords)
 
 # Map indices to bank names
 nearest_competitor = [comp_banks[i] for i in indices.flatten()]
@@ -474,15 +473,15 @@ nearest_competitor = [comp_banks[i] for i in indices.flatten()]
 
 1. **Distance Distribution:**
 ```python
-bob_analysis['dist_to_competitor'] = distances.flatten()
+atb_analysis['dist_to_competitor'] = distances.flatten()
 
-mean_distance = bob_analysis['dist_to_competitor'].mean()
-median_distance = bob_analysis['dist_to_competitor'].median()
+mean_distance = atb_analysis['dist_to_competitor'].mean()
+median_distance = atb_analysis['dist_to_competitor'].median()
 ```
 
 2. **Competitor Frequency:**
 ```python
-nearest_comp_counts = bob_analysis['nearest_competitor'].value_counts()
+nearest_comp_counts = atb_analysis['nearest_competitor'].value_counts()
 # Shows which banks are most often the closest competitor
 ```
 
@@ -552,9 +551,9 @@ intensity_comparison = pd.DataFrame({
 
 ### Output Metrics
 - **Radius:** 0.1° (approximately 10km)
-- **BoB Average Intensity:** 108.3 competitors within 10km
+- **ATB Average Intensity:** 108.3 competitors within 10km
 - **Industry Comparison:** Compared to all other banks
-- **Distribution:** Histogram showing intensity variation across BoB branches
+- **Distribution:** Histogram showing intensity variation across ATB branches
 
 **Interpretation:**
 Higher intensity = more competitive location = harder to differentiate
@@ -564,7 +563,7 @@ Higher intensity = more competitive location = harder to differentiate
 ## Chart 12: Regional Market Dominance Analysis
 
 ### Purpose
-Analyze Bank of Baku's presence across Azerbaijan's meaningful geographic regions and identify zone leaders.
+Analyze AzerTurk Bank's presence across Azerbaijan's meaningful geographic regions and identify zone leaders.
 
 ### Calculation Method
 
@@ -629,29 +628,29 @@ for zone in zones:
     leader = zone_df['bank_name'].value_counts().index[0]
     leader_count = zone_df['bank_name'].value_counts().values[0]
 
-    # Bank of Baku metrics
-    bob_count_zone = len(zone_df[zone_df['bank_name'] == 'Bank of Baku'])
-    bob_share = (bob_count_zone / len(zone_df)) * 100 if len(zone_df) > 0 else 0
-    bob_rank = (zone_df['bank_name'].value_counts() > bob_count_zone).sum() + 1
+    # AzerTurk Bank metrics
+    atb_count_zone = len(zone_df[zone_df['bank_name'] == 'AzerTurk Bank'])
+    atb_share = (atb_count_zone / len(zone_df)) * 100 if len(zone_df) > 0 else 0
+    atb_rank = (zone_df['bank_name'].value_counts() > atb_count_zone).sum() + 1
 ```
 
 ### Output Metrics
 - **Zone Leader:** Dominant bank in each region
-- **BoB Presence:** Branch count per zone
-- **BoB Market Share:** Percentage per zone
-- **BoB Rank:** Position within each zone
+- **ATB Presence:** Branch count per zone
+- **ATB Market Share:** Percentage per zone
+- **ATB Rank:** Position within each zone
 
 **Results Summary:**
-- **Baku City:** BoB has 14 branches (5.5% share, Rank #5)
-- **Absheron:** BoB has 2 branches (4.8% share, Rank #4)
-- **North:** BoB has 2 branches (2.8% share, Rank #9)
-- **Northwest:** BoB has 1 branch (1.1% share, Rank #13)
-- **Central:** BoB has NO presence (Leader: Kapital Bank with 12 branches)
-- **South:** BoB has 1 branch (5.3% share, Rank #3)
-- **West:** BoB has NO presence (Leader: Kapital Bank with 10 branches)
+- **Baku City:** ATB presence needs recalculation for 17 branches
+- **Absheron:** ATB has 2 branches (4.8% share, Rank #4)
+- **North:** ATB has 2 branches (2.8% share, Rank #9)
+- **Northwest:** ATB has 1 branch (1.1% share, Rank #13)
+- **Central:** ATB has NO presence (Leader: Kapital Bank with 12 branches)
+- **South:** ATB has 1 branch (5.3% share, Rank #3)
+- **West:** ATB has NO presence (Leader: Kapital Bank with 10 branches)
 
 ### Strategic Insight
-Two regions with **zero Bank of Baku presence** (Central and West) represent high-priority expansion targets. Kapital Bank dominates both zones.
+Two regions with **zero AzerTurk Bank presence** (Central and West) represent high-priority expansion targets. Kapital Bank dominates both zones.
 
 ---
 
@@ -681,9 +680,9 @@ grid_points_baku = [[lat, long] for lat in lat_grid_baku for long in long_grid_b
 **Opportunity Score Formula (Urban-Optimized):**
 ```python
 def calculate_opportunity_score_baku(point):
-    # Factor 1: Distance to nearest BoB branch (higher = better)
-    distances_bob = np.sqrt(((bob_coords_baku - point)**2).sum(axis=1))
-    dist_score = distances_bob.min()
+    # Factor 1: Distance to nearest ATB branch (higher = better)
+    distances_atb = np.sqrt(((atb_coords_baku - point)**2).sum(axis=1))
+    dist_score = distances_atb.min()
 
     # Factor 2: Number of competitors nearby (5km radius for urban density)
     distances_comp = np.sqrt(((comp_coords_baku - point)**2).sum(axis=1))
@@ -702,7 +701,7 @@ def calculate_opportunity_score_baku(point):
 ### Output Metrics
 - **Grid Points:** 1,225 locations evaluated
 - **Top 15 Opportunities:** Highest scoring coordinates
-- **Current Status:** 292 total branches, 16 BoB branches (5.5%)
+- **Current Status:** 292 total branches, 16 ATB branches (5.5%)
 
 ---
 
@@ -735,9 +734,9 @@ def calculate_opportunity_score_regions(point):
         baku_long_min <= point[1] <= baku_long_max):
         return 0
 
-    # Factor 1: Distance to nearest BoB branch (higher = better)
-    distances_bob = np.sqrt(((bob_coords_regions - point)**2).sum(axis=1))
-    dist_score = distances_bob.min()
+    # Factor 1: Distance to nearest ATB branch (higher = better)
+    distances_atb = np.sqrt(((atb_coords_regions - point)**2).sum(axis=1))
+    dist_score = distances_atb.min()
 
     # Factor 2: Number of competitors nearby (30km radius for rural areas)
     distances_comp = np.sqrt(((comp_coords_regions - point)**2).sum(axis=1))
@@ -756,7 +755,7 @@ def calculate_opportunity_score_regions(point):
 ### Output Metrics
 - **Grid Points:** 900 locations evaluated
 - **Top 15 Opportunities:** Highest scoring coordinates
-- **Current Status:** 293 total branches, 5 BoB branches (1.7%)
+- **Current Status:** 293 total branches, 5 ATB branches (1.7%)
 
 ### Key Difference from Chart 13a
 - Larger competitor search radius (30km vs 5km)
@@ -772,7 +771,7 @@ Blue markers = major city reference points
 ## Chart 14: Multi-Metric Comparison
 
 ### Purpose
-Compare Bank of Baku against top competitors across multiple dimensions.
+Compare AzerTurk Bank against top competitors across multiple dimensions.
 
 ### Metrics Calculated
 
@@ -831,9 +830,9 @@ Six-panel visual dashboard summarizing key strategic metrics.
 **2. Key Metrics vs Industry Average:**
 ```python
 metrics = {
-    'Branches': bob_count,
-    'Market Share %': (bob_count / total_count) * 100,
-    'Regional Coverage %': (bob_region['Regions'] / bob_count) * 100
+    'Branches': atb_count,
+    'Market Share %': (atb_count / total_count) * 100,
+    'Regional Coverage %': (atb_region['Regions'] / atb_count) * 100
 }
 
 industry_avg = {
@@ -849,17 +848,17 @@ industry_avg = {
 ```python
 opportunities = {
     'High Gap Areas': len(gaps),  # 198 locations from Chart 9
-    'Underserved Clusters': (cluster_df['BoB_Share'] < 5).sum(),  # From Chart 5
-    'Regional Gap': max_regional_branches - bob_regional_branches,
-    'Branches Needed for 10% Share': int(total_count * 0.10) - bob_count  # 37 branches
+    'Underserved Clusters': (cluster_df['ATB_Share'] < 5).sum(),  # From Chart 5
+    'Regional Gap': max_regional_branches - atb_regional_branches,
+    'Branches Needed for 10% Share': int(total_count * 0.10) - atb_count  # 42 branches
 }
 ```
 
 **4. Geographic Distribution (Baku vs Regions):**
 ```python
 # Pie chart percentages
-baku_pct = (bob_region['Baku'] / bob_count) * 100
-regions_pct = (bob_region['Regions'] / bob_count) * 100
+baku_pct = (atb_region['Baku'] / atb_count) * 100
+regions_pct = (atb_region['Regions'] / atb_count) * 100
 ```
 
 **5. Direct Competitors:**
@@ -968,12 +967,12 @@ Intensity = COUNT(Branches where 0 < Distance < Radius)
 
 ### Opportunity Score
 ```
-Score = (Distance to Nearest BoB) × 10 + (Nearby Competitors) × 0.5
+Score = (Distance to Nearest ATB) × 10 + (Nearby Competitors) × 0.5
 ```
 
 ### Cluster Share
 ```
-BoB Cluster Share (%) = (BoB Branches in Cluster / Total Branches in Cluster) × 100
+ATB Cluster Share (%) = (ATB Branches in Cluster / Total Branches in Cluster) × 100
 ```
 
 ---

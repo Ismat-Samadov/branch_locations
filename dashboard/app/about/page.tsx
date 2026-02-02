@@ -31,7 +31,7 @@ export default function AboutPage() {
               </p>
 
               <p className="text-gray-700 leading-relaxed mb-4">
-                This project analyzes <strong className="text-blue-600">585 bank branches</strong> across <strong className="text-green-600">20 banking institutions</strong>, with a special focus on <strong className="text-red-600">Bank of Baku</strong> and its competitive positioning in the market.
+                This project analyzes <strong className="text-blue-600">585 bank branches</strong> across <strong className="text-green-600">20 banking institutions</strong>, with a special focus on <strong className="text-red-600">AzerTurk Bank</strong> and its competitive positioning in the market.
               </p>
 
               <p className="text-gray-700 leading-relaxed">
@@ -74,7 +74,7 @@ export default function AboutPage() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Bank Focus</h3>
               <p className="text-gray-600">
-                Special emphasis on Bank of Baku's network, ranking, market position, and expansion potential across Azerbaijan.
+                Special emphasis on AzerTurk Bank's network, ranking, market position, and expansion potential across Azerbaijan.
               </p>
             </div>
           </div>

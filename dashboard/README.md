@@ -7,7 +7,7 @@ An interactive Next.js dashboard for visualizing and analyzing bank branch distr
 - **Interactive Map**: View all 585 bank branches across 20 banks in Azerbaijan using Leaflet maps
 - **Real-time Filtering**: Filter branches by individual bank or view all banks together
 - **Key Metrics Dashboard**: Display total branches, market share, rankings, and coverage statistics
-- **Bank of Baku Focus**: Special highlighting and tracking for Bank of Baku branches
+- **AzerTurk Bank Focus**: Special highlighting and tracking for AzerTurk Bank branches
 - **Responsive Design**: Works on desktop, tablet, and mobile devices
 - **Beautiful UI**: Modern Tailwind CSS design with smooth interactions
 
@@ -99,14 +99,14 @@ The dashboard uses `branches.json` containing all 585 bank branches across Azerb
 - Kapital Bank (177 branches) - #1
 - ABB Bank (53 branches) - #2
 - Xalq Bank (45 branches) - #3
-- And 17 more banks including Bank of Baku (21 branches, Rank #9)
+- And 17 more banks including AzerTurk Bank (17 branches, Rank #11)
 
 ## Key Features Explained
 
 ### Interactive Map
 
 - **Colored Markers**: Each bank has a distinct color
-- **Bank of Baku**: Highlighted with larger red square markers
+- **AzerTurk Bank**: Highlighted with larger red square markers
 - **Other Banks**: Shown as smaller circular markers
 - **Tooltips**: Click any marker to see bank name and coordinates
 - **Zoom/Pan**: Fully interactive map controls
@@ -122,8 +122,8 @@ The dashboard uses `branches.json` containing all 585 bank branches across Azerb
 
 Four key metric cards show:
 1. **Total Branches** - Overall branch count across all banks
-2. **Bank of Baku Branches** - Specific count and market rank
-3. **Market Share** - Bank of Baku's percentage of total branches
+2. **AzerTurk Bank Branches** - Specific count and market rank
+3. **Market Share** - AzerTurk Bank's percentage of total branches
 4. **Coverage** - Number of banks operating in Azerbaijan
 
 ## Future Enhancements

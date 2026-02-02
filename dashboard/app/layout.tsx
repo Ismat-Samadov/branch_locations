@@ -4,7 +4,7 @@ import 'leaflet/dist/leaflet.css';
 
 export const metadata: Metadata = {
   title: "Bank Branch Network Dashboard - Azerbaijan",
-  description: "Interactive map and analytics for 585 bank branches across 20 banks in Azerbaijan. View Bank of Baku and competitor locations.",
+  description: "Interactive map and analytics for 585 bank branches across 20 banks in Azerbaijan. View AzerTurk Bank and competitor locations.",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,

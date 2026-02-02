@@ -6,12 +6,12 @@ import { Lightbulb, TrendingUp, MapPin, Award, X } from 'lucide-react';
 interface FunFactsProps {
   totalBranches: number;
   totalBanks: number;
-  bobBranches: number;
-  bobRank: number;
+  atbBranches: number;
+  atbRank: number;
   marketShare: string;
 }
 
-export default function FunFacts({ totalBranches, totalBanks, bobBranches, bobRank, marketShare }: FunFactsProps) {
+export default function FunFacts({ totalBranches, totalBanks, atbBranches, atbRank, marketShare }: FunFactsProps) {
   const [showFact, setShowFact] = useState(true);
   const [currentFactIndex, setCurrentFactIndex] = useState(0);
 
@@ -25,13 +25,13 @@ export default function FunFacts({ totalBranches, totalBanks, bobBranches, bobRa
     {
       icon: TrendingUp,
       title: "Market Insight",
-      text: `Bank of Baku holds ${marketShare}% market share with ${bobBranches} branches. There's room for 37 more branches to reach 10% share!`,
+      text: `AzerTurk Bank holds ${marketShare}% market share with ${atbBranches} branches. There's room for 37 more branches to reach 10% share!`,
       color: "from-purple-500 to-pink-500"
     },
     {
       icon: Award,
       title: "Competition",
-      text: `The top 3 banks control over 50% of all branches. Bank of Baku is ranked #${bobRank} and growing!`,
+      text: `The top 3 banks control over 50% of all branches. AzerTurk Bank is ranked #${atbRank} and growing!`,
       color: "from-orange-500 to-red-500"
     },
     {
