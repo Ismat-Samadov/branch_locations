@@ -84,7 +84,7 @@ export default function MapPage() {
                 <div className="flex items-center space-x-2 sm:space-x-3 p-2 sm:p-3 bg-gradient-to-br from-red-50 to-red-100 rounded-lg sm:rounded-xl border border-red-200">
                   <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-red-600 border-2 border-white shadow-lg flex-shrink-0"></div>
                   <div>
-                    <p className="text-xs sm:text-sm font-bold text-gray-900">Bank of Baku</p>
+                    <p className="text-xs sm:text-sm font-bold text-gray-900">AzerTurk Bank</p>
                     <p className="text-[10px] sm:text-xs text-gray-600">Bright Red - Large</p>
                   </div>
                 </div>
