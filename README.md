@@ -125,7 +125,7 @@ Geographic scatter plot of all 585 bank branches across Azerbaijan. AzerTurk Ban
 
 ### Chart 4: AzerTurk Bank vs Top Competitors - Geographic Coverage
 
-![ATB vs Competitors Geographic](charts/04_bob_vs_competitors_geographic.png)
+![ATB vs Competitors Geographic](charts/04_atb_vs_competitors_geographic.png)
 
 **What This Shows:**
 Side-by-side geographic comparison of AzerTurk Bank with its three largest competitors (Kapital Bank, ABB Bank, Bank Respublika).
