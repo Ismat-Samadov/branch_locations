@@ -641,13 +641,9 @@ for zone in zones:
 - **ATB Rank:** Position within each zone
 
 **Results Summary:**
-- **Baku City:** ATB presence needs recalculation for 17 branches
-- **Absheron:** ATB has 2 branches (4.8% share, Rank #4)
-- **North:** ATB has 2 branches (2.8% share, Rank #9)
-- **Northwest:** ATB has 1 branch (1.1% share, Rank #13)
-- **Central:** ATB has NO presence (Leader: Kapital Bank with 12 branches)
-- **South:** ATB has 1 branch (5.3% share, Rank #3)
-- **West:** ATB has NO presence (Leader: Kapital Bank with 10 branches)
+- **All zone-specific stats need recalculation for ATB's 17 branches**
+- Zone presence, market shares, and rankings will differ from previous analysis
+- Kapital Bank remains the dominant leader in Central (12 branches) and West (10 branches) zones
 
 ### Strategic Insight
 Two regions with **zero AzerTurk Bank presence** (Central and West) represent high-priority expansion targets. Kapital Bank dominates both zones.
@@ -701,7 +697,7 @@ def calculate_opportunity_score_baku(point):
 ### Output Metrics
 - **Grid Points:** 1,225 locations evaluated
 - **Top 15 Opportunities:** Highest scoring coordinates
-- **Current Status:** 292 total branches, 16 ATB branches (5.5%)
+- **Current Status:** 292 total branches, ATB branches needs recalculation
 
 ---
 
@@ -755,7 +751,7 @@ def calculate_opportunity_score_regions(point):
 ### Output Metrics
 - **Grid Points:** 900 locations evaluated
 - **Top 15 Opportunities:** Highest scoring coordinates
-- **Current Status:** 293 total branches, 5 ATB branches (1.7%)
+- **Current Status:** 293 total branches, ATB branches needs recalculation
 
 ### Key Difference from Chart 13a
 - Larger competitor search radius (30km vs 5km)

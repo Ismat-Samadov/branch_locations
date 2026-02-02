@@ -1576,7 +1576,7 @@ print("Generating Strategic Insights Report...")
 
 insights_report = f"""
 ================================================================================
-BANK OF BAKU - STRATEGIC ANALYSIS & ACTIONABLE INSIGHTS
+AZERTURK BANK - STRATEGIC ANALYSIS & ACTIONABLE INSIGHTS
 ================================================================================
 Generated: {pd.Timestamp.now().strftime('%Y-%m-%d %H:%M:%S')}
 
@@ -1813,7 +1813,7 @@ print(" 14. Multi-Metric Comparison")
 print(" 15. Strategic Recommendations Summary")
 print()
 print("=" * 80)
-print("KEY INSIGHTS FOR BANK OF BAKU:")
+print("KEY INSIGHTS FOR AZERTURK BANK:")
 print("=" * 80)
 print(f"• Current Position: Rank #{atb_rank} with {atb_count} branches ({atb_count/total_count*100:.1f}% market share)")
 print(f"• Baku Concentration: {atb_region['Baku']/atb_count*100:.1f}% of branches")

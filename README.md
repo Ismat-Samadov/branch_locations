@@ -318,13 +318,9 @@ Number of competitors within 10km radius of each branch. Left: bank comparison. 
 Analysis of AzerTurk Bank's presence across Azerbaijan's actual geographic regions (Baku City, Absheron, North, Northwest, Central, South, West). Shows which banks dominate each zone and where ATB needs to expand.
 
 **Key Insights:**
-- **Baku City:** ATB presence needs recalculation for 17 branches
-- **Absheron Peninsula:** ATB has 2 branches (4.8% share, Rank #4) - decent position
-- **North Zone:** ATB has 2 branches (2.8% share, Rank #9) - weak presence
-- **Northwest Zone:** ATB has 1 branch (1.1% share, Rank #13) - very weak presence
-- **Central Zone:** ATB has **NO presence** - Kapital Bank leads with 12 branches
-- **South Zone:** ATB has 1 branch (5.3% share, Rank #3) - surprisingly good ranking
-- **West Zone:** ATB has **NO presence** - Kapital Bank leads with 10 branches
+- **All zone-specific stats need recalculation for ATB's 17 branches**
+- Zone presence, market shares, and rankings will differ from previous BoB analysis
+- Kapital Bank remains the dominant leader in Central (12 branches) and West (10 branches) zones
 
 **Critical Finding:**
 Two entire regions (Central and West) have **ZERO AzerTurk Bank branches** while Kapital Bank dominates with 12 and 10 branches respectively.
@@ -349,7 +345,7 @@ Focused heatmap for **Baku-Absheron region** (coordinates: 40.30-40.65°N, 49.60
 
 **Current Status:**
 - **292 total branches** in Baku-Absheron area
-- **16 AzerTurk Bank branches** (5.5% of area total)
+- **AzerTurk Bank branches** (needs recalculation for 17 total branches)
 - High competitive density requires precise targeting
 
 **Scoring Methodology (Urban-Optimized):**
@@ -383,7 +379,7 @@ Heatmap for **all regions outside Baku-Absheron**, scoring rural/regional expans
 
 **Current Status:**
 - **293 total branches** in regional Azerbaijan
-- **Only 5 AzerTurk Bank branches** (1.7% of regional total)
+- **AzerTurk Bank branches** (needs recalculation for 17 total branches)
 - **Significant expansion gap** compared to Baku presence
 
 **Scoring Methodology (Regional-Optimized):**
